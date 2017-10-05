@@ -3,8 +3,8 @@ export default class Category {
     return fetch(
       `http://localhost:3001/categories`,
       {
-        method: 'GET',
-        headers: { 'Authorization': 'whatever-you-want' }
+        headers: { 'Authorization': 'whatever-you-want' },
+        method: 'GET'
       }
     )
     .then((res) => res.json())
