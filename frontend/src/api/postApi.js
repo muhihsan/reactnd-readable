@@ -22,4 +22,17 @@ export default class postApi {
     .then((res) => res.json())
     .then(({ posts }) => posts);
   }
+ 
+  static createNewPost = (post) => {
+    return fetch(
+      `http://localhost:3001/post`,
+      {
+        body: post,
+        headers: { 'Authorization': 'whatever-you-want' },
+        method: 'POST'
+      }
+    )
+    .then((res) => res.json())
+    .then(({ posts }) => posts);
+  }
 };
