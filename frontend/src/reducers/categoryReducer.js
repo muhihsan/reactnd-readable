@@ -10,8 +10,11 @@ export default (state = initialState, action) => {
   switch(action.type) {
     case Types.GET_ALL_CATEGORIES:
       const categorySchema = new schema.Entity('categories', {}, { idAttribute: 'name' });
-      const categoryListSchema = [ categorySchema ];
-      return normalize(action.categories, categoryListSchema);
+      const categories = normalize(action.categories, [ categorySchema ]);
+      return {
+        entities: categories.entities.categories,
+        result: categories.result
+      };
     default:
       return state;
   }
