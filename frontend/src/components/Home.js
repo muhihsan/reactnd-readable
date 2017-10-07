@@ -32,11 +32,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    actions: bindActionCreators(
-      { 
+    actions: bindActionCreators({ 
         ...categoryActions,
         ...postActions 
-      }, dispatch
+      }, 
+      dispatch
     )
   };
 };
