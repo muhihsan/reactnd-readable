@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as categoryActions from '../actions/categoryAction';
 import logo from '../icons/logo.svg';
 
 class Home extends Component {
-  render() {
+  componentDidMount = () => {
+    this.props.actions.getAllCategories();
+  }
+
+  render = () => {
     return(
       <div className="App">
         <header className="App-header">
@@ -17,4 +24,14 @@ class Home extends Component {
   };
 }
 
-export default Home;
+const mapStateToProps = (state) => {  
+  return state;
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators(categoryActions, dispatch)
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

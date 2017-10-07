@@ -9,7 +9,7 @@ const ConnectedSwitch = connect(state => ({
 }))(Switch);
 
 class App extends Component {
-  render() {
+  render = () => {
     return(
       <ConnectedSwitch>
         <Route exact path="/" component={(props) => ( <Home /> )} />
