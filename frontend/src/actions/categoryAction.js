@@ -7,9 +7,9 @@ export const getAllCategoriesSuccess = (categories) => {
 
 export const getAllCategories = () => {
   return dispatch => {
-    return CategoryApi.getAllCategories().then(categories => {
-      dispatch(getAllCategoriesSuccess(categories));
-    }).catch(error => {
+    return CategoryApi.getAllCategories().then(categories => 
+      dispatch(getAllCategoriesSuccess(categories))
+    ).catch(error => {
       throw(error);
     });
   };

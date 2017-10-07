@@ -20,7 +20,7 @@ export default class postApi {
       }
     )
     .then((res) => res.json())
-    .then(({ posts }) => posts);
+    .then((posts) => posts);
   }
  
   static createNewPost = (post) => {

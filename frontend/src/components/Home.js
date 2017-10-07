@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as categoryActions from '../actions/categoryAction';
+import * as postActions from '../actions/postAction';
 import logo from '../icons/logo.svg';
 
 class Home extends Component {
   componentDidMount = () => {
     this.props.actions.getAllCategories();
+    this.props.actions.getAllPosts();
   }
 
   render = () => {
@@ -30,7 +32,12 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    actions: bindActionCreators(categoryActions, dispatch)
+    actions: bindActionCreators(
+      { 
+        ...categoryActions,
+        ...postActions 
+      }, dispatch
+    )
   };
 };
 
