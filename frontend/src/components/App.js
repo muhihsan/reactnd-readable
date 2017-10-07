@@ -12,7 +12,7 @@ class App extends Component {
   render = () => {
     return(
       <ConnectedSwitch>
-        <Route exact path="/" component={(props) => ( <Home /> )} />
+        <Route exact path="/" component={(props) => (<Home />)} />
       </ConnectedSwitch>
     );
   }
