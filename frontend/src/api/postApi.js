@@ -1,6 +1,6 @@
-export default class postApi {
-  static getAllPostsForCategory = (category) => {
-    return fetch(
+export default class PostApi {
+  static getAllPostsForCategory = (category) =>
+    fetch(
       `http://localhost:3001/${category}/posts`,
       {
         headers: { 'Authorization': 'whatever-you-want' },
@@ -9,10 +9,9 @@ export default class postApi {
     )
     .then((res) => res.json())
     .then((posts) => posts);
-  }
   
-  static getAllPosts = () => {
-    return fetch(
+  static getAllPosts = () =>
+    fetch(
       `http://localhost:3001/posts`,
       {
         headers: { 'Authorization': 'whatever-you-want' },
@@ -21,10 +20,9 @@ export default class postApi {
     )
     .then((res) => res.json())
     .then((posts) => posts);
-  }
 
-  static getPost = (id) => {
-    return fetch(
+  static getPost = (id) =>
+    fetch(
       `http://localhost:3001/posts/${id}`,
       {
         headers: { 'Authorization': 'whatever-you-want' },
@@ -33,10 +31,9 @@ export default class postApi {
     )
     .then((res) => res.json())
     .then((post) => post);
-  }
  
-  static createNewPost = (post) => {
-    return fetch(
+  static createNewPost = (post) =>
+    fetch(
       `http://localhost:3001/post`,
       {
         body: post,
@@ -46,5 +43,4 @@ export default class postApi {
     )
     .then((res) => res.json())
     .then(({ posts }) => posts);
-  }
 };

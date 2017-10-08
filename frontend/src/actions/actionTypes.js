@@ -1,3 +1,4 @@
 export const GET_ALL_CATEGORIES = 'GET_ALL_CATEGORIES';
 export const GET_ALL_POSTS = 'GET_ALL_POSTS';
 export const GET_POST = 'GET_POST';
+export const GET_ALL_COMMENTS_FOR_POST = 'GET_ALL_COMMENTS_FOR_POST';

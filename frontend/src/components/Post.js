@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as postActions from '../actions/postAction';
+import * as commentActions from '../actions/commentAction';
 
 class Post extends Component {
   componentDidMount = () => {
     this.props.actions.getPost(this.props.id);
+    this.props.actions.getAllCommentsForPost(this.props.id);
   }
 
   render = () => {
@@ -24,7 +26,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators({
-      ...postActions
+      ...postActions,
+      ...commentActions
     },
     dispatch
   )
