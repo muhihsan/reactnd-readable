@@ -26,19 +26,15 @@ class Home extends Component {
   };
 }
 
-const mapStateToProps = (state) => {  
-  return state;
-};
+const mapStateToProps = (state) => state;
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators({ 
-        ...categoryActions,
-        ...postActions 
-      }, 
-      dispatch
-    )
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators({
+      ...categoryActions,
+      ...postActions
+    },
+    dispatch
+  )
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

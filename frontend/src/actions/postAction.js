@@ -14,3 +14,13 @@ export const getAllPosts = () => {
     });
   };
 };
+
+export const getAllPostsForCategory = (category) => {
+  return dispatch => {
+    return PostApi.getAllPostsForCategory(category).then(posts => 
+      dispatch(getAllPostsSuccess(posts))
+    ).catch(error => {
+      throw(error);
+    });
+  };
+};
