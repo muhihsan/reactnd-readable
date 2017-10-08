@@ -1,6 +1,6 @@
-export default class Category {
-  static getAllCategories = () => {
-    return fetch(
+export default class CategoryApi {
+  static getAllCategories = () =>
+    fetch(
       `http://localhost:3001/categories`,
       {
         headers: { 'Authorization': 'whatever-you-want' },
@@ -9,5 +9,4 @@ export default class Category {
     )
     .then((res) => res.json())
     .then(({ categories }) => categories);
-  }
 };
