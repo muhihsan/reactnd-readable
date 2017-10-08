@@ -5,12 +5,12 @@ export const getAllCategoriesSuccess = (categories) => {
   return { type: types.GET_ALL_CATEGORIES, categories };
 };
 
-export const getAllCategories = () => {
-  return dispatch => {
-    return CategoryApi.getAllCategories().then(categories => 
+export const getAllCategories = () => (
+  dispatch => (
+    CategoryApi.getAllCategories().then(categories => 
       dispatch(getAllCategoriesSuccess(categories))
     ).catch(error => {
       throw(error);
-    });
-  };
-};
+    })
+  )
+);
