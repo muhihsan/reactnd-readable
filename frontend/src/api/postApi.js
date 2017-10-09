@@ -69,4 +69,15 @@ export default class PostApi {
       )
       .then((res) => res.json())
       .then((post) => post);
+  
+    static deletePost = (id) =>
+      fetch(
+        `http://localhost:3001/posts/${id}`,
+        {
+          headers: { 'Authorization': 'whatever-you-want' },
+          method: 'DELETE'
+        }
+      )
+      .then((res) => res.json())
+      .then((post) => post);
 };
