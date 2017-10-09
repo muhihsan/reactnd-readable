@@ -57,4 +57,16 @@ export default class PostApi {
     )
     .then((res) => res.json())
     .then((post) => post);
+    
+    static editPost = (id, post) =>
+      fetch(
+        `http://localhost:3001/posts/${id}`,
+        {
+          body: post,
+          headers: { 'Authorization': 'whatever-you-want' },
+          method: 'PUT'
+        }
+      )
+      .then((res) => res.json())
+      .then((post) => post);
 };
