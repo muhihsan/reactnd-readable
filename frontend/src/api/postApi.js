@@ -20,6 +20,18 @@ export default class PostApi {
     )
     .then((res) => res.json())
     .then((posts) => posts);
+    
+  static createNewPost = (post) =>
+    fetch(
+      `http://localhost:3001/posts`,
+      {
+        body: post,
+        headers: { 'Authorization': 'whatever-you-want' },
+        method: 'POST'
+      }
+    )
+    .then((res) => res.json())
+    .then(({ posts }) => posts);
 
   static getPost = (id) =>
     fetch(
@@ -31,16 +43,4 @@ export default class PostApi {
     )
     .then((res) => res.json())
     .then((post) => post);
- 
-  static createNewPost = (post) =>
-    fetch(
-      `http://localhost:3001/post`,
-      {
-        body: post,
-        headers: { 'Authorization': 'whatever-you-want' },
-        method: 'POST'
-      }
-    )
-    .then((res) => res.json())
-    .then(({ posts }) => posts);
 };
