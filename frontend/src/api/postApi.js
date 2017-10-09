@@ -43,4 +43,18 @@ export default class PostApi {
     )
     .then((res) => res.json())
     .then((post) => post);
+
+  static votePost = (id, voteOption) =>
+    fetch(
+      `http://localhost:3001/posts/${id}`,
+      {
+        body: {
+          option: voteOption
+        },
+        headers: { 'Authorization': 'whatever-you-want' },
+        method: 'POST'
+      }
+    )
+    .then((res) => res.json())
+    .then((post) => post);
 };
