@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import * as categoryActions from '../actions/categoryAction';
 import * as postActions from '../actions/postAction';
+import CreateNewPost from './CreateNewPost';
 import logo from '../icons/logo.svg';
 
 class Home extends Component {
@@ -57,6 +58,9 @@ class Home extends Component {
           {(!listPosts || listPosts === 0) && (
             <div>List of posts for category will be here</div>
           )}
+        </div>
+        <div className="App-intro">
+          <CreateNewPost />
         </div>
       </div>
     );
