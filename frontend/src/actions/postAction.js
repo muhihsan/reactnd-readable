@@ -9,6 +9,10 @@ export const getPostSuccess = (post) => (
   { type: types.GET_POST, post }
 );
 
+export const createPostSuccess = (post) => (
+  { type: types.CREATE_POST, post }
+);
+
 export const getAllPosts = () => (
   dispatch => (
     PostApi.getAllPosts().then(posts => 
@@ -35,6 +39,16 @@ export const getPost = (id) => (
       dispatch(getPostSuccess(post))
     ).catch(error => {
       throw(error);
+    })
+  )
+);
+
+export const createPost = (post) => (
+  dispatch => (
+    PostApi.createNewPost(post =>
+      dispatch(createPostSuccess(post))
+    ).catch(error => {
+      throw(error)
     })
   )
 );
