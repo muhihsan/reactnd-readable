@@ -45,7 +45,7 @@ export const getPost = (id) => (
 
 export const createPost = (post) => (
   dispatch => (
-    PostApi.createNewPost(post =>
+    PostApi.createNewPost(post).then(post =>
       dispatch(createPostSuccess(post))
     ).catch(error => {
       throw(error)

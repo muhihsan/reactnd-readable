@@ -14,7 +14,7 @@ class CreateNewPost extends Component {
       author: this.author.value,
       category: this.category.value
     };
-    console.log(post);
+    this.props.actions.createPost(post);
   }
 
   render = () => {

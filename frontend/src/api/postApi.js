@@ -25,13 +25,16 @@ export default class PostApi {
     fetch(
       `http://localhost:3001/posts`,
       {
-        body: post,
-        headers: { 'Authorization': 'whatever-you-want' },
+        body: JSON.stringify(post),
+        headers: {
+          'Authorization': 'whatever-you-want',
+          'Content-Type': 'application/json'
+        },
         method: 'POST'
       }
     )
     .then((res) => res.json())
-    .then(({ posts }) => posts);
+    .then((post) => post);
 
   static getPost = (id) =>
     fetch(
