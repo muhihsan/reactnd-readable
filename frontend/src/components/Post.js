@@ -11,8 +11,20 @@ class Post extends Component {
     this.props.actions.getAllCommentsForPost(this.props.id);
   }
 
+  deleteComment = (event) => {
+    var id = event.target.value;
+    console.log(id);
+  }
+
   render = () => {
-    const { post } = this.props;
+    const { 
+      post, 
+      comments: {
+        entities: comments, 
+        result: listComments
+      }
+    } = this.props;
+
     return(
       <div>
         {post && (
@@ -25,6 +37,13 @@ class Post extends Component {
               <div>Author: {post.author}</div>
             </div>
             <div><CreateComment postId={this.props.id} /></div>
+            {listComments && (
+              <ul>
+                {listComments.map(id => (
+                  <li key={id}>{comments[id].body}<button value={id} onClick={this.deleteComment}>Delete</button></li>
+                ))}
+              </ul>
+            )}
           </div>
         )}
       </div>

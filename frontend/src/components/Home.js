@@ -13,8 +13,8 @@ class Home extends Component {
     this.props.actions.getAllPosts();
   }
 
-  deletePost = e => {   
-    const id = e.target.value;
+  deletePost = (event) => {   
+    const id = event.target.value;
     this.props.actions.deletePost(id);
   }  
 
