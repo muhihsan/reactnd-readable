@@ -13,6 +13,11 @@ class Home extends Component {
     this.props.actions.getAllPosts();
   }
 
+  deletePost = e => {   
+    const id = e.target.value;
+    this.props.actions.deletePost(id);
+  }  
+
   render = () => {
     const { 
       posts: { 
@@ -35,9 +40,9 @@ class Home extends Component {
           {listCategories && listCategories.length > 0 && (
             <ul>
               {listCategories.map(name => 
-                <ul key={name}>
+                <li key={name}>
                   <Link to={`/${name}/posts/`}>{categories[name].name}</Link>
-                </ul>
+                </li>
               )}
             </ul>
           )}
@@ -49,9 +54,10 @@ class Home extends Component {
           {listPosts && listPosts.length > 0 && (
             <ul>
               {listPosts.map(id => 
-                <ul key={id}>
+                <li key={id}>
                   <Link to={`/posts/${id}`}>{posts[id].title}</Link>
-                </ul>
+                  <button value={id} onClick={this.deletePost}>Delete</button>
+                </li>
               )}
             </ul>
           )}

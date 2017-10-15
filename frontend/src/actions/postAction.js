@@ -17,6 +17,10 @@ export const editPostSuccess = (post) => (
   { type: types.EDIT_POST_SUCCESS, post }
 );
 
+export const deletePostSuccess = (post) => (
+  { type: types.DELETE_POST_SUCCESS, post }
+);
+
 export const getAllPosts = () => (
   dispatch => (
     PostApi.getAllPosts().then(posts => 
@@ -61,6 +65,16 @@ export const updatePost = (post) => (
   dispatch => (
     PostApi.editPost(post).then(post => 
       dispatch(editPostSuccess(post))
+    ).catch(error => {
+      throw(error)
+    })
+  )
+);
+
+export const deletePost = (id) => (
+  dispatch => (
+    PostApi.deletePost(id).then(post => 
+      dispatch(deletePostSuccess(post))
     ).catch(error => {
       throw(error)
     })
