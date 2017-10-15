@@ -39,4 +39,15 @@ export default class CommentApi {
     )
     .then((res) => res.json())
     .then((comment) => comment);
+
+  static deleteCommentForPost = (id) => 
+    fetch(
+      `http://localhost:3001/comments/${id}`,
+      {
+        headers: { 'Authorization': 'whatever-you-want' },
+        method: 'DELETE'
+      }
+    )
+    .then((res) => res.json())
+    .then((comment) => comment);
 }

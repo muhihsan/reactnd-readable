@@ -13,7 +13,7 @@ class Post extends Component {
 
   deleteComment = (event) => {
     var id = event.target.value;
-    console.log(id);
+    this.props.actions.deleteCommentForPost(id);
   }
 
   render = () => {
