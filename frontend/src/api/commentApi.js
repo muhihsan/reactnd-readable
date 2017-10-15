@@ -7,8 +7,8 @@ export default class CommentApi {
         method: 'GET'
       }
     )
-    .then((res) => res.json())
-    .then((comments) => comments);
+    .then(res => res.json())
+    .then(comments => comments);
 
   static createCommentForPost = (comment) => 
     fetch(
@@ -22,8 +22,8 @@ export default class CommentApi {
         method: 'POST'
       }
     )
-    .then((res) => res.json())
-    .then((comment) => comment);
+    .then(res => res.json())
+    .then(comment => comment);
 
   static editCommentForPost = (comment) => 
     fetch(
@@ -37,8 +37,8 @@ export default class CommentApi {
         method: 'PUT'
       }
     )
-    .then((res) => res.json())
-    .then((comment) => comment);
+    .then(res => res.json())
+    .then(comment => comment);
 
   static deleteCommentForPost = (id) => 
     fetch(
@@ -48,6 +48,6 @@ export default class CommentApi {
         method: 'DELETE'
       }
     )
-    .then((res) => res.json())
-    .then((comment) => comment);
+    .then(res => res.json())
+    .then(comment => comment);
 }

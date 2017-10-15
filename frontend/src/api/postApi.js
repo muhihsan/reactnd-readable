@@ -7,8 +7,8 @@ export default class PostApi {
         method: 'GET'
       }
     )
-    .then((res) => res.json())
-    .then((posts) => posts);
+    .then(res => res.json())
+    .then(posts => posts);
   
   static getAllPosts = () =>
     fetch(
@@ -18,8 +18,8 @@ export default class PostApi {
         method: 'GET',
       }
     )
-    .then((res) => res.json())
-    .then((posts) => posts);
+    .then(res => res.json())
+    .then(posts => posts);
     
   static createNewPost = (post) =>
     fetch(
@@ -33,8 +33,8 @@ export default class PostApi {
         method: 'POST'
       }
     )
-    .then((res) => res.json())
-    .then((post) => post);
+    .then(res => res.json())
+    .then(post => post);
 
   static getPost = (id) =>
     fetch(
@@ -44,8 +44,8 @@ export default class PostApi {
         method: 'GET'
       }
     )
-    .then((res) => res.json())
-    .then((post) => post);
+    .then(res => res.json())
+    .then(post => post);
 
   static changePostVote = (id, voteOption) =>
     fetch(
@@ -61,8 +61,8 @@ export default class PostApi {
         method: 'POST'
       }
     )
-    .then((res) => res.json())
-    .then((post) => post);
+    .then(res => res.json())
+    .then(post => post);
     
   static editPost = (post) =>
     fetch(
@@ -76,8 +76,8 @@ export default class PostApi {
         method: 'PUT'
       }
     )
-    .then((res) => res.json())
-    .then((post) => post);
+    .then(res => res.json())
+    .then(post => post);
 
   static deletePost = (id) =>
     fetch(
@@ -87,6 +87,6 @@ export default class PostApi {
         method: 'DELETE'
       }
     )
-    .then((res) => res.json())
-    .then((post) => post);
+    .then(res => res.json())
+    .then(post => post);
 };

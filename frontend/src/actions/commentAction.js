@@ -17,42 +17,34 @@ export const deleteCommentForPostSuccess = (comment) => (
   { type: types.DELETE_COMMENT_FOR_POST_SUCCESS, comment }
 );
 
-export const getAllCommentsForPost = (id) => (
-  dispatch => (
+export const getAllCommentsForPost = (id) =>
+  dispatch =>
     CommentApi.getAllCommentsForPost(id).then(comments =>
       dispatch(getAllCommentsForPostSuccess(comments))
     ).catch(error => {
       throw(error);
-    })
-  )
-);
+    });
 
-export const createCommentForPost = (comment) => (
-  dispatch => (
+export const createCommentForPost = (comment) =>
+  dispatch =>
     CommentApi.createCommentForPost(comment).then(comment =>
       dispatch(createCommentForPostSuccess(comment))
     ).catch(error => {
       throw(error)
-    })
-  )
-);
+    });
 
-export const editCommentForPost = (comment) => (
-  dispatch => (
+export const editCommentForPost = (comment) =>
+  dispatch =>
     CommentApi.editCommentForPost(comment).then(comment =>
       dispatch(editCommentForPostSuccess(comment))
     ).catch(error => {
       throw(error)
-    })
-  )
-);
+    });
 
-export const deleteCommentForPost = (id) => (
-  dispatch => (
+export const deleteCommentForPost = (id) =>
+  dispatch =>
     CommentApi.deleteCommentForPost(id).then(comment =>
       dispatch(deleteCommentForPostSuccess(comment))
     ).catch(error => {
       throw(error)
-    })
-  )
-);
+    });
