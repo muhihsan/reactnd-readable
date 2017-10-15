@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import PropTypes from 'prop-types';
 import uuidv4 from 'uuid/v4';
 import * as postActions from '../actions/postAction'
 
@@ -15,6 +16,11 @@ class CreateNewPost extends Component {
       category: this.category.value
     };
     this.props.actions.createPost(post);
+    //this.context.router.history.push(`/posts/${post.id}`);
+  }
+
+  static contextTypes = {
+    router: PropTypes.object
   }
 
   render = () => {

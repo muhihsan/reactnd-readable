@@ -11,8 +11,19 @@ class Post extends Component {
   }
 
   render = () => {
+    const { post } = this.props;
     return(
-      <div></div>
+      <div>
+        {post && (
+          <div>
+            <div>Id: {post.id}</div>
+            <div>Timespan: {post.timespan}</div>
+            <div>Title: {post.title}</div>
+            <div>Body: {post.body}</div>
+            <div>Author: {post.author}</div>
+          </div>
+        )}
+      </div>
     );
   }
 }
