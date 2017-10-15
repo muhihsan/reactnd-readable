@@ -6,7 +6,7 @@ import uuidv4 from 'uuid/v4';
 import * as postActions from '../actions/postAction'
 
 class CreateNewPost extends Component {
-  createNewPost = () => {
+  createPost = () => {
     const post = {
       id: uuidv4(),
       timestamp: Date.now(),
@@ -28,7 +28,7 @@ class CreateNewPost extends Component {
 
     return(
       <div>
-        CreateNewPost
+        CreatePost
         <div>Title <input type="text"  ref={node => this.title = node} /></div>
         <div>Body <input type="text"  ref={node => this.body = node} /></div>
         <div>Author <input type="text"  ref={node => this.author = node} /></div>
@@ -38,7 +38,7 @@ class CreateNewPost extends Component {
           </select>
         </div>
         <div>
-          <button onClick={this.createNewPost}>Create New Post</button>
+          <button onClick={this.createPost}>Create New Post</button>
         </div>
       </div>
     );

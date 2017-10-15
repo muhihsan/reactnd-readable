@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import * as categoryActions from '../actions/categoryAction';
 import * as postActions from '../actions/postAction';
-import CreateNewPost from './CreateNewPost';
+import CreatePost from './CreatePost';
 import logo from '../icons/logo.svg';
 
 class Home extends Component {
@@ -66,7 +66,7 @@ class Home extends Component {
           )}
         </div>
         <div className="App-intro">
-          <CreateNewPost />
+          <CreatePost />
         </div>
       </div>
     );
