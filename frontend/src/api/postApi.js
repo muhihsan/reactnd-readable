@@ -47,14 +47,17 @@ export default class PostApi {
     .then((res) => res.json())
     .then((post) => post);
 
-  static votePost = (id, voteOption) =>
+  static changePostVote = (id, voteOption) =>
     fetch(
       `http://localhost:3001/posts/${id}`,
       {
-        body: {
+        body: JSON.stringify({
           option: voteOption
+        }),
+        headers: {
+          'Authorization': 'whatever-you-want',
+          'Content-Type': 'application/json'
         },
-        headers: { 'Authorization': 'whatever-you-want' },
         method: 'POST'
       }
     )

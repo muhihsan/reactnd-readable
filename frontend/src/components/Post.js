@@ -16,6 +16,10 @@ class Post extends Component {
     this.props.actions.deleteCommentForPost(id);
   }
 
+  upVotePost = () => {
+    this.props.actions.upVotePost(this.props.id);
+  }
+
   render = () => {
     const { 
       post, 
@@ -35,6 +39,8 @@ class Post extends Component {
               <div>Title: {post.title}</div>
               <div>Body: {post.body}</div>
               <div>Author: {post.author}</div>
+              <div>VoteScore: {post.voteScore}</div>
+              <div><button onClick={this.upVotePost}>Upvote</button></div>
             </div>
             <div><CreateComment postId={this.props.id} /></div>
             {listComments && (

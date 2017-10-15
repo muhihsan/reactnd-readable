@@ -21,6 +21,10 @@ export const deletePostSuccess = (post) => (
   { type: types.DELETE_POST_SUCCESS, post }
 );
 
+export const changePostVoteSuccess = (post) => (
+  { type: types.CHANGE_POST_VOTE_SUCCESS, post }
+);
+
 export const getAllPosts = () => (
   dispatch => (
     PostApi.getAllPosts().then(posts => 
@@ -80,3 +84,11 @@ export const deletePost = (id) => (
     })
   )
 );
+
+export const upVotePost = (id) =>
+  dispatch => 
+    PostApi.changePostVote(id, 'upVote').then(post =>
+      dispatch(changePostVoteSuccess(post))
+    ).catch(error => {
+      throw(error);
+    });
