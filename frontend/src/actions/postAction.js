@@ -2,15 +2,15 @@ import PostApi from '../api/postApi';
 import * as types from './actionTypes';
 
 export const getAllPostsSuccess = (posts) => (
-  { type: types.GET_ALL_POSTS, posts }
+  { type: types.GET_ALL_POSTS_SUCCESS, posts }
 );
 
 export const getPostSuccess = (post) => (
-  { type: types.GET_POST, post }
+  { type: types.GET_POST_SUCCESS, post }
 );
 
 export const createPostSuccess = (post) => (
-  { type: types.CREATE_POST, post }
+  { type: types.CREATE_POST_SUCCESS, post }
 );
 
 export const getAllPosts = () => (

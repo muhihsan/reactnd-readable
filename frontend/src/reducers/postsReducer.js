@@ -8,7 +8,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch(action.type) {
-    case Types.GET_ALL_POSTS:
+    case Types.GET_ALL_POSTS_SUCCESS:
       const postsSchema = new schema.Entity('posts');
       const posts = normalize(action.posts, [ postsSchema ]);
       return {

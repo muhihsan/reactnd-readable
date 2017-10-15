@@ -8,7 +8,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch(action.type) {
-    case Types.GET_ALL_CATEGORIES:
+    case Types.GET_ALL_CATEGORIES_SUCCESS:
       const categorySchema = new schema.Entity('categories', {}, { idAttribute: 'name' });
       const categories = normalize(action.categories, [ categorySchema ]);
       return {

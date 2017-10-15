@@ -8,7 +8,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch(action.type) {
-    case Types.GET_ALL_COMMENTS_FOR_POST:
+    case Types.GET_ALL_COMMENTS_FOR_POST_SUCCESS:
       const commentsSchema = new schema.Entity('comments');
       const comments = normalize(action.comments, [ commentsSchema ]);
       return {
