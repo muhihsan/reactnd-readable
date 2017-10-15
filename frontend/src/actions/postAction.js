@@ -85,9 +85,13 @@ export const deletePost = (id) => (
   )
 );
 
-export const upVotePost = (id) =>
+export const upVotePost = (id) => changeVotePost(id, 'upVote');
+
+export const downVotePost = (id) => changeVotePost(id, 'downVote');
+
+const changeVotePost = (id, vote) =>
   dispatch => 
-    PostApi.changePostVote(id, 'upVote').then(post =>
+    PostApi.changePostVote(id, vote).then(post =>
       dispatch(changePostVoteSuccess(post))
     ).catch(error => {
       throw(error);

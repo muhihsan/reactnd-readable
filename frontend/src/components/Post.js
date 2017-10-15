@@ -20,6 +20,10 @@ class Post extends Component {
     this.props.actions.upVotePost(this.props.id);
   }
 
+  downVotePost = () => {
+    this.props.actions.downVotePost(this.props.id);
+  }
+
   render = () => {
     const { 
       post, 
@@ -40,7 +44,7 @@ class Post extends Component {
               <div>Body: {post.body}</div>
               <div>Author: {post.author}</div>
               <div>VoteScore: {post.voteScore}</div>
-              <div><button onClick={this.upVotePost}>Upvote</button></div>
+              <div><button onClick={this.upVotePost}>Upvote</button><button onClick={this.downVotePost}>Downvote</button></div>
             </div>
             <div><CreateComment postId={this.props.id} /></div>
             {listComments && (
