@@ -15,7 +15,7 @@ export const editCommentForPostSuccess = (comment) => (
 
 export const getAllCommentsForPost = (id) => (
   dispatch => (
-    CommentApi.GetAllCommentsForPost(id).then(comments =>
+    CommentApi.getAllCommentsForPost(id).then(comments =>
       dispatch(getAllCommentsForPostSuccess(comments))
     ).catch(error => {
       throw(error);
@@ -25,7 +25,7 @@ export const getAllCommentsForPost = (id) => (
 
 export const createCommentForPost = (comment) => (
   dispatch => (
-    CommentApi.CreateCommentForPost(comment).then(comment =>
+    CommentApi.createCommentForPost(comment).then(comment =>
       dispatch(createCommentForPostSuccess(comment))
     ).catch(error => {
       throw(error)
@@ -35,7 +35,7 @@ export const createCommentForPost = (comment) => (
 
 export const editCommentForPost = (comment) => (
   dispatch => (
-    CommentApi.EditCommentForPost(comment).then(comment =>
+    CommentApi.editCommentForPost(comment).then(comment =>
       dispatch(editCommentForPostSuccess(comment))
     ).catch(error => {
       throw(error)

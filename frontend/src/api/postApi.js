@@ -61,29 +61,29 @@ export default class PostApi {
     .then((res) => res.json())
     .then((post) => post);
     
-    static editPost = (post) =>
-      fetch(
-        `http://localhost:3001/posts/${post.id}`,
-        {
-          body: JSON.stringify(post),
-          headers: {
-            'Authorization': 'whatever-you-want',
-            'Content-Type': 'application/json'
-          },
-          method: 'PUT'
-        }
-      )
-      .then((res) => res.json())
-      .then((post) => post);
-  
-    static deletePost = (id) =>
-      fetch(
-        `http://localhost:3001/posts/${id}`,
-        {
-          headers: { 'Authorization': 'whatever-you-want' },
-          method: 'DELETE'
-        }
-      )
-      .then((res) => res.json())
-      .then((post) => post);
+  static editPost = (post) =>
+    fetch(
+      `http://localhost:3001/posts/${post.id}`,
+      {
+        body: JSON.stringify(post),
+        headers: {
+          'Authorization': 'whatever-you-want',
+          'Content-Type': 'application/json'
+        },
+        method: 'PUT'
+      }
+    )
+    .then((res) => res.json())
+    .then((post) => post);
+
+  static deletePost = (id) =>
+    fetch(
+      `http://localhost:3001/posts/${id}`,
+      {
+        headers: { 'Authorization': 'whatever-you-want' },
+        method: 'DELETE'
+      }
+    )
+    .then((res) => res.json())
+    .then((post) => post);
 };
