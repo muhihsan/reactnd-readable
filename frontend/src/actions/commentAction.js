@@ -3,11 +3,15 @@ import * as types from './actionTypes';
 
 export const getAllCommentsForPostSuccess = (comments) => (
   { type: types.GET_ALL_COMMENTS_FOR_POST_SUCCESS, comments }
-)
+);
 
 export const createCommentForPostSuccess = (comment) => (
   { type: types.CREATE_COMMENT_FOR_POST_SUCCESS, comment }
-)
+);
+
+export const editCommentForPostSuccess = (comment) => (
+  { type: types.EDIT_COMMENT_FOR_POST_SUCCESS, comment }
+);
 
 export const getAllCommentsForPost = (id) => (
   dispatch => (
@@ -23,6 +27,16 @@ export const createCommentForPost = (comment) => (
   dispatch => (
     CommentApi.CreateCommentForPost(comment).then(comment =>
       dispatch(createCommentForPostSuccess(comment))
+    ).catch(error => {
+      throw(error)
+    })
+  )
+);
+
+export const editCommentForPost = (comment) => (
+  dispatch => (
+    CommentApi.EditCommentForPost(comment).then(comment =>
+      dispatch(editCommentForPostSuccess(comment))
     ).catch(error => {
       throw(error)
     })

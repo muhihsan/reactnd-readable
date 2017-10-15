@@ -10,7 +10,6 @@ export default class CommentApi {
     .then((res) => res.json())
     .then((comments) => comments);
 
-
   static CreateCommentForPost = (comment) => 
     fetch(
       `http://localhost:3001/comments`,
@@ -21,6 +20,21 @@ export default class CommentApi {
           'Content-Type': 'application/json'
         },
         method: 'POST'
+      }
+    )
+    .then((res) => res.json())
+    .then((comment) => comment);
+
+  static EditCommentForPost = (comment) => 
+    fetch(
+      `http://localhost:3001/comments/${comment.id}`,
+      {
+        body: JSON.stringify(comment),
+        headers: {
+          'Authorization': 'whatever-you-want',
+          'Content-Type': 'application/json'
+        },
+        method: 'PUT'
       }
     )
     .then((res) => res.json())
