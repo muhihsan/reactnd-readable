@@ -50,7 +50,13 @@ class Post extends Component {
             {listComments && (
               <ul>
                 {listComments.map(id => (
-                  <li key={id}>{comments[id].body}<button value={id} onClick={this.deleteComment}>Delete</button></li>
+                  <li key={id}>
+                    <div>Id: {comments[id].id}</div>
+                    <div>Timespan: {comments[id].timespan}</div>
+                    <div>Body: {comments[id].body}</div>
+                    <div>Author: {comments[id].author}</div>
+                    <div>VoteScore: {comments[id].voteScore}</div>
+                    {comments[id].body}<button value={id} onClick={this.deleteComment}>Delete</button></li>
                 ))}
               </ul>
             )}
