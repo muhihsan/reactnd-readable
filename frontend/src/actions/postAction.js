@@ -13,6 +13,10 @@ export const createPostSuccess = (post) => (
   { type: types.CREATE_POST_SUCCESS, post }
 );
 
+export const editPostSuccess = (post) => (
+  { type: types.EDIT_POST_SUCCESS, post }
+);
+
 export const getAllPosts = () => (
   dispatch => (
     PostApi.getAllPosts().then(posts => 
@@ -47,6 +51,16 @@ export const createPost = (post) => (
   dispatch => (
     PostApi.createNewPost(post).then(post =>
       dispatch(createPostSuccess(post))
+    ).catch(error => {
+      throw(error)
+    })
+  )
+);
+
+export const updatePost = (post) => (
+  dispatch => (
+    PostApi.editPost(post).then(post => 
+      dispatch(editPostSuccess(post))
     ).catch(error => {
       throw(error)
     })
