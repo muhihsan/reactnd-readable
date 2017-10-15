@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as postActions from '../actions/postAction';
 import * as commentActions from '../actions/commentAction';
+import CreateComment from './CreateComment';
 
 class Post extends Component {
   componentDidMount = () => {
@@ -16,11 +17,14 @@ class Post extends Component {
       <div>
         {post && (
           <div>
-            <div>Id: {post.id}</div>
-            <div>Timespan: {post.timespan}</div>
-            <div>Title: {post.title}</div>
-            <div>Body: {post.body}</div>
-            <div>Author: {post.author}</div>
+            <div>
+              <div>Id: {post.id}</div>
+              <div>Timespan: {post.timespan}</div>
+              <div>Title: {post.title}</div>
+              <div>Body: {post.body}</div>
+              <div>Author: {post.author}</div>
+            </div>
+            <div><CreateComment postId={this.props.id} /></div>
           </div>
         )}
       </div>
