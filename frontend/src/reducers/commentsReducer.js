@@ -15,6 +15,17 @@ export default (state = initialState, action) => {
         entities: comments.entities.comments,
         result: comments.result
       };
+    case types.CREATE_COMMENT_FOR_POST_SUCCESS:
+      return {
+        entities: {
+          ...state.entities,
+          [action.comment.id]: action.comment
+        },
+        result: [
+          ...state.result,
+          action.comment.id
+        ]
+      };
     case types.CHANGE_COMMENT_VOTE_FOR_POST_SUCCESS:
       return {
         entities: {
