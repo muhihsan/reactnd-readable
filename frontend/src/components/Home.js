@@ -41,7 +41,7 @@ class Home extends Component {
             <ul>
               {listCategories.map(name => 
                 <li key={name}>
-                  <Link to={`/${name}/posts/`}>{categories[name].name}</Link>
+                  <Link to={`/${name}/`}>{categories[name].name}</Link>
                 </li>
               )}
             </ul>
