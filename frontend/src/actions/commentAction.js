@@ -1,24 +1,24 @@
 import CommentApi from '../api/commentApi';
-import * as Types from './actionTypes';
+import * as types from './actionTypes';
 
 export const getAllCommentsForPostSuccess = (comments) => (
-  { type: Types.GET_ALL_COMMENTS_FOR_POST_SUCCESS, comments }
+  { type: types.GET_ALL_COMMENTS_FOR_POST_SUCCESS, comments }
 );
 
 export const createCommentForPostSuccess = (comment) => (
-  { type: Types.CREATE_COMMENT_FOR_POST_SUCCESS, comment }
+  { type: types.CREATE_COMMENT_FOR_POST_SUCCESS, comment }
 );
 
 export const editCommentForPostSuccess = (comment) => (
-  { type: Types.EDIT_COMMENT_FOR_POST_SUCCESS, comment }
+  { type: types.EDIT_COMMENT_FOR_POST_SUCCESS, comment }
 );
 
 export const deleteCommentForPostSuccess = (comment) => (
-  { type: Types.DELETE_COMMENT_FOR_POST_SUCCESS, comment }
+  { type: types.DELETE_COMMENT_FOR_POST_SUCCESS, comment }
 );
 
 export const changeCommentVoteForPostSuccess = (comment) => (
-  { type: Types.CHANGE_COMMENT_VOTE_FOR_POST_SUCCESS, comment }
+  { type: types.CHANGE_COMMENT_VOTE_FOR_POST_SUCCESS, comment }
 );
 
 export const getAllCommentsForPost = (id) =>
