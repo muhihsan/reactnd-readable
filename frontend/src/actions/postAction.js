@@ -73,11 +73,11 @@ export const deletePost = (id) =>
       throw(error)
     });
 
-export const upVotePost = (id) => changeVotePost(id, 'upVote');
+export const upVotePost = (id) => changePostVote(id, 'upVote');
 
-export const downVotePost = (id) => changeVotePost(id, 'downVote');
+export const downVotePost = (id) => changePostVote(id, 'downVote');
 
-const changeVotePost = (id, vote) =>
+const changePostVote = (id, vote) =>
   dispatch => 
     PostApi.changePostVote(id, vote).then(post =>
       dispatch(changePostVoteSuccess(post))
