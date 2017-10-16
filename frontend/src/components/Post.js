@@ -50,7 +50,7 @@ class Post extends Component {
 
     return(
       <div>
-        {post && (
+        {post && post.id && (
           <div>
             <div>
               <div>Id: {post.id}</div>
