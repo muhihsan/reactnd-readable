@@ -2,7 +2,7 @@ import { normalize, schema } from 'normalizr';
 import * as types from '../actions/actionTypes';
 
 const initialState = {
-  entities: {},
+  entities: null,
   result: []
 };
 
