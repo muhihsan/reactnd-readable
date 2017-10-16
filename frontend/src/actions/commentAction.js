@@ -18,7 +18,7 @@ export const deleteCommentForPostSuccess = (comment) => (
 );
 
 export const changeCommentVoteForPostSuccess = (comment) => (
-  { type: types.CHANGE_COMMENT_VOTE_FOR_POST_SUCCESS }
+  { type: types.CHANGE_COMMENT_VOTE_FOR_POST_SUCCESS, comment }
 );
 
 export const getAllCommentsForPost = (id) =>
