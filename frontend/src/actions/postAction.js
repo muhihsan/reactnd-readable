@@ -1,5 +1,6 @@
 import PostApi from '../api/postApi';
 import * as types from './actionTypes';
+import { push } from 'react-router-redux'
 
 export const getAllPostsSuccess = (posts) => (
   { type: types.GET_ALL_POSTS_SUCCESS, posts }
@@ -51,9 +52,10 @@ export const getPost = (id) =>
 
 export const createPost = (post) =>
   dispatch =>
-    PostApi.createNewPost(post).then(post =>
-      dispatch(createPostSuccess(post))
-    ).catch(error => {
+    PostApi.createNewPost(post).then(post => {
+      dispatch(createPostSuccess(post));
+      dispatch(push(`${post.category}/${post.id}`));
+    }).catch(error => {
       throw(error)
     });
 
