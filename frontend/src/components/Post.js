@@ -29,6 +29,11 @@ class Post extends Component {
     this.props.actions.upVoteCommentForPost(id);
   }
 
+  downVoteComment = (event) => {
+    const id = event.target.value;
+    this.props.actions.downVoteCommentForPost(id);
+  }
+
   render = () => {
     const { 
       post, 
@@ -65,6 +70,7 @@ class Post extends Component {
                       {comments[id].body}
                       <button value={id} onClick={this.deleteComment}>Delete</button>
                       <button value={id} onClick={this.upVoteComment}>Upvote</button>
+                      <button value={id} onClick={this.downVoteComment}>Downvote</button>
                     </div>
                   </li>
                 ))}

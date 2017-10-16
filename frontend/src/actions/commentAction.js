@@ -53,9 +53,13 @@ export const deleteCommentForPost = (id) =>
       throw(error)
     });
 
-export const upVoteCommentForPost = (id) =>
+export const upVoteCommentForPost = (id) => changeCommentVoteForPost(id, 'upVote');
+
+export const downVoteCommentForPost = (id) => changeCommentVoteForPost(id, 'downVote');
+
+const changeCommentVoteForPost = (id, vote) =>
   dispatch =>
-    CommentApi.changeCommentVoteforPost(id, 'upVote').then(comment =>
+    CommentApi.changeCommentVoteforPost(id, vote).then(comment =>
       dispatch(changeCommentVoteForPostSuccess(comment))
     ).catch(error => {
       throw(error)
