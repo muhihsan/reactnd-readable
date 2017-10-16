@@ -54,7 +54,7 @@ class Post extends Component {
           <div>
             <div>
               <div>Id: {post.id}</div>
-              <div>Timespan: {post.timespan}</div>
+              <div>Timespan: {post.timestamp}</div>
               <div>Title: {post.title}</div>
               <div>Body: {post.body}</div>
               <div>Author: {post.author}</div>
@@ -71,7 +71,7 @@ class Post extends Component {
                 {listComments.map(id => (
                   <li key={id}>
                     <div>Id: {comments[id].id}</div>
-                    <div>Timespan: {comments[id].timespan}</div>
+                    <div>Timespan: {comments[id].timestamp}</div>
                     <div>Body: {comments[id].body}</div>
                     <div>Author: {comments[id].author}</div>
                     <div>VoteScore: {comments[id].voteScore}</div>
