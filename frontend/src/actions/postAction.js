@@ -1,28 +1,28 @@
 import PostApi from '../api/postApi';
-import * as types from './actionTypes';
+import * as Types from './actionTypes';
 
 export const getAllPostsSuccess = (posts) => (
-  { type: types.GET_ALL_POSTS_SUCCESS, posts }
+  { type: Types.GET_ALL_POSTS_SUCCESS, posts }
 );
 
 export const getPostSuccess = (post) => (
-  { type: types.GET_POST_SUCCESS, post }
+  { type: Types.GET_POST_SUCCESS, post }
 );
 
 export const createPostSuccess = (post) => (
-  { type: types.CREATE_POST_SUCCESS, post }
+  { type: Types.CREATE_POST_SUCCESS, post }
 );
 
 export const editPostSuccess = (post) => (
-  { type: types.EDIT_POST_SUCCESS, post }
+  { type: Types.EDIT_POST_SUCCESS, post }
 );
 
 export const deletePostSuccess = (post) => (
-  { type: types.DELETE_POST_SUCCESS, post }
+  { type: Types.DELETE_POST_SUCCESS, post }
 );
 
 export const changePostVoteSuccess = (post) => (
-  { type: types.CHANGE_POST_VOTE_SUCCESS, post }
+  { type: Types.CHANGE_POST_VOTE_SUCCESS, post }
 );
 
 export const getAllPosts = () =>
