@@ -26,6 +26,17 @@ export default (state = initialState, action) => {
           action.post.id
         ]
       };
+    case types.DELETE_POST_SUCCESS:
+      const result = state.result.filter(post => post !== action.post.id);
+      return {
+        entities: Object.keys(state.entities)
+                  .filter(key => result.includes(key))
+                  .reduce((entities, key) => {
+                    entities[key] = state.entities[key];
+                    return entities;
+                  }, {}),
+        result: result
+      };
     default:
       return state;
   }
