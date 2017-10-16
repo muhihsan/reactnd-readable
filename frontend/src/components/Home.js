@@ -55,7 +55,7 @@ class Home extends Component {
             <ul>
               {listPosts.map(id => 
                 <li key={id}>
-                  <Link to={`/posts/${id}`}>{posts[id].title}</Link>
+                  <Link to={`/${posts[id].category}/${id}`}>{posts[id].title}</Link>
                   <button value={id} onClick={this.deletePost}>Delete</button>
                 </li>
               )}

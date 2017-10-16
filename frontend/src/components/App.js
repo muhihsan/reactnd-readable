@@ -16,7 +16,7 @@ class App extends Component {
       <ConnectedSwitch>
         <Route exact path="/" component={Home} />
         <Route path="/:category" component={CategoryPosts} />
-        <Route path="/posts/:id" component={Post} />
+        <Route path="/:category/:id" component={Post} />
       </ConnectedSwitch>
     );
   }
