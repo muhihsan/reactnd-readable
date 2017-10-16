@@ -15,6 +15,17 @@ export default (state = initialState, action) => {
         entities: posts.entities.posts,
         result: posts.result
       };
+    case types.CREATE_POST_SUCCESS:
+      return {
+        entities: {
+          ...state.entities,
+          [action.post.id]: action.post
+        },
+        result: [
+          ...state.result,
+          action.post.id
+        ]
+      };
     default:
       return state;
   }
