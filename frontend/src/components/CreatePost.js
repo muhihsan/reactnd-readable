@@ -16,7 +16,6 @@ class CreateNewPost extends Component {
       category: this.category.value
     };
     this.props.actions.createPost(post);
-    //this.context.router.history.push(`/posts/${post.id}`);
   }
 
   static contextTypes = {

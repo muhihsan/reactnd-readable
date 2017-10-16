@@ -69,9 +69,10 @@ export const updatePost = (post) =>
 
 export const deletePost = (id) =>
   dispatch =>
-    PostApi.deletePost(id).then(post => 
-      dispatch(deletePostSuccess(post))
-    ).catch(error => {
+    PostApi.deletePost(id).then(post => {
+      dispatch(deletePostSuccess(post));
+      dispatch(push(''));
+    }).catch(error => {
       throw(error)
     });
 

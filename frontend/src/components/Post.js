@@ -11,6 +11,11 @@ class Post extends Component {
     this.props.actions.getAllCommentsForPost(this.props.id);
   }
 
+  deletePost = (event) => {
+    var id = event.target.value;
+    this.props.actions.deletePost(id);
+  }
+
   deleteComment = (event) => {
     var id = event.target.value;
     this.props.actions.deleteCommentForPost(id);
@@ -54,7 +59,11 @@ class Post extends Component {
               <div>Body: {post.body}</div>
               <div>Author: {post.author}</div>
               <div>VoteScore: {post.voteScore}</div>
-              <div><button onClick={this.upVotePost}>Upvote</button><button onClick={this.downVotePost}>Downvote</button></div>
+              <div>
+                <button value={post.id} onClick={this.deletePost}>Delete</button>
+                <button onClick={this.upVotePost}>Upvote</button>
+                <button onClick={this.downVotePost}>Downvote</button>
+              </div>
             </div>
             <div><CreateComment postId={this.props.id} /></div>
             {listComments && (
