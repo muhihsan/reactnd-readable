@@ -17,6 +17,10 @@ export const deleteCommentForPostSuccess = (comment) => (
   { type: types.DELETE_COMMENT_FOR_POST_SUCCESS, comment }
 );
 
+export const changeCommentVoteForPostSuccess = (comment) => (
+  { type: types.CHANGE_COMMENT_VOTE_FOR_POST_SUCCESS }
+);
+
 export const getAllCommentsForPost = (id) =>
   dispatch =>
     CommentApi.getAllCommentsForPost(id).then(comments =>
@@ -45,6 +49,14 @@ export const deleteCommentForPost = (id) =>
   dispatch =>
     CommentApi.deleteCommentForPost(id).then(comment =>
       dispatch(deleteCommentForPostSuccess(comment))
+    ).catch(error => {
+      throw(error)
+    });
+
+export const upVoteCommentForPost = (id) =>
+  dispatch =>
+    CommentApi.changeCommentVoteforPost(id, 'upVote').then(comment =>
+      dispatch(changeCommentVoteForPostSuccess(comment))
     ).catch(error => {
       throw(error)
     });

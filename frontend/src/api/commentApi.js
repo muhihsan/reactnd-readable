@@ -10,6 +10,23 @@ export default class CommentApi {
     .then(res => res.json())
     .then(comments => comments);
 
+  static changeCommentVoteforPost = (id, voteOption) =>
+    fetch(
+      `http://localhost:3001/comments/${id}`,
+      {
+        body: JSON.stringify({
+          option: voteOption
+        }),
+        headers: {
+          'Authorization': 'whatever-you-want',
+          'Content-Type': 'application/json'
+        },
+        method: 'POST'
+      }
+    )
+    .then(res => res.json())
+    .then(comment => comment);
+
   static createCommentForPost = (comment) => 
     fetch(
       `http://localhost:3001/comments`,
