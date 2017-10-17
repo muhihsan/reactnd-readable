@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router';
 import { connect } from 'react-redux';
-import Home from './Home';
 import CategoryPosts from './CategoryPosts';
+import Home from './Home';
 import Post from './Post';
 import '../style/App.css';
 
