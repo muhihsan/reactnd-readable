@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import * as categoryActions from '../actions/categoryAction';
 
 class Categories extends Component {
+  componentDidMount = () => {
+    this.props.actions.getAllCategories();
+  }
+
   render = () => {
     const {
       categories: {
@@ -32,4 +38,12 @@ class Categories extends Component {
 
 const mapStateToProps = (state) => state;
 
-export default connect(mapStateToProps)(Categories);
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators({
+      ...categoryActions
+    },
+    dispatch
+  )
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Categories);

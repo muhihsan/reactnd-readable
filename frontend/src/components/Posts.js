@@ -5,6 +5,15 @@ import { Link } from 'react-router-dom';
 import * as postActions from '../actions/postAction';
 
 class Posts extends Component {
+  componentDidMount = () => {
+    this.props.actions.getAllPosts();
+  }
+
+  deletePost = (event) => {   
+    const id = event.target.value;
+    this.props.actions.deletePost(id);
+  }  
+
   render = () => {
     const { 
       posts: { 
