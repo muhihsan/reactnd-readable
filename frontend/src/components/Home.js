@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import * as categoryActions from '../actions/categoryAction';
 import * as postActions from '../actions/postAction';
 import Categories from './Categories';
+import Posts from './Posts';
 import CreatePost from './CreatePost';
 import logo from '../icons/logo.svg';
 
@@ -20,31 +21,10 @@ class Home extends Component {
   }  
 
   render = () => {
-    const { 
-      posts: { 
-        entities: posts, 
-        result: listPosts 
-      }
-    } = this.props;
-
     return(
       <div>
         <Categories />
-        <div>
-          {listPosts && listPosts.length > 0 && (
-            <ul>
-              {listPosts.map(id => 
-                <li key={id}>
-                  <Link to={`/${posts[id].category}/${id}`}>{posts[id].title}</Link>
-                  <button value={id} onClick={this.deletePost}>Delete</button>
-                </li>
-              )}
-            </ul>
-          )}
-          {(!listPosts || listPosts === 0) && (
-            <div>List of posts for category will be here</div>
-          )}
-        </div>
+        <Posts />
         <CreatePost />
       </div>
     );
