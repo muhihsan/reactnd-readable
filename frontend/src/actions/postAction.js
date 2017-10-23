@@ -26,6 +26,10 @@ export const changePostVoteSuccess = (post) => (
   { type: types.CHANGE_POST_VOTE_SUCCESS, post }
 );
 
+export const emptyPostSuccess = () => (
+  { type: types.EMPTY_POST_SUCCESS }
+);
+
 export const getAllPosts = () =>
   dispatch =>
     PostApi.getAllPosts().then(posts => 
@@ -87,3 +91,6 @@ const changePostVote = (id, vote) =>
     ).catch(error => {
       throw(error);
     });
+
+export const emptyPost = () =>
+  dispatch => dispatch(emptyPostSuccess());

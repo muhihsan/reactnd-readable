@@ -7,6 +7,8 @@ export default (state = initialState, action) => {
     case types.GET_POST_SUCCESS:
     case types.CHANGE_POST_VOTE_SUCCESS:
       return action.post;
+    case types.EMPTY_POST_SUCCESS:
+      return null;
     default:
       return state;
   }

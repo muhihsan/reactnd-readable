@@ -6,6 +6,10 @@ import Comments from './Comments';
 import CreateComment from './CreateComment';
 
 class Post extends Component {
+  componentWillMount = () => {
+    this.props.actions.emptyPost();
+  }
+
   componentDidMount = () => {
     this.props.actions.getPost(this.props.id);
   }
