@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as commentActions from '../actions/commentAction';
+import Comment from './Comment';
 
 class Comments extends Component {
   componentDidMount = () => {
@@ -34,21 +35,7 @@ class Comments extends Component {
       <div>
         {listComments && (
             <ul>
-              {listComments.map(id => (
-                <li key={id}>
-                  <div>Id: {comments[id].id}</div>
-                  <div>Timespan: {comments[id].timestamp}</div>
-                  <div>Body: {comments[id].body}</div>
-                  <div>Author: {comments[id].author}</div>
-                  <div>VoteScore: {comments[id].voteScore}</div>
-                  <div>
-                    {comments[id].body}
-                    <button value={id} onClick={this.deleteComment}>Delete</button>
-                    <button value={id} onClick={this.upVoteComment}>Upvote</button>
-                    <button value={id} onClick={this.downVoteComment}>Downvote</button>
-                  </div>
-                </li>
-              ))}
+              {listComments.map(id => (<Comment comment={comments[id]} />))}
             </ul>
           )}
       </div>
