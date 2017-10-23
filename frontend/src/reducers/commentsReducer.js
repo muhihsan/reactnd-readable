@@ -47,6 +47,8 @@ export default (state = initialState, action) => {
                   }, {}),
         result: result
       };
+    case types.EMPTY_COMMENTS_FOR_POST_SUCCESS:
+      return initialState;
     default:
       return state;
   }

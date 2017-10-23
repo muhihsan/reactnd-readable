@@ -5,8 +5,12 @@ import * as commentActions from '../actions/commentAction';
 import Comment from './Comment';
 
 class Comments extends Component {
+  componentWillMount = () => {
+    this.props.actions.emptyCommentsForPost();
+  }
+
   componentDidMount = () => {
-    this.props.actions.getAllCommentsForPost(this.props.id);
+    this.props.actions.getAllCommentsForPost(this.props.postId);
   }
 
   deleteComment = (event) => {
@@ -35,7 +39,7 @@ class Comments extends Component {
       <div>
         {listComments && (
             <ul>
-              {listComments.map(id => (<Comment comment={comments[id]} />))}
+              {listComments.map(id => (<Comment key={id} comment={comments[id]} />))}
             </ul>
           )}
       </div>
@@ -43,9 +47,10 @@ class Comments extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    ...state
+    ...state,
+    ...ownProps
   };
 };
 

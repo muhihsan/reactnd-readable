@@ -21,6 +21,10 @@ export const changeCommentVoteForPostSuccess = (comment) => (
   { type: types.CHANGE_COMMENT_VOTE_FOR_POST_SUCCESS, comment }
 );
 
+export const emptyCommentsForPostSuccess = () => (
+  { type: types.EMPTY_COMMENTS_FOR_POST_SUCCESS }
+);
+
 export const getAllCommentsForPost = (id) =>
   dispatch =>
     CommentApi.getAllCommentsForPost(id).then(comments =>
@@ -64,3 +68,6 @@ const changeCommentVoteForPost = (id, vote) =>
     ).catch(error => {
       throw(error)
     });
+
+export const emptyCommentsForPost = () =>
+  dispatch => dispatch(emptyCommentsForPostSuccess());

@@ -47,8 +47,8 @@ class Post extends Component {
                 <button onClick={this.downVotePost}>Downvote</button>
               </div>
             </div>
-            <CreateComment postId={this.props.id} />
-            <Comments />
+            <CreateComment postId={post.id} />
+            <Comments postId={post.id} />
           </div>
         )}
       </div>
