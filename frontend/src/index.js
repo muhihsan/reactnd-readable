@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
-import './style/index.css';
-import App from './components/App';
 import configureStore from './store/configureStore';
 import registerServiceWorker from './registerServiceWorker';
+import './style/index.css';
+import App from './components/App';
 
 const history = createHistory();
 

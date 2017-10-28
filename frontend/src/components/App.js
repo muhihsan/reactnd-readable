@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router';
 import { connect } from 'react-redux';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import CategoryPosts from './CategoryPosts';
 import Home from './Home';
 import Post from './Post';
-import '../style/App.css';
 
 const ConnectedSwitch = connect(state => ({
 	location: state.location
@@ -13,11 +13,13 @@ const ConnectedSwitch = connect(state => ({
 class App extends Component {
   render = () => {
     return(
-      <ConnectedSwitch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/:category" component={CategoryPosts} />
-        <Route exact path="/:category/:id" component={Post} />
-      </ConnectedSwitch>
+      <MuiThemeProvider>
+        <ConnectedSwitch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/:category" component={CategoryPosts} />
+          <Route exact path="/:category/:id" component={Post} />
+        </ConnectedSwitch>
+      </MuiThemeProvider>
     );
   }
 }
