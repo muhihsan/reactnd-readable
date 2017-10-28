@@ -3,6 +3,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import * as categoryActions from '../actions/categoryAction';
+import Menu from 'material-ui/Menu';
+import MenuItem from 'material-ui/MenuItem';
 
 class Categories extends Component {
   componentDidMount = () => {
@@ -21,13 +23,13 @@ class Categories extends Component {
     return (
       <div>
         {listCategories && listCategories.length > 0 && (
-          <ul>
+          <Menu>
             {listCategories.map(name =>
-              <li key={name}>
+              <MenuItem key={name}>
                 <Link onClick={onCategoryClick} to={`/${name}/`}>{categories[name].name}</Link>
-              </li>
+              </MenuItem>
             )}
-          </ul>
+          </Menu>
         )}
         {(!listCategories || listCategories === 0) && (
           <div>List of posts for category will be here</div>
