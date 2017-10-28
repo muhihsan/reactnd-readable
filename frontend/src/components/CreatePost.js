@@ -3,9 +3,14 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import uuidv4 from 'uuid/v4';
+import * as categoryActions from '../actions/categoryAction';
 import * as postActions from '../actions/postAction'
 
 class CreateNewPost extends Component {
+  componentDidMount = () => {
+    this.props.actions.getAllCategories();
+  }
+
   createPost = () => {
     const post = {
       id: uuidv4(),
@@ -48,6 +53,7 @@ const mapStateToProps = (state) => state;
 
 const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators({
+      ...categoryActions,
       ...postActions
     },
     dispatch
