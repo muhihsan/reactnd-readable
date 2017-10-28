@@ -16,13 +16,21 @@ class Home extends Component {
 
   render = () => {
     const { isCreatingPost } = this.state;
+    const style = {
+      margin: 0,
+      top: 'auto',
+      right: 24,
+      bottom: 24,
+      left: 'auto',
+      position: 'fixed',
+    };
 
     return(
       <div>
         <Categories />
         <Posts />
         {isCreatingPost && (<CreatePost />)}
-        <FloatingActionButton title="Create post" onClick={this.showCreatePostDialog}>
+        <FloatingActionButton style={style} title="Create post" onClick={this.showCreatePostDialog}>
           <ContentAdd />
         </FloatingActionButton>
       </div>
