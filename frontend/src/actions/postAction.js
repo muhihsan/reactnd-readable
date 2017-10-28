@@ -58,7 +58,7 @@ export const createPost = (post) =>
   dispatch =>
     PostApi.createNewPost(post).then(post => {
       dispatch(createPostSuccess(post));
-      dispatch(push(`${post.category}/${post.id}`));
+      dispatch(push(`/${post.category}/${post.id}`));
     }).catch(error => {
       throw (error)
     });
