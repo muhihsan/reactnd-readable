@@ -14,7 +14,8 @@ class Categories extends Component {
       categories: {
         entities: categories,
         result: listCategories
-      }
+      },
+      onCategoryClick
     } = this.props;
 
     return (
@@ -23,7 +24,7 @@ class Categories extends Component {
           <ul>
             {listCategories.map(name =>
               <li key={name}>
-                <Link to={`/${name}/`}>{categories[name].name}</Link>
+                <Link onClick={onCategoryClick} to={`/${name}/`}>{categories[name].name}</Link>
               </li>
             )}
           </ul>

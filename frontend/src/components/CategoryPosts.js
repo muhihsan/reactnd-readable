@@ -8,6 +8,12 @@ class CategoryPosts extends Component {
     this.props.actions.getAllPostsForCategory(this.props.category);
   }
 
+  componentWillReceiveProps = (nextProps) => {
+    if (this.props.category !== nextProps.category){
+      this.props.actions.getAllPostsForCategory(nextProps.category);
+    }
+  }
+
   render = () => {
     const { posts: { entities: posts, result: listPosts } } = this.props;
     return (

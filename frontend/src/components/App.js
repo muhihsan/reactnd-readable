@@ -21,6 +21,12 @@ class App extends Component {
   toggleDrawer = () =>
     this.setState({ isDrawerOpen: !this.state.isDrawerOpen });
 
+  closeDrawer = () =>
+    this.setState({ isDrawerOpen: false });
+
+  onRequestChange = (isDrawerOpen) =>
+    this.setState({ isDrawerOpen });
+
   render = () => {
     const { isDrawerOpen } = this.state;
 
@@ -33,9 +39,9 @@ class App extends Component {
         <Drawer
           docked={false}
           open={isDrawerOpen}
-          onRequestChange={(open) => this.setState({ isDrawerOpen: open })}
+          onRequestChange={this.onRequestChange}
         >
-          <Categories />
+          <Categories onCategoryClick={this.closeDrawer} />
         </Drawer>
         <div>
           <ConnectedSwitch>
