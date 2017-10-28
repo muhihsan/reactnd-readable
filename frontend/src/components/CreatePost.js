@@ -8,10 +8,14 @@ import * as postActions from '../actions/postAction'
 import TextField from 'material-ui/TextField';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class CreateNewPost extends Component {
   state = {
-    category: null
+    title: '',
+    body: '',
+    author: '',
+    category: ''
   }
 
   componentDidMount = () => {
@@ -22,22 +26,22 @@ class CreateNewPost extends Component {
     const post = {
       id: uuidv4(),
       timestamp: Date.now(),
-      title: this.title.value,
-      body: this.body.value,
-      author: this.author.value,
-      category: this.category.value
+      title: this.state.title,
+      body: this.state.body,
+      author: this.state.author,
+      category: this.state.category
     };
     this.props.actions.createPost(post);
   }
 
-  handleChange = (event, index, value) => this.setState({category: value});
+  handleSelectFieldChange = (event, index, value) =>
+    this.setState({ category: value });
 
-  static contextTypes = {
-    router: PropTypes.object
-  }
+  handleTextFieldChange = (event, value) =>
+    this.setState({ [event.target.name]: value });
 
   render = () => {
-    const { category } = this.state;
+    const { title, author, body, category } = this.state;
     const { categories: { entities: categories, result: listCategory } } = this.props;
 
     return (
@@ -45,36 +49,34 @@ class CreateNewPost extends Component {
         <TextField
           hintText="Add title"
           floatingLabelText="Title"
+          name="title"
+          onChange={this.handleTextFieldChange}
+          value={title}
         /><br />
         <TextField
           hintText="Add author"
           floatingLabelText="Author"
+          name="author"
+          onChange={this.handleTextFieldChange}
+          value={author}
         /><br />
         <TextField
           hintText="Add body"
           floatingLabelText="body"
           multiLine={true}
-          rows={5}
+          name="body"
+          onChange={this.handleTextFieldChange}
+          value={body}
         /><br />
         <SelectField
           hintText="Add category"
           floatingLabelText="Category"
           value={category}
-          onChange={this.handleChange}
+          onChange={this.handleSelectFieldChange}
         >
-          {listCategory.map(key => <MenuItem value={categories[key].path} primaryText={categories[key].name} />)}
-        </SelectField>
-        {/* <div>Title <input type="text" ref={node => this.title = node} /></div>
-        <div>Body <input type="text" ref={node => this.body = node} /></div>
-        <div>Author <input type="text" ref={node => this.author = node} /></div>
-        <div>Category
-          <select ref={node => this.category = node}>
-            {listCategory.map(key => <option key={key} value={categories[key].path}>{categories[key].name}</option>)}
-          </select>
-        </div>
-        <div>
-          <button onClick={this.createPost}>Create New Post</button>
-        </div> */}
+          {listCategory.map(key => <MenuItem key={key} value={categories[key].path} primaryText={categories[key].name} />)}
+        </SelectField><br />
+        <RaisedButton label="Create post" primary={true} onClick={this.createPost}/>
       </div>
     );
   }
