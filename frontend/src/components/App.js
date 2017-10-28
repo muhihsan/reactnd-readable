@@ -18,6 +18,10 @@ class App extends Component {
     isDrawerOpen: false
   }
 
+  goToHome = () => {
+    this.props.history.push('/');
+  }
+
   toggleDrawer = () =>
     this.setState({ isDrawerOpen: !this.state.isDrawerOpen });
 
@@ -30,10 +34,17 @@ class App extends Component {
   render = () => {
     const { isDrawerOpen } = this.state;
 
+    const styles = {
+      title: {
+        cursor: 'pointer',
+      },
+    };
+
     return (
       <div>
         <AppBar
-          title="Title"
+          title={<span style={styles.title}>Readable</span>}
+          onTitleTouchTap={this.goToHome}
           onLeftIconButtonTouchTap={this.toggleDrawer}
         />
         <Drawer

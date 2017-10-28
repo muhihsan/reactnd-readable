@@ -16,7 +16,7 @@ ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <MuiThemeProvider>
-        <App />
+        <App history={history}/>
       </MuiThemeProvider>
     </ConnectedRouter>
   </Provider>,
