@@ -30,7 +30,7 @@ class Post extends Component {
   render = () => {
     const { post } = this.props;
 
-    return(
+    return (
       <div>
         {post && post.id && (
           <div>

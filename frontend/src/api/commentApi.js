@@ -1,5 +1,5 @@
 export default class CommentApi {
-  static getAllCommentsForPost = (id) => 
+  static getAllCommentsForPost = (id) =>
     fetch(
       `http://localhost:3001/posts/${id}/comments`,
       {
@@ -27,7 +27,7 @@ export default class CommentApi {
     .then(res => res.json())
     .then(comment => comment);
 
-  static createCommentForPost = (comment) => 
+  static createCommentForPost = (comment) =>
     fetch(
       `http://localhost:3001/comments`,
       {
@@ -42,7 +42,7 @@ export default class CommentApi {
     .then(res => res.json())
     .then(comment => comment);
 
-  static editCommentForPost = (comment) => 
+  static editCommentForPost = (comment) =>
     fetch(
       `http://localhost:3001/comments/${comment.id}`,
       {
@@ -57,7 +57,7 @@ export default class CommentApi {
     .then(res => res.json())
     .then(comment => comment);
 
-  static deleteCommentForPost = (id) => 
+  static deleteCommentForPost = (id) =>
     fetch(
       `http://localhost:3001/comments/${id}`,
       {

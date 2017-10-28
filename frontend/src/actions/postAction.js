@@ -32,26 +32,26 @@ export const emptyPostSuccess = () => (
 
 export const getAllPosts = () =>
   dispatch =>
-    PostApi.getAllPosts().then(posts => 
+    PostApi.getAllPosts().then(posts =>
       dispatch(getAllPostsSuccess(posts))
     ).catch(error => {
-      throw(error);
+      throw (error);
     });
 
 export const getAllPostsForCategory = (category) =>
   dispatch =>
-    PostApi.getAllPostsForCategory(category).then(posts => 
+    PostApi.getAllPostsForCategory(category).then(posts =>
       dispatch(getAllPostsSuccess(posts))
     ).catch(error => {
-      throw(error);
+      throw (error);
     });
 
 export const getPost = (id) =>
   dispatch =>
-    PostApi.getPost(id).then(post => 
+    PostApi.getPost(id).then(post =>
       dispatch(getPostSuccess(post))
     ).catch(error => {
-      throw(error);
+      throw (error);
     });
 
 export const createPost = (post) =>
@@ -60,15 +60,15 @@ export const createPost = (post) =>
       dispatch(createPostSuccess(post));
       dispatch(push(`${post.category}/${post.id}`));
     }).catch(error => {
-      throw(error)
+      throw (error)
     });
 
 export const updatePost = (post) =>
   dispatch =>
-    PostApi.editPost(post).then(post => 
+    PostApi.editPost(post).then(post =>
       dispatch(editPostSuccess(post))
     ).catch(error => {
-      throw(error)
+      throw (error)
     });
 
 export const deletePost = (id) =>
@@ -77,7 +77,7 @@ export const deletePost = (id) =>
       dispatch(deletePostSuccess(post));
       dispatch(push(''));
     }).catch(error => {
-      throw(error)
+      throw (error)
     });
 
 export const upVotePost = (id) => changePostVote(id, 'upVote');
@@ -85,11 +85,11 @@ export const upVotePost = (id) => changePostVote(id, 'upVote');
 export const downVotePost = (id) => changePostVote(id, 'downVote');
 
 const changePostVote = (id, vote) =>
-  dispatch => 
+  dispatch =>
     PostApi.changePostVote(id, vote).then(post =>
       dispatch(changePostVoteSuccess(post))
     ).catch(error => {
-      throw(error);
+      throw (error);
     });
 
 export const emptyPost = () =>

@@ -8,12 +8,12 @@ import Home from './Home';
 import Post from './Post';
 
 const ConnectedSwitch = connect(state => ({
-	location: state.location
+  location: state.location
 }))(Switch);
 
 class App extends Component {
   render = () => {
-    return(
+    return (
       <MuiThemeProvider>
         <ConnectedSwitch>
           <Route exact path="/" component={Home} />

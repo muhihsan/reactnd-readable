@@ -9,8 +9,8 @@ class CategoryPosts extends Component {
   }
 
   render = () => {
-    const { posts: {entities: posts, result: listPosts} } = this.props;
-    return(
+    const { posts: { entities: posts, result: listPosts } } = this.props;
+    return (
       <div>
         {listPosts && listPosts.length > 0 && (
           <ul>

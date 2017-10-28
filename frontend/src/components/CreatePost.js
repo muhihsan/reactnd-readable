@@ -28,15 +28,15 @@ class CreateNewPost extends Component {
   }
 
   render = () => {
-    const { categories: {entities: categories, result: listCategory} } = this.props;
+    const { categories: { entities: categories, result: listCategory } } = this.props;
 
-    return(
+    return (
       <div>
         CreatePost
-        <div>Title <input type="text"  ref={node => this.title = node} /></div>
-        <div>Body <input type="text"  ref={node => this.body = node} /></div>
-        <div>Author <input type="text"  ref={node => this.author = node} /></div>
-        <div>Category 
+        <div>Title <input type="text" ref={node => this.title = node} /></div>
+        <div>Body <input type="text" ref={node => this.body = node} /></div>
+        <div>Author <input type="text" ref={node => this.author = node} /></div>
+        <div>Category
           <select ref={node => this.category = node}>
             {listCategory.map(key => <option key={key} value={categories[key].path}>{categories[key].name}</option>)}
           </select>

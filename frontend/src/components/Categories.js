@@ -17,11 +17,11 @@ class Categories extends Component {
       }
     } = this.props;
 
-    return(
+    return (
       <div>
         {listCategories && listCategories.length > 0 && (
           <ul>
-            {listCategories.map(name => 
+            {listCategories.map(name =>
               <li key={name}>
                 <Link to={`/${name}/`}>{categories[name].name}</Link>
               </li>

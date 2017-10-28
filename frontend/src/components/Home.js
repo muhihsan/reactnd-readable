@@ -19,7 +19,7 @@ class Home extends Component {
       position: 'fixed',
     };
 
-    return(
+    return (
       <div>
         <Categories />
         <Posts />

@@ -31,17 +31,17 @@ class Comments extends Component {
   render = () => {
     const {
       comments: {
-        entities: comments, 
+        entities: comments,
         result: listComments
-      }} = this.props;
+      } } = this.props;
 
-    return(
+    return (
       <div>
         {listComments && (
-            <ul>
-              {listComments.map(id => (<Comment key={id} comment={comments[id]} />))}
-            </ul>
-          )}
+          <ul>
+            {listComments.map(id => (<Comment key={id} comment={comments[id]} />))}
+          </ul>
+        )}
       </div>
     );
   }

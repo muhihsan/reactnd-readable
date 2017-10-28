@@ -30,7 +30,7 @@ export const getAllCommentsForPost = (id) =>
     CommentApi.getAllCommentsForPost(id).then(comments =>
       dispatch(getAllCommentsForPostSuccess(comments))
     ).catch(error => {
-      throw(error);
+      throw (error);
     });
 
 export const createCommentForPost = (comment) =>
@@ -38,7 +38,7 @@ export const createCommentForPost = (comment) =>
     CommentApi.createCommentForPost(comment).then(comment =>
       dispatch(createCommentForPostSuccess(comment))
     ).catch(error => {
-      throw(error)
+      throw (error)
     });
 
 export const editCommentForPost = (comment) =>
@@ -46,7 +46,7 @@ export const editCommentForPost = (comment) =>
     CommentApi.editCommentForPost(comment).then(comment =>
       dispatch(editCommentForPostSuccess(comment))
     ).catch(error => {
-      throw(error)
+      throw (error)
     });
 
 export const deleteCommentForPost = (id) =>
@@ -54,7 +54,7 @@ export const deleteCommentForPost = (id) =>
     CommentApi.deleteCommentForPost(id).then(comment =>
       dispatch(deleteCommentForPostSuccess(comment))
     ).catch(error => {
-      throw(error)
+      throw (error)
     });
 
 export const upVoteCommentForPost = (id) => changeCommentVoteForPost(id, 'upVote');
@@ -66,7 +66,7 @@ const changeCommentVoteForPost = (id, vote) =>
     CommentApi.changeCommentVoteforPost(id, vote).then(comment =>
       dispatch(changeCommentVoteForPostSuccess(comment))
     ).catch(error => {
-      throw(error)
+      throw (error)
     });
 
 export const emptyCommentsForPost = () =>

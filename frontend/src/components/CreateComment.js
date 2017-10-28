@@ -22,11 +22,11 @@ class CreateComment extends Component {
   }
 
   render = () => {
-    return(
+    return (
       <div>
         CreateNewComment
-        <div>Body <input type="text"  ref={node => this.body = node} /></div>
-        <div>Author <input type="text"  ref={node => this.author = node} /></div>
+        <div>Body <input type="text" ref={node => this.body = node} /></div>
+        <div>Author <input type="text" ref={node => this.author = node} /></div>
         <div>
           <button onClick={this.createNewPost}>Create New Comment</button>
         </div>

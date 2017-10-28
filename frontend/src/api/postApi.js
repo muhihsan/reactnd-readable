@@ -9,7 +9,7 @@ export default class PostApi {
     )
     .then(res => res.json())
     .then(posts => posts);
-  
+
   static getAllPosts = () =>
     fetch(
       `http://localhost:3001/posts`,
@@ -20,7 +20,7 @@ export default class PostApi {
     )
     .then(res => res.json())
     .then(posts => posts);
-    
+
   static createNewPost = (post) =>
     fetch(
       `http://localhost:3001/posts`,
@@ -63,7 +63,7 @@ export default class PostApi {
     )
     .then(res => res.json())
     .then(post => post);
-    
+
   static editPost = (post) =>
     fetch(
       `http://localhost:3001/posts/${post.id}`,

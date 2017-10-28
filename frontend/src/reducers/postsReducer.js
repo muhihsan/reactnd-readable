@@ -7,10 +7,10 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case types.GET_ALL_POSTS_SUCCESS:
       const postsSchema = new schema.Entity('posts');
-      const posts = normalize(action.posts, [ postsSchema ]);
+      const posts = normalize(action.posts, [postsSchema]);
       return {
         entities: posts.entities.posts,
         result: posts.result
@@ -30,11 +30,11 @@ export default (state = initialState, action) => {
       const result = state.result.filter(post => post !== action.post.id);
       return {
         entities: Object.keys(state.entities)
-                  .filter(key => result.includes(key))
-                  .reduce((entities, key) => {
-                    entities[key] = state.entities[key];
-                    return entities;
-                  }, {}),
+          .filter(key => result.includes(key))
+          .reduce((entities, key) => {
+            entities[key] = state.entities[key];
+            return entities;
+          }, {}),
         result: result
       };
     default:
