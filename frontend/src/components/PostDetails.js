@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router'
 import { bindActionCreators } from 'redux';
 import * as commentActions from '../actions/commentAction';
 import * as postActions from '../actions/postAction';
@@ -7,7 +8,6 @@ import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import Divider from 'material-ui/Divider';
 import Comments from './Comments';
-import CreateComment from './CreateComment';
 
 class PostDetails extends Component {
   componentWillMount = () => {
@@ -18,6 +18,10 @@ class PostDetails extends Component {
   componentDidMount = () => {
     this.props.actions.getPost(this.props.id);
     this.props.actions.getAllCommentsForPost(this.props.postId);
+  }
+
+  goToCreateComment = () => {
+    this.props.history.push(`/${this.props.post.category}/${this.props.post.id}/comment/create`);
   }
 
   deletePost = (event) => {
@@ -61,7 +65,7 @@ class PostDetails extends Component {
                   expandable={false}
                   actAsExpander={false}
                 >
-                  <RaisedButton label="Create comment" primary={true} style={style} />
+                  <RaisedButton label="Create comment" primary={true} style={style} onClick={this.goToCreateComment} />
                 </CardHeader>
                 <Divider />
                 <CardActions>
@@ -82,7 +86,6 @@ class PostDetails extends Component {
               </Card>
               <br />
             </div>
-            <CreateComment postId={post.id} />
             <Comments postId={post.id} />
           </div>
         )}
@@ -107,4 +110,4 @@ const mapDispatchToProps = (dispatch) => ({
   )
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostDetails);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PostDetails));

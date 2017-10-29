@@ -6,6 +6,7 @@ import Drawer from 'material-ui/Drawer';
 import Categories from './Categories';
 import CategoryPosts from './CategoryPosts';
 import CreatePost from './CreatePost';
+import CreateComment from './CreateComment';
 import Home from './Home';
 import PostDetails from './PostDetails';
 
@@ -60,6 +61,7 @@ class App extends Component {
             <Route exact path="/post/create" component={CreatePost} />
             <Route exact path="/:category" component={CategoryPosts} />
             <Route exact path="/:category/:id" component={PostDetails} />
+            <Route exact path="/:category/:id/comment/create" component={CreateComment} />
           </ConnectedSwitch>
         </div>
       </div>

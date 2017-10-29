@@ -1,5 +1,6 @@
 import CommentApi from '../api/commentApi';
 import * as types from './actionTypes';
+import { push } from 'react-router-redux'
 
 const getAllCommentsForPostSuccess = (comments) => (
   { type: types.GET_ALL_COMMENTS_FOR_POST_SUCCESS, comments }
@@ -45,11 +46,12 @@ export const getTotalCommentsForPosts = (ids) =>
       });
     };
 
-export const createCommentForPost = (comment) =>
+export const createCommentForPost = (comment, category) =>
   dispatch =>
-    CommentApi.createCommentForPost(comment).then(comment =>
+    CommentApi.createCommentForPost(comment).then(comment => {
       dispatch(createCommentForPostSuccess(comment))
-    ).catch(error => {
+      dispatch(push(`/${category}/${comment.parentId}`));
+    }).catch(error => {
       throw (error)
     });
 

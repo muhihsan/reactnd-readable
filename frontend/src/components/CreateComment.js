@@ -1,41 +1,77 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import uuidv4 from 'uuid/v4';
 import * as commentActions from '../actions/commentAction'
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class CreateComment extends Component {
-  createNewPost = () => {
+  state = {
+    body: '',
+    author: ''
+  }
+
+  createComment = () => {
     const comment = {
       id: uuidv4(),
       parentId: this.props.postId,
       timestamp: Date.now(),
-      body: this.body.value,
-      author: this.author.value
+      body: this.state.body,
+      author: this.state.author
     };
     this.props.actions.createCommentForPost(comment);
   }
+
+  cancelCreateComment = () => {
+    this.props.history.goBack();
+  }
+
+  handleTextFieldChange = (event, value) =>
+    this.setState({ [event.target.name]: value });
 
   static contextTypes = {
     router: PropTypes.object
   }
 
   render = () => {
+    const { author, body } = this.state;
+
     return (
       <div>
-        CreateNewComment
-        <div>Body <input type="text" ref={node => this.body = node} /></div>
-        <div>Author <input type="text" ref={node => this.author = node} /></div>
+        <TextField
+          hintText="Add author"
+          floatingLabelText="Author"
+          name="author"
+          onChange={this.handleTextFieldChange}
+          value={author}
+        /><br />
+        <TextField
+          hintText="Add Body"
+          floatingLabelText="Body"
+          name="body"
+          onChange={this.handleTextFieldChange}
+          value={body}
+        /><br />
         <div>
-          <button onClick={this.createNewPost}>Create New Comment</button>
+          <RaisedButton label="Create comment" primary={true} onClick={this.createComment}/>
+          <RaisedButton label="Cancel" secondary={true} onClick={this.cancelCreateComment}/>
         </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => state;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    ...state,
+    postId: ownProps.match.params.id,
+    category: ownProps.match.params.id,
+    ...ownProps
+  };
+};
 
 const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators({
@@ -45,4 +81,4 @@ const mapDispatchToProps = (dispatch) => ({
   )
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateComment);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateComment));
