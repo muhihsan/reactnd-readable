@@ -60,6 +60,7 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/post/create" component={CreatePost} />
             <Route exact path="/:category" component={CategoryPosts} />
+            <Route exact path="/:category/post/create" component={CreatePost} />
             <Route exact path="/:category/:id" component={PostDetails} />
             <Route exact path="/:category/:id/comment/create" component={CreateComment} />
           </ConnectedSwitch>

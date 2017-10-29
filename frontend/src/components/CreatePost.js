@@ -15,7 +15,7 @@ class CreateNewPost extends Component {
     title: '',
     body: '',
     author: '',
-    category: ''
+    category: this.props.category
   }
 
   componentDidMount = () => {
@@ -89,6 +89,7 @@ class CreateNewPost extends Component {
 
 const mapStateToProps = (state, ownProps) => ({
   ...state,
+  category: ownProps.match.params.category ? ownProps.match.params.category : null,
   ...ownProps
 });
 

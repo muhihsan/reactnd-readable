@@ -12,7 +12,7 @@ class Home extends Component {
   }
 
   goToCreatePost = () => {
-    this.props.history.push('/post/create');
+    this.props.history.push('post/create');
   }
 
   render = () => {
