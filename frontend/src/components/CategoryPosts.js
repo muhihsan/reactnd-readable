@@ -6,12 +6,12 @@ import Posts from './Posts';
 
 class CategoryPosts extends Component {
   componentDidMount = () => {
-    this.props.actions.getAllPostsForCategory(this.props.category);
+    this.props.actions.getAllPostsForCategoryThenComments(this.props.category);
   }
 
   componentWillReceiveProps = (nextProps) => {
     if (this.props.category !== nextProps.category){
-      this.props.actions.getAllPostsForCategory(nextProps.category);
+      this.props.actions.getAllPostsForCategoryThenComments(nextProps.category);
     }
   }
 

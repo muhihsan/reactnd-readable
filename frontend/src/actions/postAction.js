@@ -31,7 +31,7 @@ const emptyPostSuccess = () => (
   { type: types.EMPTY_POST_SUCCESS }
 );
 
-export const getAllPosts = () =>
+const getAllPosts = () =>
   dispatch =>
     PostApi.getAllPosts().then(posts =>
       dispatch(getAllPostsSuccess(posts))
@@ -41,24 +41,27 @@ export const getAllPosts = () =>
 
 export const getAllPostsThenComments = () =>
   (dispatch, getState) => {
-    // Remember I told you dispatch() can now handle thunks?
     return dispatch(getAllPosts()).then(() => {
-      // Assuming this is where the fetched user got stored
       const posts = getState().posts.result;
-      // Assuming it has a "postIDs" field:
-      // const firstPostID = fetchedUser.postIDs[0]
-      // And we can dispatch() another thunk now!
         return dispatch(commentActions.getTotalCommentsForPosts(posts));
     })
-  }
+  };
 
-export const getAllPostsForCategory = (category) =>
+const getAllPostsForCategory = (category) =>
   dispatch =>
     PostApi.getAllPostsForCategory(category).then(posts =>
       dispatch(getAllPostsSuccess(posts))
     ).catch(error => {
       throw (error);
     });
+
+export const getAllPostsForCategoryThenComments = (category) =>
+  (dispatch, getState) => {
+    return dispatch(getAllPostsForCategory(category)).then(() => {
+      const posts = getState().posts.result;
+        return dispatch(commentActions.getTotalCommentsForPosts(posts));
+    })
+  };
 
 export const getPost = (id) =>
   dispatch =>
