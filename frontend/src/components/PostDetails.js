@@ -89,6 +89,9 @@ class PostDetails extends Component {
             <Comments postId={post.id} />
           </div>
         )}
+        {(!post || !post.id) && (
+          <div>Post can't be found.</div>
+        )}
       </div>
     );
   }

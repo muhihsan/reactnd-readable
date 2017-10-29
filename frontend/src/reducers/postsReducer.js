@@ -38,14 +38,14 @@ export default (state = initialState, action) => {
     case types.DELETE_POST_SUCCESS:
       const result = state.result.filter(post => post !== action.post.id);
       return {
-        entities: Object.keys(state.entities)
+        entities: state.entities === null ? null : Object.keys(state.entities)
           .filter(key => result.includes(key))
           .reduce((entities, key) => {
             entities[key] = state.entities[key];
             return entities;
           }, {}),
         result: result,
-        totalComments: Object.keys(state.totalComments)
+        totalComments: state.totalComments === null ? null : Object.keys(state.totalComments)
           .filter(key => result.includes(key))
           .reduce((totalComments, key) => {
             totalComments[key] = state.totalComments[key];
