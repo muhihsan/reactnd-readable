@@ -14,23 +14,33 @@ class Post extends Component {
   deletePost = () => {
     this.props.actions.deletePost(this.props.post.id);
   }
+  
+  upVotePost = () => {
+    this.props.actions.upVotePost(this.props.post.id);
+  }
+
+  downVotePost = () => {
+    this.props.actions.downVotePost(this.props.post.id);
+  }
 
   render = () => {
     const { post } = this.props;
 
     return (
       <div>
-        <Card onClick={this.goToPost}>
+        <Card>
           <CardHeader
+            avatar={<i className="material-icons md-48">account_circle</i>}
             title={post.title}
             subtitle={post.category}
+            onClick={this.goToPost}
           />
           <Divider />
           <CardActions>
-            <i className="material-icons">account_circle</i>
+            <i className="material-icons">person</i>
             <span>{post.author}</span>
-            <i className="material-icons" title="Upvote post">thumb_up</i>
-            <i className="material-icons" title="Downvote post">thumb_down</i>
+            <i className="material-icons" title="Upvote post" onClick={this.upVotePost}>thumb_up</i>
+            <i className="material-icons" title="Downvote post" onClick={this.downVotePost}>thumb_down</i>
             <span>{post.voteScore} Votes</span>
             <i className="material-icons">question_answer</i>
             <span> Comments</span>
