@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as postActions from '../actions/postAction';
+import Posts from './Posts';
 
 class CategoryPosts extends Component {
   componentDidMount = () => {
@@ -15,18 +16,9 @@ class CategoryPosts extends Component {
   }
 
   render = () => {
-    const { posts: { entities: posts, result: listPosts } } = this.props;
+    const { posts } = this.props;
     return (
-      <div>
-        {listPosts && listPosts.length > 0 && (
-          <ul>
-            {listPosts.map(id => <ul key={id}>{posts[id].title}</ul>)}
-          </ul>
-        )}
-        {(!listPosts || listPosts === 0) && (
-          <div>List of posts for category will be here</div>
-        )}
-      </div>
+      <Posts posts={posts} />
     );
   }
 }

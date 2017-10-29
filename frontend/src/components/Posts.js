@@ -7,10 +7,6 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 import Divider from 'material-ui/Divider';
 
 class Posts extends Component {
-  componentDidMount = () => {
-    this.props.actions.getAllPosts();
-  }
-
   deletePost = (event) => {
     const id = event.target.value;
     this.props.actions.deletePost(id);
