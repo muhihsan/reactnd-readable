@@ -54,7 +54,7 @@ export default (state = initialState, action) => {
       };
     case types.CHANGE_POST_VOTE_SUCCESS:
       return {
-        entities: Object.keys(state.entities)
+        entities: state.entities === null ? null : Object.keys(state.entities)
           .reduce((entities, key) => {
             entities[key] = action.post.id === key ? action.post : state.entities[key];
             return entities;
