@@ -27,14 +27,18 @@ class Post extends Component {
           />
           <Divider />
           <CardActions>
+            <i className="material-icons">account_circle</i>
             <span>{post.author}</span>
             <i className="material-icons" title="Upvote post">thumb_up</i>
             <i className="material-icons" title="Downvote post">thumb_down</i>
-            <i className="material-icons" title="Edit post">mode_edit</i>
+            <span>{post.voteScore} Votes</span>
+            <i className="material-icons">question_answer</i>
+            <span> Comments</span>
+            <i className="material-icons">query_builder</i>
+            <span>{post.timestamp}</span>
+            <i className="material-icons" title="Edit post">edit</i>
             <i className="material-icons" title="Delete post" onClick={this.deletePost}>delete</i>
           </CardActions>
-          {/* <Link to={`/${posts[id].category}/${id}`}>{posts[id].title}</Link>
-          <button value={id} onClick={this.deletePost}>Delete</button> */}
         </Card>
         <br />
       </div>
