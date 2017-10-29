@@ -2,31 +2,31 @@ import PostApi from '../api/postApi';
 import * as types from './actionTypes';
 import { push } from 'react-router-redux'
 
-export const getAllPostsSuccess = (posts) => (
+const getAllPostsSuccess = (posts) => (
   { type: types.GET_ALL_POSTS_SUCCESS, posts }
 );
 
-export const getPostSuccess = (post) => (
+const getPostSuccess = (post) => (
   { type: types.GET_POST_SUCCESS, post }
 );
 
-export const createPostSuccess = (post) => (
+const createPostSuccess = (post) => (
   { type: types.CREATE_POST_SUCCESS, post }
 );
 
-export const editPostSuccess = (post) => (
+const editPostSuccess = (post) => (
   { type: types.EDIT_POST_SUCCESS, post }
 );
 
-export const deletePostSuccess = (post) => (
+const deletePostSuccess = (post) => (
   { type: types.DELETE_POST_SUCCESS, post }
 );
 
-export const changePostVoteSuccess = (post) => (
+const changePostVoteSuccess = (post) => (
   { type: types.CHANGE_POST_VOTE_SUCCESS, post }
 );
 
-export const emptyPostSuccess = () => (
+const emptyPostSuccess = () => (
   { type: types.EMPTY_POST_SUCCESS }
 );
 

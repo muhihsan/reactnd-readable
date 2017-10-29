@@ -1,7 +1,7 @@
 import CategoryApi from '../api/categoryApi';
 import * as types from './actionTypes';
 
-export const getAllCategoriesSuccess = (categories) => {
+const getAllCategoriesSuccess = (categories) => {
   return { type: types.GET_ALL_CATEGORIES_SUCCESS, categories };
 };
 

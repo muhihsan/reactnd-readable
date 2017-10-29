@@ -1,27 +1,27 @@
 import CommentApi from '../api/commentApi';
 import * as types from './actionTypes';
 
-export const getAllCommentsForPostSuccess = (comments) => (
+const getAllCommentsForPostSuccess = (comments) => (
   { type: types.GET_ALL_COMMENTS_FOR_POST_SUCCESS, comments }
 );
 
-export const createCommentForPostSuccess = (comment) => (
+const createCommentForPostSuccess = (comment) => (
   { type: types.CREATE_COMMENT_FOR_POST_SUCCESS, comment }
 );
 
-export const editCommentForPostSuccess = (comment) => (
+const editCommentForPostSuccess = (comment) => (
   { type: types.EDIT_COMMENT_FOR_POST_SUCCESS, comment }
 );
 
-export const deleteCommentForPostSuccess = (comment) => (
+const deleteCommentForPostSuccess = (comment) => (
   { type: types.DELETE_COMMENT_FOR_POST_SUCCESS, comment }
 );
 
-export const changeCommentVoteForPostSuccess = (comment) => (
+const changeCommentVoteForPostSuccess = (comment) => (
   { type: types.CHANGE_COMMENT_VOTE_FOR_POST_SUCCESS, comment }
 );
 
-export const emptyCommentsForPostSuccess = () => (
+const emptyCommentsForPostSuccess = () => (
   { type: types.EMPTY_COMMENTS_FOR_POST_SUCCESS }
 );
 
