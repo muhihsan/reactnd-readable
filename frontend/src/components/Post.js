@@ -1,30 +1,18 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import { withRouter } from 'react-router'
 import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import * as postActions from '../actions/postAction';
-import Comments from './Comments';
-import CreateComment from './CreateComment';
+import { Card, CardActions, CardHeader } from 'material-ui/Card';
+import Divider from 'material-ui/Divider';
 
 class Post extends Component {
-  componentWillMount = () => {
-    this.props.actions.emptyPost();
+  goToPost = () => {
+    this.props.history.push(`/${this.props.post.category}/${this.props.post.id}`);
   }
 
-  componentDidMount = () => {
-    this.props.actions.getPost(this.props.id);
-  }
-
-  deletePost = (event) => {
-    var id = event.target.value;
-    this.props.actions.deletePost(id);
-  }
-
-  upVotePost = () => {
-    this.props.actions.upVotePost(this.props.id);
-  }
-
-  downVotePost = () => {
-    this.props.actions.downVotePost(this.props.id);
+  deletePost = () => {
+    this.props.actions.deletePost(this.props.post.id);
   }
 
   render = () => {
@@ -32,25 +20,23 @@ class Post extends Component {
 
     return (
       <div>
-        {post && post.id && (
-          <div>
-            <div>
-              <div>Id: {post.id}</div>
-              <div>Timespan: {post.timestamp}</div>
-              <div>Title: {post.title}</div>
-              <div>Body: {post.body}</div>
-              <div>Author: {post.author}</div>
-              <div>VoteScore: {post.voteScore}</div>
-              <div>
-                <button value={post.id} onClick={this.deletePost}>Delete</button>
-                <button onClick={this.upVotePost}>Upvote</button>
-                <button onClick={this.downVotePost}>Downvote</button>
-              </div>
-            </div>
-            <CreateComment postId={post.id} />
-            <Comments postId={post.id} />
-          </div>
-        )}
+        <Card onClick={this.goToPost}>
+          <CardHeader
+            title={post.title}
+            subtitle={post.category}
+          />
+          <Divider />
+          <CardActions>
+            <span>{post.author}</span>
+            <i className="material-icons" title="Upvote post">thumb_up</i>
+            <i className="material-icons" title="Downvote post">thumb_down</i>
+            <i className="material-icons" title="Edit post">mode_edit</i>
+            <i className="material-icons" title="Delete post" onClick={this.deletePost}>delete</i>
+          </CardActions>
+          {/* <Link to={`/${posts[id].category}/${id}`}>{posts[id].title}</Link>
+          <button value={id} onClick={this.deletePost}>Delete</button> */}
+        </Card>
+        <br />
       </div>
     );
   }
@@ -59,9 +45,9 @@ class Post extends Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     ...state,
-    id: ownProps.match.params.id
+    ...ownProps
   };
-};
+}
 
 const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators({
@@ -71,4 +57,4 @@ const mapDispatchToProps = (dispatch) => ({
   )
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Post);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Post));

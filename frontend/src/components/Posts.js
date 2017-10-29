@@ -1,17 +1,8 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import * as postActions from '../actions/postAction';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import Divider from 'material-ui/Divider';
+import Post from './Post';
 
 class Posts extends Component {
-  deletePost = (event) => {
-    const id = event.target.value;
-    this.props.actions.deletePost(id);
-  }
-
   render = () => {
     const {
       posts: {
@@ -19,31 +10,13 @@ class Posts extends Component {
         result: listPosts
       }
     } = this.props;
-
+    
     return (
       <div>
         {listPosts && listPosts.length > 0 && (
           <div>
             {listPosts.map(id =>
-              <div key={id}>
-                <Card>
-                  <CardHeader
-                    title={posts[id].title}
-                    subtitle={posts[id].category}
-                  />
-                  <Divider />
-                  <CardActions>
-                    <span>{posts[id].author}</span>
-                    <i className="material-icons">thumb_up</i>
-                    <i className="material-icons">thumb_down</i>
-                    <i className="material-icons">mode_edit</i>
-                    <i className="material-icons">delete</i>
-                  </CardActions>
-                  {/* <Link to={`/${posts[id].category}/${id}`}>{posts[id].title}</Link>
-                  <button value={id} onClick={this.deletePost}>Delete</button> */}
-                </Card>
-                <br />
-              </div>
+              <Post key={id} post={posts[id]}  />
             )}
           </div>
         )}
@@ -57,12 +30,4 @@ class Posts extends Component {
 
 const mapStateToProps = (state) => state;
 
-const mapDispatchToProps = (dispatch) => ({
-  actions: bindActionCreators({
-      ...postActions
-    },
-    dispatch
-  )
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Posts);
+export default connect(mapStateToProps)(Posts);
