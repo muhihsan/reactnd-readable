@@ -7,6 +7,7 @@ import * as postActions from '../actions/postAction';
 import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import Divider from 'material-ui/Divider';
+import IconButton from 'material-ui/IconButton';
 import Comments from './Comments';
 
 class PostDetails extends Component {
@@ -70,15 +71,39 @@ class PostDetails extends Component {
                 <CardActions>
                   <i className="material-icons">person</i>
                   <span>{post.author}</span>
-                  <i className="material-icons" title="Upvote post" onClick={this.upVotePost}>thumb_up</i>
-                  <i className="material-icons" title="Downvote post" onClick={this.downVotePost}>thumb_down</i>
+                  <IconButton
+                    iconClassName="material-icons"
+                    tooltip="Upvote post"
+                    onClick={this.upVotePost}
+                  >
+                    thumb_up
+                  </IconButton>
+                  <IconButton
+                    iconClassName="material-icons"
+                    tooltip="Downvote post"
+                    onClick={this.downVotePost}
+                  >
+                    thumb_down
+                  </IconButton>
                   <span>{post.voteScore} Votes</span>
                   <i className="material-icons">question_answer</i>
                   <span>{listComments.length} Comments</span>
                   <i className="material-icons">query_builder</i>
                   <span>{post.timestamp}</span>
-                  <i className="material-icons" title="Edit post">edit</i>
-                  <i className="material-icons" title="Delete post" onClick={this.deletePost}>delete</i>
+                  <IconButton
+                    iconClassName="material-icons"
+                    tooltip="Edit post"
+                    onClick={this.deletePost}
+                  >
+                    edit
+                  </IconButton>
+                  <IconButton
+                    iconClassName="material-icons"
+                    tooltip="Delete post"
+                    onClick={this.deletePost}
+                  >
+                    delete
+                  </IconButton>
                 </CardActions>
                 <Divider />
                 <CardText>{post.body}</CardText>

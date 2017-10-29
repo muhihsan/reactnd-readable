@@ -50,7 +50,7 @@ class Post extends Component {
             <IconButton
               iconClassName="material-icons"
               tooltip="Downvote post"
-              onClick={this.upVotePost}
+              onClick={this.downVotePost}
             >
               thumb_down
             </IconButton>
