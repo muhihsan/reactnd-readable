@@ -22,7 +22,7 @@ class CreateComment extends Component {
       body: this.state.body,
       author: this.state.author
     };
-    this.props.actions.createCommentForPost(comment);
+    this.props.actions.createCommentForPost(comment, this.props.category);
   }
 
   cancelCreateComment = () => {
@@ -68,7 +68,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     ...state,
     postId: ownProps.match.params.id,
-    category: ownProps.match.params.id,
+    category: ownProps.match.params.category,
     ...ownProps
   };
 };
