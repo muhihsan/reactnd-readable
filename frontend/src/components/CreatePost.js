@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import { bindActionCreators } from 'redux';
 import uuidv4 from 'uuid/v4';
 import * as categoryActions from '../actions/categoryAction';
@@ -31,6 +32,10 @@ class CreateNewPost extends Component {
       category: this.state.category
     };
     this.props.actions.createPost(post);
+  }
+
+  cancelCreatePost = () => {
+    this.props.history.goBack();
   }
 
   handleSelectFieldChange = (event, index, value) =>
@@ -76,12 +81,16 @@ class CreateNewPost extends Component {
           {listCategory.map(key => <MenuItem key={key} value={categories[key].path} primaryText={categories[key].name} />)}
         </SelectField><br />
         <RaisedButton label="Create post" primary={true} onClick={this.createPost}/>
+        <RaisedButton label="Cancel" secondary={true} onClick={this.cancelCreatePost}/>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => state;
+const mapStateToProps = (state, ownProps) => ({
+  ...state,
+  ...ownProps
+});
 
 const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators({
@@ -92,4 +101,4 @@ const mapDispatchToProps = (dispatch) => ({
   )
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateNewPost);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateNewPost));
