@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import * as commentActions from '../actions/commentAction';
 import * as postActions from '../actions/postAction';
 import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -11,10 +12,12 @@ import CreateComment from './CreateComment';
 class PostDetails extends Component {
   componentWillMount = () => {
     this.props.actions.emptyPost();
+    this.props.actions.emptyCommentsForPost();
   }
 
   componentDidMount = () => {
     this.props.actions.getPost(this.props.id);
+    this.props.actions.getAllCommentsForPost(this.props.postId);
   }
 
   deletePost = (event) => {
@@ -31,14 +34,18 @@ class PostDetails extends Component {
   }
 
   render = () => {
-    const { post } = this.props;
+    const { 
+      post,
+      comments: {
+        result: listComments
+      } } = this.props;
 
     const style = {
       margin: 0,
       top: 'auto',
       right: 24,
       left: 'auto',
-      position: 'fixed',
+      float: 'right',
     };
 
     return (
@@ -64,7 +71,7 @@ class PostDetails extends Component {
                   <i className="material-icons" title="Downvote post" onClick={this.downVotePost}>thumb_down</i>
                   <span>{post.voteScore} Votes</span>
                   <i className="material-icons">question_answer</i>
-                  <span>{post.totalComment} Comments</span>
+                  <span>{listComments.length} Comments</span>
                   <i className="material-icons">query_builder</i>
                   <span>{post.timestamp}</span>
                   <i className="material-icons" title="Edit post">edit</i>
@@ -93,7 +100,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators({
-      ...postActions
+      ...postActions,
+      ...commentActions
     },
     dispatch
   )
