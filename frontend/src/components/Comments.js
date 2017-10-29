@@ -38,9 +38,9 @@ class Comments extends Component {
     return (
       <div>
         {listComments && (
-          <ul>
+          <div>
             {listComments.map(id => (<Comment key={id} comment={comments[id]} />))}
-          </ul>
+          </div>
         )}
       </div>
     );
