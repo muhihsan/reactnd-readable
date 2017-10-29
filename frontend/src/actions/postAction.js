@@ -1,5 +1,6 @@
 import PostApi from '../api/postApi';
 import * as types from './actionTypes';
+import * as commentActions from './commentAction';
 import { push } from 'react-router-redux'
 
 const getAllPostsSuccess = (posts) => (
@@ -37,6 +38,19 @@ export const getAllPosts = () =>
     ).catch(error => {
       throw (error);
     });
+
+export const getAllPostsThenComments = () =>
+  (dispatch, getState) => {
+    // Remember I told you dispatch() can now handle thunks?
+    return dispatch(getAllPosts()).then(() => {
+      // Assuming this is where the fetched user got stored
+      const posts = getState().posts.result;
+      // Assuming it has a "postIDs" field:
+      // const firstPostID = fetchedUser.postIDs[0]
+      // And we can dispatch() another thunk now!
+        return dispatch(commentActions.getTotalCommentsForPosts(posts));
+    })
+  }
 
 export const getAllPostsForCategory = (category) =>
   dispatch =>

@@ -24,7 +24,7 @@ class Post extends Component {
   }
 
   render = () => {
-    const { post } = this.props;
+    const { post, totalComment } = this.props;
 
     return (
       <div>
@@ -43,7 +43,7 @@ class Post extends Component {
             <i className="material-icons" title="Downvote post" onClick={this.downVotePost}>thumb_down</i>
             <span>{post.voteScore} Votes</span>
             <i className="material-icons">question_answer</i>
-            <span> Comments</span>
+            <span>{totalComment} Comments</span>
             <i className="material-icons">query_builder</i>
             <span>{post.timestamp}</span>
             <i className="material-icons" title="Edit post">edit</i>

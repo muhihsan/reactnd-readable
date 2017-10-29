@@ -3,7 +3,8 @@ import * as types from '../actions/actionTypes';
 
 const initialState = {
   entities: null,
-  result: []
+  result: [],
+  totalComments: null
 };
 
 export default (state = initialState, action) => {
@@ -13,7 +14,11 @@ export default (state = initialState, action) => {
       const posts = normalize(action.posts, [postsSchema]);
       return {
         entities: posts.entities.posts,
-        result: posts.result
+        result: posts.result,
+        totalComments: posts.result.reduce((acc, key) => {
+          acc[key] = 0;
+          return acc
+        }, {})
       };
     case types.CREATE_POST_SUCCESS:
       return {
@@ -24,7 +29,11 @@ export default (state = initialState, action) => {
         result: [
           ...state.result,
           action.post.id
-        ]
+        ],
+        totalComments: {
+          ...state.totalComments,
+          [action.post.id]: 0
+        }
       };
     case types.DELETE_POST_SUCCESS:
       const result = state.result.filter(post => post !== action.post.id);
@@ -35,7 +44,13 @@ export default (state = initialState, action) => {
             entities[key] = state.entities[key];
             return entities;
           }, {}),
-        result: result
+        result: result,
+        totalComments: Object.keys(state.totalComments)
+          .filter(key => result.includes(key))
+          .reduce((totalComments, key) => {
+            totalComments[key] = state.totalComments[key];
+            return totalComments;
+          }, {})
       };
     case types.CHANGE_POST_VOTE_SUCCESS:
       return {
@@ -44,7 +59,17 @@ export default (state = initialState, action) => {
             entities[key] = action.post.id === key ? action.post : state.entities[key];
             return entities;
           }, {}),
-        result: state.result
+        result: state.result,
+        totalComments: state.totalComments
+      };
+    case types.GET_TOTAL_COMMENTS_FOR_POST_SUCCESS:
+      return {
+        entities: state.entities,
+        result: state.result,
+        totalComments: {
+          ...state.totalComments,
+          [action.id]: action.comments.comments ? action.comments.comments.length : 0
+        }
       };
     default:
       return state;

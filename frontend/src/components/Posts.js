@@ -7,7 +7,8 @@ class Posts extends Component {
     const {
       posts: {
         entities: posts,
-        result: listPosts
+        result: listPosts,
+        totalComments
       }
     } = this.props;
     
@@ -16,7 +17,7 @@ class Posts extends Component {
         {listPosts && listPosts.length > 0 && (
           <div>
             {listPosts.map(id =>
-              <Post key={id} post={posts[id]}  />
+              <Post key={id} post={posts[id]} totalComment={totalComments[id]} />
             )}
           </div>
         )}

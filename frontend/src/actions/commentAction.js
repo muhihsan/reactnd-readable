@@ -25,6 +25,10 @@ const emptyCommentsForPostSuccess = () => (
   { type: types.EMPTY_COMMENTS_FOR_POST_SUCCESS }
 );
 
+const getTotalCommentsForPostSuccess = (id, comments) => (
+  { type: types.GET_TOTAL_COMMENTS_FOR_POST_SUCCESS, id, comments }
+);
+
 export const getAllCommentsForPost = (id) =>
   dispatch =>
     CommentApi.getAllCommentsForPost(id).then(comments =>
@@ -32,6 +36,14 @@ export const getAllCommentsForPost = (id) =>
     ).catch(error => {
       throw (error);
     });
+
+export const getTotalCommentsForPosts = (ids) =>
+    dispatch => {
+      ids.forEach(id => {
+        dispatch(getAllCommentsForPost(id)).then(comments => 
+          dispatch(getTotalCommentsForPostSuccess(id, comments)))
+      });
+    };
 
 export const createCommentForPost = (comment) =>
   dispatch =>

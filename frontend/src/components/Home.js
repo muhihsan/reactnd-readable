@@ -8,7 +8,7 @@ import Posts from './Posts';
 
 class Home extends Component {
   componentDidMount = () => {
-    this.props.actions.getAllPosts();
+    this.props.actions.getAllPostsThenComments();
   }
 
   goToCreatePost = () => {
