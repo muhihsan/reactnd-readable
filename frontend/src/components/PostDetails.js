@@ -24,9 +24,8 @@ class PostDetails extends Component {
     this.props.history.push(`/${this.props.post.category}/${this.props.post.id}/comment/create`);
   }
 
-  deletePost = (event) => {
-    var id = event.target.value;
-    this.props.actions.deletePost(id);
+  deletePost = () => {
+    this.props.actions.deletePost(this.props.id);
   }
 
   upVotePost = () => {
