@@ -9,6 +9,7 @@ import CreatePost from './CreatePost';
 import CreateComment from './CreateComment';
 import Home from './Home';
 import PostDetails from './PostDetails';
+import EditPost from './EditPost';
 
 const ConnectedSwitch = connect(state => ({
   location: state.location
@@ -62,6 +63,7 @@ class App extends Component {
             <Route exact path="/:category" component={CategoryPosts} />
             <Route exact path="/:category/post/create" component={CreatePost} />
             <Route exact path="/:category/:id" component={PostDetails} />
+            <Route exact path="/:category/:id/edit" component={EditPost} />
             <Route exact path="/:category/:id/comment/create" component={CreateComment} />
           </ConnectedSwitch>
         </div>

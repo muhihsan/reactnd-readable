@@ -15,6 +15,10 @@ class Post extends Component {
   deletePost = () => {
     this.props.actions.deletePost(this.props.post.id);
   }
+
+  editPost = () => {
+    this.props.history.push(`/${this.props.post.category}/${this.props.post.id}/edit`)
+  }
   
   upVotePost = () => {
     this.props.actions.upVotePost(this.props.post.id);
@@ -62,7 +66,7 @@ class Post extends Component {
             <IconButton
               iconClassName="material-icons"
               tooltip="Edit post"
-              onClick={this.deletePost}
+              onClick={this.editPost}
             >
               edit
             </IconButton>
