@@ -10,7 +10,7 @@ import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 
-class CreateNewPost extends Component {
+class CreatePost extends Component {
   state = {
     title: '',
     body: '',
@@ -102,4 +102,4 @@ const mapDispatchToProps = (dispatch) => ({
   )
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateNewPost));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreatePost));
