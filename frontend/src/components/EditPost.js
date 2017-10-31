@@ -10,7 +10,7 @@ class EditPost extends Component {
   }
 
   editPost = (post) => {
-    this.props.actions.createPost({
+    this.props.actions.editPost({
       ...post,
       id: this.props.post.id,
       timestamp: Date.now()

@@ -35,6 +35,19 @@ export default (state = initialState, action) => {
           [action.post.id]: 0
         }
       };
+    case types.EDIT_POST_SUCCESS:
+      return {
+        entities: {
+          ...state.entities,
+          [action.post.id]: action.post
+        },
+        result: [
+          ...state.result
+        ],
+        totalComments: {
+          ...state.totalComments
+        }
+      };
     case types.DELETE_POST_SUCCESS:
       const result = state.result.filter(post => post !== action.post.id);
       return {

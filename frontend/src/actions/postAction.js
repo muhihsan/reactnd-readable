@@ -80,11 +80,12 @@ export const createPost = (post) =>
       throw (error)
     });
 
-export const updatePost = (post) =>
+export const editPost = (post) =>
   dispatch =>
-    PostApi.editPost(post).then(post =>
-      dispatch(editPostSuccess(post))
-    ).catch(error => {
+    PostApi.editPost(post).then(post => {
+      dispatch(editPostSuccess(post));
+      dispatch(push(`/${post.category}/${post.id}`));
+    }).catch(error => {
       throw (error)
     });
 
