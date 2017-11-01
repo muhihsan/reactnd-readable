@@ -6,7 +6,7 @@ import PostForm from './PostForm';
 
 class EditPost extends Component {
   componentDidMount = () => {
-    this.props.actions.getPost(this.props.id);
+    this.props.actions.getPost(this.props.category, this.props.id);
   }
 
   editPost = (post) => {
@@ -28,7 +28,8 @@ class EditPost extends Component {
 const mapStateToProps = (state, ownProps) => ({
   ...state,
   ...ownProps,
-  id: ownProps.match.params.id ? ownProps.match.params.id : null
+  id: ownProps.match.params.id,
+  category: ownProps.match.params.category
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -7,6 +7,10 @@ import * as postActions from '../actions/postAction'
 import PostForm from './PostForm';
 
 class CreatePost extends Component {
+  componentDidMount = () => {
+    this.props.actions.emptyPost();
+  }
+
   createPost = (post) => {
     this.props.actions.createPost({
       ...post,
@@ -16,7 +20,7 @@ class CreatePost extends Component {
   
   render = () => {
     return (
-      <PostForm post={null} onPostSubmit={this.createPost} submitPostLabel='Create post' />
+      <PostForm onPostSubmit={this.createPost} submitPostLabel='Create post' />
     );
   }
 }
