@@ -2,42 +2,44 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { bindActionCreators } from 'redux';
-import PropTypes from 'prop-types';
-import uuidv4 from 'uuid/v4';
 import * as commentActions from '../actions/commentAction'
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
-class CreateComment extends Component {
+class CommentForm extends Component {
   state = {
     body: '',
     author: ''
   }
 
-  createComment = () => {
-    const comment = {
-      id: uuidv4(),
-      parentId: this.props.postId,
+  componentWillReceiveProps = (nextProps) => {
+    if (nextProps.comment !== null) {
+      this.setState({
+        body: nextProps.comment.body,
+        author: nextProps.comment.author,
+        timestamp: Date.now()
+      });
+    }
+  }
+
+  submitComment = () => {
+    this.props.onCommentSubmit({
       timestamp: Date.now(),
       body: this.state.body,
       author: this.state.author
-    };
-    this.props.actions.createCommentForPost(comment, this.props.category);
+    });
   }
 
-  cancelCreateComment = () => {
+  cancelPostingComment = () => {
     this.props.history.goBack();
   }
 
   handleTextFieldChange = (event, value) =>
     this.setState({ [event.target.name]: value });
 
-  static contextTypes = {
-    router: PropTypes.object
-  }
-
   render = () => {
     const { author, body } = this.state;
+    const { submitCommentLabel } = this.props;
 
     return (
       <div>
@@ -56,8 +58,8 @@ class CreateComment extends Component {
           value={body}
         /><br />
         <div>
-          <RaisedButton label="Create comment" primary={true} onClick={this.createComment}/>
-          <RaisedButton label="Cancel" secondary={true} onClick={this.cancelCreateComment}/>
+          <RaisedButton label={submitCommentLabel} primary={true} onClick={this.submitComment}/>
+          <RaisedButton label="Cancel" secondary={true} onClick={this.cancelPostingComment}/>
         </div>
       </div>
     );
@@ -67,8 +69,6 @@ class CreateComment extends Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     ...state,
-    postId: ownProps.match.params.id,
-    category: ownProps.match.params.category,
     ...ownProps
   };
 };
@@ -81,4 +81,4 @@ const mapDispatchToProps = (dispatch) => ({
   )
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateComment));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CommentForm));

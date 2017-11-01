@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { bindActionCreators } from 'redux';
-import PropTypes from 'prop-types';
 import * as commentActions from '../actions/commentAction'
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -43,10 +42,6 @@ class CreateComment extends Component {
 
   handleTextFieldChange = (event, value) =>
     this.setState({ [event.target.name]: value });
-
-  static contextTypes = {
-    router: PropTypes.object
-  }
 
   render = () => {
     const { author, body } = this.state;
