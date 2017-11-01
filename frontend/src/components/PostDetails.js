@@ -17,7 +17,7 @@ class PostDetails extends Component {
   }
 
   componentDidMount = () => {
-    this.props.actions.getPost(this.props.id);
+    this.props.actions.getPost(this.props.category, this.props.id);
     this.props.actions.getAllCommentsForPost(this.props.id);
   }
 
@@ -128,6 +128,7 @@ class PostDetails extends Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     ...state,
+    category: ownProps.match.params.category,
     id: ownProps.match.params.id
   };
 };

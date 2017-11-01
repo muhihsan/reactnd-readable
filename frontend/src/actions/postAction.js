@@ -63,11 +63,13 @@ export const getAllPostsForCategoryThenComments = (category) =>
     })
   };
 
-export const getPost = (id) =>
+export const getPost = (category, id) =>
   dispatch =>
-    PostApi.getPost(id).then(post =>
-      dispatch(getPostSuccess(post))
-    ).catch(error => {
+    PostApi.getPost(id).then(post => {
+      if (post.category === category) {
+        dispatch(getPostSuccess(post));
+      }
+    }).catch(error => {
       throw (error);
     });
 
