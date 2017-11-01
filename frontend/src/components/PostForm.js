@@ -26,7 +26,8 @@ class PostForm extends Component {
         title: nextProps.post.title,
         body: nextProps.post.body,
         author: nextProps.post.author,
-        category: nextProps.post.category
+        category: nextProps.post.category,
+        timestamp: Date.now(),
       });
     }
   }
