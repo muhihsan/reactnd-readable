@@ -10,6 +10,17 @@ export default class CommentApi {
     .then(res => res.json())
     .then(comments => comments);
 
+  static getComment = (id) =>
+    fetch(
+      `http://localhost:3001/comments/${id}`,
+      {
+        headers: { 'Authorization': 'whatever-you-want' },
+        method: 'GET'
+      }
+    )
+    .then(res => res.json())
+    .then(comment => comment);
+
   static changeCommentVoteforPost = (id, voteOption) =>
     fetch(
       `http://localhost:3001/comments/${id}`,

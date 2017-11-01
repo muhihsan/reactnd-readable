@@ -6,6 +6,10 @@ const getAllCommentsForPostSuccess = (comments) => (
   { type: types.GET_ALL_COMMENTS_FOR_POST_SUCCESS, comments }
 );
 
+const getCommentSuccess = (comment) => (
+  { type: types.GET_COMMENT_SUCCESS, comment }
+);
+
 const createCommentForPostSuccess = (comment) => (
   { type: types.CREATE_COMMENT_FOR_POST_SUCCESS, comment }
 );
@@ -38,6 +42,14 @@ export const getAllCommentsForPost = (id) =>
       throw (error);
     });
 
+export const getComment = (id) =>
+  dispatch =>
+    CommentApi.getComment(id).then(comment =>
+      dispatch(getCommentSuccess(comment))
+    ).catch(error => {
+      throw (error);
+    });
+
 export const getTotalCommentsForPosts = (ids) =>
     dispatch => {
       ids.forEach(id => {
@@ -49,17 +61,18 @@ export const getTotalCommentsForPosts = (ids) =>
 export const createCommentForPost = (comment, category) =>
   dispatch =>
     CommentApi.createCommentForPost(comment).then(comment => {
-      dispatch(createCommentForPostSuccess(comment))
+      dispatch(createCommentForPostSuccess(comment));
       dispatch(push(`/${category}/${comment.parentId}`));
     }).catch(error => {
       throw (error)
     });
 
-export const editCommentForPost = (comment) =>
+export const editCommentForPost = (comment, category) =>
   dispatch =>
-    CommentApi.editCommentForPost(comment).then(comment =>
-      dispatch(editCommentForPostSuccess(comment))
-    ).catch(error => {
+    CommentApi.editCommentForPost(comment).then(comment => {
+      dispatch(editCommentForPostSuccess(comment));
+      dispatch(push(`/${category}/${comment.parentId}`));
+    }).catch(error => {
       throw (error)
     });
 

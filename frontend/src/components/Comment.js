@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router'
 import { bindActionCreators } from 'redux';
 import * as commentActions from '../actions/commentAction';
 import { Card, CardActions, CardText } from 'material-ui/Card';
@@ -9,6 +10,10 @@ import IconButton from 'material-ui/IconButton';
 class Comment extends Component {
   deleteComment = () => {
     this.props.actions.deleteCommentForPost(this.props.comment.id);
+  }
+
+  goToEditComment = () => {
+    this.props.history.push(`/${this.props.post.category}/${this.props.post.id}/${this.props.comment.id}/edit`)
   }
 
   upVoteComment = () => {
@@ -48,7 +53,7 @@ class Comment extends Component {
             <IconButton
               iconClassName="material-icons"
               tooltip="Edit comment"
-              onClick={this.deleteComment}
+              onClick={this.goToEditComment}
             >
               edit
             </IconButton>
@@ -84,4 +89,4 @@ const mapDispatchToProps = (dispatch) => ({
   )
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Comment);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Comment));
