@@ -20,7 +20,7 @@ class CreateComment extends Component {
 
   render = () => {
     const { comment } = this.props;
-debugger;
+
     return (
       <div>
         {comment && (

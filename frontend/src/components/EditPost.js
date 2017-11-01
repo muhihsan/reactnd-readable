@@ -20,7 +20,11 @@ class EditPost extends Component {
     const { post } = this.props;
 
     return (
-      <PostForm post={post} onPostSubmit={this.editPost} submitPostLabel='Edit post' />
+      <div>
+        {post && (
+          <PostForm post={post} onPostSubmit={this.editPost} submitPostLabel='Edit post' />
+        )}
+      </div>
     );
   }
 }
