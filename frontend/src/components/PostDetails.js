@@ -18,7 +18,7 @@ class PostDetails extends Component {
 
   componentDidMount = () => {
     this.props.actions.getPost(this.props.id);
-    this.props.actions.getAllCommentsForPost(this.props.postId);
+    this.props.actions.getAllCommentsForPost(this.props.id);
   }
 
   goToCreateComment = () => {
