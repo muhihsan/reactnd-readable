@@ -30,6 +30,10 @@ const emptyCommentsForPostSuccess = () => (
   { type: types.EMPTY_COMMENTS_FOR_POST_SUCCESS }
 );
 
+const emptyCommentSuccess = () => (
+  { type: types.EMPTY_COMMENT_SUCCESS }
+);
+
 const getTotalCommentsForPostSuccess = (id, comments) => (
   { type: types.GET_TOTAL_COMMENTS_FOR_POST_SUCCESS, id, comments }
 );
@@ -98,3 +102,6 @@ const changeCommentVoteForPost = (id, vote) =>
 
 export const emptyCommentsForPost = () =>
   dispatch => dispatch(emptyCommentsForPostSuccess());
+
+export const emptyComment = () =>
+  dispatch => dispatch(emptyCommentSuccess());

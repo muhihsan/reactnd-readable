@@ -13,10 +13,10 @@ class CommentForm extends Component {
   }
 
   componentWillReceiveProps = (nextProps) => {
-    if (nextProps.comment !== null) {
+    if (nextProps.parentComment) {
       this.setState({
-        body: nextProps.comment.body,
-        author: nextProps.comment.author,
+        body: nextProps.parentComment.body,
+        author: nextProps.parentComment.author,
         timestamp: Date.now()
       });
     }
