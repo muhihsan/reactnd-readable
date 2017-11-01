@@ -20,9 +20,13 @@ class CreateComment extends Component {
 
   render = () => {
     const { comment } = this.props;
-
+debugger;
     return (
-      <CommentForm parentComment={comment} onCommentSubmit={this.editComment} submitCommentLabel='Edit comment' />
+      <div>
+        {comment && (
+          <CommentForm parentComment={comment} onCommentSubmit={this.editComment} submitCommentLabel='Edit comment' />
+        )}
+      </div>
     );
   }
 }
