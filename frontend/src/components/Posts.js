@@ -4,6 +4,7 @@ import FlatButton from 'material-ui/FlatButton';
 import Popover from 'material-ui/Popover';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
+import IconButton from 'material-ui/IconButton';
 import Post from './Post';
 
 class Posts extends Component {
@@ -12,18 +13,20 @@ class Posts extends Component {
     open: false,
     selectedFilter: 'Date',
     sortBy: 'timestamp',
+    isAscendingSort: true,
     listPosts: this.props.posts ? this.props.posts.result : []
   }
 
   componentWillReceiveProps = (nextProps) => {
     if (nextProps.posts) {
-      this.sortPosts(nextProps.posts, this.state.sortBy);
+      this.sortPosts(nextProps.posts, this.state.sortBy, this.state.isAscendingSort);
     }
   }
 
   changeFilter = (event, sortBy) => {
-    this.setState({ sortBy });
-    this.sortPosts(this.props.posts, sortBy);
+    this.setState({ sortBy }, () => 
+      this.sortPosts(this.props.posts, this.state.sortBy, this.state.isAscendingSort)
+    );
   }
 
   selectFilter = (event) => {
@@ -33,17 +36,27 @@ class Posts extends Component {
     });
   }
 
-  sortPosts = (posts, sortBy) => {
+  reverseSortDirection = () => {
+    this.setState({ isAscendingSort: !this.state.isAscendingSort }, () =>
+      this.sortPosts(this.props.posts, this.state.sortBy, this.state.isAscendingSort)
+    );
+  }
+
+  sortPosts = (posts, sortBy, isAscendingSort) => {
     var sortedListPosts = posts.result.slice().sort((a, b) => {
-      if (posts.entities[a][sortBy] < posts.entities[b][sortBy]) {
-        return -1;
-      }
-      if (posts.entities[a][sortBy] > posts.entities[b][sortBy]) {
-        return 1;
-      }
-      return 0;
+      return isAscendingSort ? this.sortValues(posts, sortBy, a, b) : this.sortValues(posts, sortBy, b, a);
     });
     this.setState({ listPosts: sortedListPosts })
+  }
+
+  sortValues = (posts, sortBy, a, b) => {
+    if (posts.entities[a][sortBy] < posts.entities[b][sortBy]) {
+      return -1;
+    }
+    if (posts.entities[a][sortBy] > posts.entities[b][sortBy]) {
+      return 1;
+    }
+    return 0;
   }
 
   handleTouchTap = (event) => {
@@ -70,7 +83,7 @@ class Posts extends Component {
       }
     } = this.props;
 
-    const { listPosts, selectedFilter } = this.state;
+    const { listPosts, selectedFilter, isAscendingSort } = this.state;
 
     return (
       <div>
@@ -109,6 +122,14 @@ class Posts extends Component {
             />
           </Menu>
         </Popover>
+        <IconButton
+          iconClassName="material-icons"
+          tooltip="Reverse sort direction"
+          onClick={this.reverseSortDirection}
+        >
+          {isAscendingSort && 'arrow_upward'}
+          {!isAscendingSort && 'arrow_downward'}
+        </IconButton>
         {listPosts && listPosts.length > 0 && (
           <div>
             {listPosts.map(id =>
