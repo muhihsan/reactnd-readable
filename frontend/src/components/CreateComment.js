@@ -11,6 +11,7 @@ class CreateComment extends Component {
     this.props.actions.createCommentForPost({
       id: uuidv4(),
       parentId: this.props.postId,
+      timestamp: Date.now(),
       ...comment
     }, this.props.category);
   }

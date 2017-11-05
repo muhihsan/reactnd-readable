@@ -17,14 +17,13 @@ class CommentForm extends Component {
       this.setState({
         body: nextProps.parentComment.body,
         author: nextProps.parentComment.author,
-        timestamp: Date.now()
+        timestamp: nextProps.parentComment.author
       });
     }
   }
 
   submitComment = () => {
     this.props.onCommentSubmit({
-      timestamp: Date.now(),
       body: this.state.body,
       author: this.state.author
     });
