@@ -14,7 +14,8 @@ class CreatePost extends Component {
   createPost = (post) => {
     this.props.actions.createPost({
       ...post,
-      id: uuidv4()
+      id: uuidv4(),
+      timestamp: Date.now()
     });
   }
   

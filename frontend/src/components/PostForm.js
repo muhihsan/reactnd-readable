@@ -13,7 +13,8 @@ class PostForm extends Component {
     title: '',
     body: '',
     author: '',
-    category: ''
+    category: '',
+    timestamp: ''
   }
 
   componentDidMount = () => {
@@ -27,7 +28,7 @@ class PostForm extends Component {
         body: nextProps.post.body,
         author: nextProps.post.author,
         category: nextProps.post.category,
-        timestamp: Date.now()
+        timestamp: nextProps.post.timestamp
       });
     }
   }
