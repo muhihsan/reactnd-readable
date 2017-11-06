@@ -86,9 +86,9 @@ class Posts extends Component {
     const { listPosts, selectedFilter, isAscendingSort } = this.state;
 
     return (
-      <div>
+      <div className="container-post">
         <br />
-        <div className="container-post sort">
+        <div className="sort">
           <FlatButton
             onClick={this.handleTouchTap}
             label={this.state.selectedFilter}

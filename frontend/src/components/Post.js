@@ -32,7 +32,7 @@ class Post extends Component {
     const { post, totalComment } = this.props;
 
     return (
-      <div className="container-post">
+      <div>
         <Card>
           <CardHeader
             className="pointer"
@@ -52,6 +52,20 @@ class Post extends Component {
             <span>{post.author}</span>
             <IconButton
               iconClassName="material-icons"
+              tooltip="Total Comments"
+            >
+              question_answer
+            </IconButton>
+            <span>{totalComment} Comments</span>
+            <IconButton
+              iconClassName="material-icons"
+              tooltip="Time Created"
+            >
+              query_builder
+            </IconButton>
+            <span>{post.timestamp}</span>
+            <IconButton
+              iconClassName="material-icons"
               tooltip="Upvote post"
               onClick={this.upVotePost}
             >
@@ -65,20 +79,6 @@ class Post extends Component {
               thumb_down
             </IconButton>
             <span>{post.voteScore} Votes</span>
-            <IconButton
-              iconClassName="material-icons"
-              tooltip="Total Comments"
-            >
-              question_answer
-            </IconButton>
-            <span>{totalComment} Comments</span>
-            <IconButton
-              iconClassName="material-icons"
-              tooltip="Time Created"
-            >
-              query_builder
-            </IconButton>
-            <span>{post.timestamp}</span>
             <IconButton
               iconClassName="material-icons"
               tooltip="Edit post"

@@ -30,8 +30,13 @@ class Comment extends Component {
     return(
       <div>
         <Card>
-        <CardActions>
-            <i className="material-icons">person</i>
+          <CardActions>
+            <IconButton
+              iconClassName="material-icons"
+              tooltip="Author"
+            >
+              person
+            </IconButton>
             <span>{comment.author}</span>
             <IconButton
               iconClassName="material-icons"
@@ -48,7 +53,12 @@ class Comment extends Component {
               thumb_down
             </IconButton>
             <span>{comment.voteScore} Votes</span>
-            <i className="material-icons">query_builder</i>
+            <IconButton
+              iconClassName="material-icons"
+              tooltip="Time Created"
+            >
+              query_builder
+            </IconButton>
             <span>{comment.timestamp}</span>
             <IconButton
               iconClassName="material-icons"

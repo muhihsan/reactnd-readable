@@ -58,8 +58,9 @@ class PostDetails extends Component {
 
     return (
       <div>
+        <br />
         {post && post.id && (
-          <div>
+          <div className="container-post">
             <div>
               <Card>
                 <CardHeader
@@ -73,8 +74,27 @@ class PostDetails extends Component {
                 </CardHeader>
                 <Divider />
                 <CardActions>
-                  <i className="material-icons">person</i>
+                  <IconButton
+                    iconClassName="material-icons"
+                    tooltip="Author"
+                  >
+                    person
+                  </IconButton>
                   <span>{post.author}</span>
+                  <IconButton
+                    iconClassName="material-icons"
+                    tooltip="Total Comments"
+                  >
+                    question_answer
+                  </IconButton>
+                  <span>{listComments.length} Comments</span>
+                  <IconButton
+                    iconClassName="material-icons"
+                    tooltip="Time Created"
+                  >
+                    query_builder
+                  </IconButton>
+                  <span>{post.timestamp}</span>
                   <IconButton
                     iconClassName="material-icons"
                     tooltip="Upvote post"
@@ -90,10 +110,6 @@ class PostDetails extends Component {
                     thumb_down
                   </IconButton>
                   <span>{post.voteScore} Votes</span>
-                  <i className="material-icons">question_answer</i>
-                  <span>{listComments.length} Comments</span>
-                  <i className="material-icons">query_builder</i>
-                  <span>{post.timestamp}</span>
                   <IconButton
                     iconClassName="material-icons"
                     tooltip="Edit post"
