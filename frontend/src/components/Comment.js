@@ -40,6 +40,13 @@ class Comment extends Component {
             <span>{comment.author}</span>
             <IconButton
               iconClassName="material-icons"
+              tooltip="Time Created"
+            >
+              query_builder
+            </IconButton>
+            <span>{new Date(comment.timestamp).toDateString()}</span>
+            <IconButton
+              iconClassName="material-icons"
               tooltip="Upvote post"
               onClick={this.upVoteComment}
             >
@@ -53,13 +60,6 @@ class Comment extends Component {
               thumb_down
             </IconButton>
             <span>{comment.voteScore} Votes</span>
-            <IconButton
-              iconClassName="material-icons"
-              tooltip="Time Created"
-            >
-              query_builder
-            </IconButton>
-            <span>{new Date(comment.timestamp).toDateString()}</span>
             <IconButton
               iconClassName="material-icons"
               tooltip="Edit comment"

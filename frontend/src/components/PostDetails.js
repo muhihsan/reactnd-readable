@@ -83,18 +83,18 @@ class PostDetails extends Component {
                   <span>{post.author}</span>
                   <IconButton
                     iconClassName="material-icons"
-                    tooltip="Total Comments"
-                  >
-                    question_answer
-                  </IconButton>
-                  <span>{listComments.length} Comments</span>
-                  <IconButton
-                    iconClassName="material-icons"
                     tooltip="Time Created"
                   >
                     query_builder
                   </IconButton>
                   <span>{new Date(post.timestamp).toDateString()}</span>
+                  <IconButton
+                    iconClassName="material-icons"
+                    tooltip="Total Comments"
+                  >
+                    question_answer
+                  </IconButton>
+                  <span>{listComments.length} Comments</span>
                   <IconButton
                     iconClassName="material-icons"
                     tooltip="Upvote post"
