@@ -15,6 +15,26 @@ body, #root {
   cursor: pointer;
 }
 
+.left {
+  float: left;
+  max-width: 49%;
+  min-width: 49%;
+}
+
+.right {
+  float: right;
+  max-width: 49%;
+  min-width: 49%;
+}
+
+.submit {
+  margin-right: 5px;
+}
+
+.align-right {
+  text-align: right;
+}
+
 .material-icons {
   top: 5px;
 }

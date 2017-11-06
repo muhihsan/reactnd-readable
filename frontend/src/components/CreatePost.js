@@ -21,7 +21,7 @@ class CreatePost extends Component {
   
   render = () => {
     return (
-      <PostForm onPostSubmit={this.createPost} submitPostLabel='Create post' />
+      <PostForm onPostSubmit={this.createPost} submitPostLabel='Create Post' />
     );
   }
 }

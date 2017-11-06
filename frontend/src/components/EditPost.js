@@ -22,7 +22,7 @@ class EditPost extends Component {
     return (
       <div>
         {post && (
-          <PostForm post={post} onPostSubmit={this.editPost} submitPostLabel='Edit post' />
+          <PostForm post={post} onPostSubmit={this.editPost} submitPostLabel='Edit Post' />
         )}
       </div>
     );
