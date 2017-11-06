@@ -87,49 +87,53 @@ class Posts extends Component {
 
     return (
       <div>
-        <FlatButton
-          onClick={this.handleTouchTap}
-          label={this.state.selectedFilter}
-        />
-        <Popover
-          open={this.state.open}
-          anchorEl={this.state.anchorEl}
-          anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}
-          targetOrigin={{ horizontal: 'left', vertical: 'top' }}
-          onRequestClose={this.handleRequestClose}
-        >
-          <Menu onChange={this.changeFilter}>
-            <MenuItem
-              primaryText="Author"
-              value="author"
-              insetChildren={true}
-              checked={selectedFilter === 'Author'}
-              onClick={this.selectFilter}
-            />
-            <MenuItem
-              primaryText="Date"
-              value="timestamp"
-              insetChildren={true}
-              checked={selectedFilter === 'Date'}
-              onClick={this.selectFilter}
-            />
-            <MenuItem
-              primaryText="Score"
-              value="voteScore"
-              insetChildren={true}
-              checked={selectedFilter === 'Score'}
-              onClick={this.selectFilter}
-            />
-          </Menu>
-        </Popover>
-        <IconButton
-          iconClassName="material-icons"
-          tooltip="Reverse sort direction"
-          onClick={this.reverseSortDirection}
-        >
-          {isAscendingSort && 'arrow_upward'}
-          {!isAscendingSort && 'arrow_downward'}
-        </IconButton>
+        <br />
+        <div className="container-post sort">
+          <FlatButton
+            onClick={this.handleTouchTap}
+            label={this.state.selectedFilter}
+          />
+          <Popover
+            open={this.state.open}
+            anchorEl={this.state.anchorEl}
+            anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}
+            targetOrigin={{ horizontal: 'left', vertical: 'top' }}
+            onRequestClose={this.handleRequestClose}
+          >
+            <Menu onChange={this.changeFilter}>
+              <MenuItem
+                primaryText="Author"
+                value="author"
+                insetChildren={true}
+                checked={selectedFilter === 'Author'}
+                onClick={this.selectFilter}
+              />
+              <MenuItem
+                primaryText="Date"
+                value="timestamp"
+                insetChildren={true}
+                checked={selectedFilter === 'Date'}
+                onClick={this.selectFilter}
+              />
+              <MenuItem
+                primaryText="Score"
+                value="voteScore"
+                insetChildren={true}
+                checked={selectedFilter === 'Score'}
+                onClick={this.selectFilter}
+              />
+            </Menu>
+          </Popover>
+          <IconButton
+            iconClassName="material-icons"
+            tooltip="Reverse sort direction"
+            onClick={this.reverseSortDirection}
+          >
+            {isAscendingSort && 'arrow_upward'}
+            {!isAscendingSort && 'arrow_downward'}
+          </IconButton>
+        </div>
+        <br />
         {listPosts && listPosts.length > 0 && (
           <div>
             {listPosts.map(id =>

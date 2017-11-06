@@ -37,16 +37,10 @@ class App extends Component {
   render = () => {
     const { isDrawerOpen } = this.state;
 
-    const styles = {
-      title: {
-        cursor: 'pointer',
-      },
-    };
-
     return (
       <div>
         <AppBar
-          title={<span style={styles.title}>Readable</span>}
+          title={<span className="pointer" title="Readable Home">Readable</span>}
           onTitleTouchTap={this.goToHome}
           onLeftIconButtonTouchTap={this.toggleDrawer}
         />
