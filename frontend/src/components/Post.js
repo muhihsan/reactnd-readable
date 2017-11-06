@@ -63,7 +63,7 @@ class Post extends Component {
             >
               query_builder
             </IconButton>
-            <span>{post.timestamp}</span>
+            <span>{new Date(post.timestamp).toDateString()}</span>
             <IconButton
               iconClassName="material-icons"
               tooltip="Upvote post"

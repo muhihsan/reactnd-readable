@@ -59,7 +59,7 @@ class Comment extends Component {
             >
               query_builder
             </IconButton>
-            <span>{comment.timestamp}</span>
+            <span>{new Date(comment.timestamp).toDateString()}</span>
             <IconButton
               iconClassName="material-icons"
               tooltip="Edit comment"
