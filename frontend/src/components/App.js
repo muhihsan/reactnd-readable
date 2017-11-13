@@ -23,6 +23,7 @@ class App extends Component {
 
   goToHome = () => {
     this.props.history.push('/');
+    this.closeDrawer();
   }
 
   toggleDrawer = () =>
@@ -49,6 +50,11 @@ class App extends Component {
           open={isDrawerOpen}
           onRequestChange={this.onRequestChange}
         >
+          <AppBar
+            title={<span className="pointer" title="Readable Home">Readable</span>}
+            onTitleTouchTap={this.goToHome}
+            showMenuIconButton={false}
+          />
           <Categories onCategoryClick={this.closeDrawer} />
         </Drawer>
         <div>

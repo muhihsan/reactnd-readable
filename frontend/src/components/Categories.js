@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router'
 import * as categoryActions from '../actions/categoryAction';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
@@ -11,22 +11,33 @@ class Categories extends Component {
     this.props.actions.getAllCategories();
   }
 
+  toUpperCase = (word) => {
+    return word.charAt(0).toUpperCase() + word.substr(1);
+  }
+
+  goToCategoryPosts = (event, value) => {
+    this.props.history.push(`/${value}`);
+    this.props.onCategoryClick();
+  }
+
   render = () => {
     const {
       categories: {
-        entities: categories,
         result: listCategories
-      },
-      onCategoryClick
+      }
     } = this.props;
 
     return (
       <div>
         {listCategories && listCategories.length > 0 && (
-          <Menu>
+          <Menu
+            onChange={this.goToCategoryPosts}>
+            <MenuItem primaryText="Categories" disabled={true} />
             {listCategories.map(name =>
-              <MenuItem key={name}>
-                <Link onClick={onCategoryClick} to={`/${name}/`}>{categories[name].name}</Link>
+              <MenuItem
+                value={name}
+                key={name}>
+                {this.toUpperCase(name)}
               </MenuItem>
             )}
           </Menu>
@@ -49,4 +60,4 @@ const mapDispatchToProps = (dispatch) => ({
   )
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Categories);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Categories));

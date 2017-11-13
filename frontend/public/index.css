@@ -2,6 +2,10 @@ body, #root {
   background: #dbe7f1;
 }
 
+body {
+  margin: 0;
+}
+
 .container-post {
   max-width: 1200px;
   margin: auto;
