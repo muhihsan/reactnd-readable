@@ -65,7 +65,7 @@ class CommentForm extends Component {
               fullWidth={true}
             /><br /><br />
             <div className="align-right">
-              <RaisedButton label={submitCommentLabel} primary={true} onClick={this.submitComment}/>
+              <RaisedButton className="submit" label={submitCommentLabel} primary={true} onClick={this.submitComment}/>
               <RaisedButton label="Cancel" secondary={true} onClick={this.cancelPostingComment}/>
             </div>
           </CardText>
