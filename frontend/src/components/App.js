@@ -11,6 +11,7 @@ import EditComment from './EditComment';
 import Home from './Home';
 import PostDetails from './PostDetails';
 import EditPost from './EditPost';
+import '../style/index.css';
 
 const ConnectedSwitch = connect(state => ({
   location: state.location
