@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import * as commentActions from '../actions/commentAction'
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import { Card, CardText } from 'material-ui/Card';
 
 class CommentForm extends Component {
   state = {
@@ -41,25 +42,32 @@ class CommentForm extends Component {
     const { submitCommentLabel } = this.props;
 
     return (
-      <div>
-        <TextField
-          hintText="Add author"
-          floatingLabelText="Author"
-          name="author"
-          onChange={this.handleTextFieldChange}
-          value={author}
-        /><br />
-        <TextField
-          hintText="Add Body"
-          floatingLabelText="Body"
-          name="body"
-          onChange={this.handleTextFieldChange}
-          value={body}
-        /><br />
-        <div>
-          <RaisedButton label={submitCommentLabel} primary={true} onClick={this.submitComment}/>
-          <RaisedButton label="Cancel" secondary={true} onClick={this.cancelPostingComment}/>
-        </div>
+      <div className="container-post">
+        <br />
+        <Card>
+          <CardText>
+            <TextField
+              hintText="Add author"
+              floatingLabelText="Author"
+              name="author"
+              onChange={this.handleTextFieldChange}
+              value={author}
+              fullWidth={true}
+            /><br />
+            <TextField
+              hintText="Add Body"
+              floatingLabelText="Body"
+              name="body"
+              onChange={this.handleTextFieldChange}
+              value={body}
+              fullWidth={true}
+            /><br /><br />
+            <div className="align-right">
+              <RaisedButton label={submitCommentLabel} primary={true} onClick={this.submitComment}/>
+              <RaisedButton label="Cancel" secondary={true} onClick={this.cancelPostingComment}/>
+            </div>
+          </CardText>
+        </Card>
       </div>
     );
   }
