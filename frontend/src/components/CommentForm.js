@@ -9,11 +9,13 @@ import { Card, CardText } from 'material-ui/Card';
 
 class CommentForm extends Component {
   state = {
-    body: '',
-    author: ''
+    body: this.props.parentComment ? this.props.parentComment.body : '',
+    author: this.props.parentComment ? this.props.parentComment.author : '',
+    timestamp: this.props.parentComment ? this.props.parentComment.timestamp : ''
   }
 
   componentWillReceiveProps = (nextProps) => {
+    debugger;
     if (nextProps.parentComment) {
       this.setState({
         body: nextProps.parentComment.body,
