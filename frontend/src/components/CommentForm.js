@@ -44,7 +44,7 @@ class CommentForm extends Component {
     const { submitCommentLabel } = this.props;
 
     return (
-      <div className="container-post">
+      <div>
         <br />
         <Card>
           <CardText>

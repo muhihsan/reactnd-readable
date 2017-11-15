@@ -24,7 +24,7 @@ class Posts extends Component {
   }
 
   changeFilter = (event, sortBy) => {
-    this.setState({ sortBy }, () => 
+    this.setState({ sortBy }, () =>
       this.sortPosts(this.props.posts, this.state.sortBy, this.state.isAscendingSort)
     );
   }
@@ -86,7 +86,7 @@ class Posts extends Component {
     const { listPosts, selectedFilter, isAscendingSort } = this.state;
 
     return (
-      <div className="container-post">
+      <div>
         <br />
         <div className="sort">
           <FlatButton

@@ -42,7 +42,7 @@ class PostDetails extends Component {
   }
 
   render = () => {
-    const { 
+    const {
       post,
       comments: {
         result: listComments
@@ -60,7 +60,7 @@ class PostDetails extends Component {
       <div>
         <br />
         {post && post.id && (
-          <div className="container-post">
+          <div>
             <div>
               <Card>
                 <CardHeader

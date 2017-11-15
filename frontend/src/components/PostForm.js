@@ -58,13 +58,13 @@ class PostForm extends Component {
     const {
       categories: {
         entities: categories,
-        result: listCategory 
+        result: listCategory
       },
       submitPostLabel
     } = this.props;
 
     return (
-      <div className="container-post">
+      <div>
         <br />
         <Card>
           <CardText>
