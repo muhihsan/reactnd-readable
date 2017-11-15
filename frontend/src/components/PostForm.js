@@ -18,9 +18,8 @@ class PostForm extends Component {
     timestamp: ''
   }
 
-  componentDidMount = () => {
+  componentDidMount = () =>
     this.props.actions.getAllCategories();
-  }
 
   componentWillReceiveProps = (nextProps) => {
     if (nextProps.post) {
@@ -34,18 +33,16 @@ class PostForm extends Component {
     }
   }
 
-  submitPost = () => {
+  submitPost = () =>
     this.props.onPostSubmit({
       title: this.state.title,
       body: this.state.body,
       author: this.state.author,
       category: this.state.category
     });
-  }
 
-  cancelPostingForm = () => {
+  cancelPostingForm = () =>
     this.props.history.goBack();
-  }
 
   handleSelectFieldChange = (event, index, value) =>
     this.setState({ category: value });
@@ -77,7 +74,9 @@ class PostForm extends Component {
               fullWidth={true}
             /><br />
             <div>
-              <div className="left">
+              <div
+                className="left"
+              >
                 <TextField
                   hintText="Add author"
                   floatingLabelText="Author"
@@ -87,7 +86,9 @@ class PostForm extends Component {
                   fullWidth={true}
                 />
               </div>
-              <div className="right">
+              <div
+                className="right"
+              >
                 <SelectField
                   hintText="Add category"
                   floatingLabelText="Category"
@@ -95,7 +96,13 @@ class PostForm extends Component {
                   onChange={this.handleSelectFieldChange}
                   fullWidth={true}
                 >
-                  {listCategory.map(key => <MenuItem key={key} value={categories[key].path} primaryText={categories[key].name} />)}
+                  {listCategory.map(key =>
+                    <MenuItem
+                      key={key}
+                      value={categories[key].path}
+                      primaryText={categories[key].name}
+                    />
+                  )}
                 </SelectField>
               </div>
             </div>
@@ -109,9 +116,22 @@ class PostForm extends Component {
               value={body}
               fullWidth={true}
             /><br /><br />
-            <div className="align-right">
-              <RaisedButton className="submit" title={submitPostLabel} label={submitPostLabel} primary={true} onClick={this.submitPost}/>
-              <RaisedButton label="Cancel" title="Cancel" secondary={true} onClick={this.cancelPostingForm}/>
+            <div
+              className="align-right"
+            >
+              <RaisedButton
+                className="submit"
+                title={submitPostLabel}
+                label={submitPostLabel}
+                primary={true}
+                onClick={this.submitPost}
+              />
+              <RaisedButton
+                label="Cancel"
+                title="Cancel"
+                secondary={true}
+                onClick={this.cancelPostingForm}
+              />
             </div>
           </CardText>
         </Card>

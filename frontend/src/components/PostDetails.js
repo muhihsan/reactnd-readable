@@ -21,25 +21,20 @@ class PostDetails extends Component {
     this.props.actions.getAllCommentsForPost(this.props.id);
   }
 
-  goToCreateComment = () => {
+  goToCreateComment = () =>
     this.props.history.push(`/${this.props.post.category}/${this.props.post.id}/comment/create`);
-  }
 
-  editPost = () => {
+  deletePost = () =>
+  this.props.actions.deletePost(this.props.id);
+
+  editPost = () =>
     this.props.history.push(`/${this.props.post.category}/${this.props.post.id}/edit`);
-  }
 
-  deletePost = () => {
-    this.props.actions.deletePost(this.props.id);
-  }
-
-  upVotePost = () => {
-    this.props.actions.upVotePost(this.props.id);
-  }
-
-  downVotePost = () => {
+  downVotePost = () =>
     this.props.actions.downVotePost(this.props.id);
-  }
+
+  upVotePost = () =>
+    this.props.actions.upVotePost(this.props.id);
 
   render = () => {
     const {

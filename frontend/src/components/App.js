@@ -27,21 +27,28 @@ class App extends Component {
     this.closeDrawer();
   }
 
-  toggleDrawer = () =>
-    this.setState({ isDrawerOpen: !this.state.isDrawerOpen });
-
   closeDrawer = () =>
     this.setState({ isDrawerOpen: false });
 
-  onRequestChange = (isDrawerOpen) =>
+  setDrawerState = (isDrawerOpen) =>
     this.setState({ isDrawerOpen });
+
+  toggleDrawer = () =>
+    this.setState({ isDrawerOpen: !this.state.isDrawerOpen });
 
   render = () => {
     const { isDrawerOpen } = this.state;
 
     const appBar = (
       <AppBar
-        title={<span className="pointer" title="Readable Home">Readable</span>}
+        title={
+          <span
+            className="pointer"
+            title="Readable Home"
+          >
+            Readable
+          </span>
+        }
         onTitleTouchTap={this.goToHome}
         onLeftIconButtonTouchTap={this.toggleDrawer}
       />
@@ -53,21 +60,57 @@ class App extends Component {
         <Drawer
           docked={false}
           open={isDrawerOpen}
-          onRequestChange={this.onRequestChange}
+          onRequestChange={this.setDrawerState}
         >
           {appBar}
-          <Categories onCategoryClick={this.closeDrawer} />
+          <Categories
+            onCategoryClick={this.closeDrawer}
+          />
         </Drawer>
-        <div className="container">
+        <div
+          className="container"
+        >
           <ConnectedSwitch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/post/create" component={CreatePost} />
-            <Route exact path="/:category" component={CategoryPosts} />
-            <Route exact path="/:category/post/create" component={CreatePost} />
-            <Route exact path="/:category/:id" component={PostDetails} />
-            <Route exact path="/:category/:id/edit" component={EditPost} />
-            <Route exact path="/:category/:id/comment/create" component={CreateComment} />
-            <Route exact path="/:category/:id/:commentId/edit" component={EditComment} />
+            <Route
+              exact
+              path="/"
+              component={Home}
+            />
+            <Route
+              exact
+              path="/post/create"
+              component={CreatePost}
+            />
+            <Route
+              exact
+              path="/:category"
+              component={CategoryPosts}
+            />
+            <Route
+              exact
+              path="/:category/post/create"
+              component={CreatePost}
+            />
+            <Route
+              exact
+              path="/:category/:id"
+              component={PostDetails}
+            />
+            <Route
+              exact
+              path="/:category/:id/edit"
+              component={EditPost}
+            />
+            <Route
+              exact
+              path="/:category/:id/comment/create"
+              component={CreateComment}
+            />
+            <Route
+              exact
+              path="/:category/:id/:commentId/edit"
+              component={EditComment}
+            />
           </ConnectedSwitch>
         </div>
       </div>

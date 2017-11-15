@@ -23,24 +23,21 @@ class Posts extends Component {
     }
   }
 
-  changeFilter = (event, sortBy) => {
+  changeFilter = (event, sortBy) =>
     this.setState({ sortBy }, () =>
       this.sortPosts(this.props.posts, this.state.sortBy, this.state.isAscendingSort)
     );
-  }
 
-  selectFilter = (event) => {
+  selectFilter = (event) =>
     this.setState({
       open: false,
       selectedFilter: event.target.innerText
     });
-  }
 
-  reverseSortDirection = () => {
+  reverseSortDirection = () =>
     this.setState({ isAscendingSort: !this.state.isAscendingSort }, () =>
       this.sortPosts(this.props.posts, this.state.sortBy, this.state.isAscendingSort)
     );
-  }
 
   sortPosts = (posts, sortBy, isAscendingSort) => {
     var sortedListPosts = posts.result.slice().sort((a, b) => {
@@ -67,13 +64,12 @@ class Posts extends Component {
       open: true,
       anchorEl: event.currentTarget,
     });
-  };
+  }
 
-  handleRequestClose = () => {
+  handleRequestClose = () =>
     this.setState({
       open: false,
     });
-  };
 
   render = () => {
     const {
@@ -88,7 +84,9 @@ class Posts extends Component {
     return (
       <div>
         <br />
-        <div className="sort">
+        <div
+          className="sort"
+        >
           <FlatButton
             onClick={this.handleTouchTap}
             label={this.state.selectedFilter}
@@ -100,7 +98,9 @@ class Posts extends Component {
             targetOrigin={{ horizontal: 'left', vertical: 'top' }}
             onRequestClose={this.handleRequestClose}
           >
-            <Menu onChange={this.changeFilter}>
+            <Menu
+              onChange={this.changeFilter}
+            >
               <MenuItem
                 primaryText="Author"
                 value="author"

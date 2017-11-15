@@ -7,21 +7,23 @@ import * as postActions from '../actions/postAction'
 import PostForm from './PostForm';
 
 class CreatePost extends Component {
-  componentDidMount = () => {
+  componentDidMount = () =>
     this.props.actions.emptyPost();
-  }
 
-  createPost = (post) => {
+  createPost = (post) =>
     this.props.actions.createPost({
       ...post,
       id: uuidv4(),
       timestamp: Date.now()
     });
-  }
 
   render = () => {
     return (
-      <PostForm onPostSubmit={this.createPost} submitPostLabel='Create Post' category={this.props.category} />
+      <PostForm
+        onPostSubmit={this.createPost}
+        submitPostLabel='Create Post'
+        category={this.props.category}
+      />
     );
   }
 }

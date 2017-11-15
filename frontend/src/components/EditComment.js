@@ -6,25 +6,27 @@ import * as commentActions from '../actions/commentAction'
 import CommentForm from './CommentForm';
 
 class CreateComment extends Component {
-  componentDidMount = () => {
+  componentDidMount = () =>
     this.props.actions.getComment(this.props.commentId);
-  }
 
-  editComment = (comment) => {
+  editComment = (comment) =>
     this.props.actions.editCommentForPost({
       id: this.props.comment.id,
       parentId: this.props.comment.parentId,
       ...comment
     }, this.props.category);
-  }
 
   render = () => {
     const { comment } = this.props;
-    
+
     return (
       <div>
         {comment && (
-          <CommentForm parentComment={comment} onCommentSubmit={this.editComment} submitCommentLabel='Edit comment' />
+          <CommentForm
+            parentComment={comment}
+            onCommentSubmit={this.editComment}
+            submitCommentLabel='Edit comment'
+          />
         )}
       </div>
     );

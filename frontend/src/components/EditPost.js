@@ -5,16 +5,14 @@ import * as postActions from '../actions/postAction'
 import PostForm from './PostForm';
 
 class EditPost extends Component {
-  componentDidMount = () => {
+  componentDidMount = () =>
     this.props.actions.getPost(this.props.category, this.props.id);
-  }
 
-  editPost = (post) => {
+  editPost = (post) =>
     this.props.actions.editPost({
       ...post,
       id: this.props.post.id
     });
-  }
 
   render = () => {
     const { post } = this.props;
@@ -22,7 +20,11 @@ class EditPost extends Component {
     return (
       <div>
         {post && (
-          <PostForm post={post} onPostSubmit={this.editPost} submitPostLabel='Edit Post' />
+          <PostForm
+            post={post}
+            onPostSubmit={this.editPost}
+            submitPostLabel='Edit Post'
+          />
         )}
       </div>
     );

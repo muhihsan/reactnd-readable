@@ -8,70 +8,44 @@ import Divider from 'material-ui/Divider';
 import IconButton from 'material-ui/IconButton';
 
 class Comment extends Component {
-  deleteComment = () => {
+  goToEditComment = () =>
+    this.props.history.push(`/${this.props.post.category}/${this.props.post.id}/${this.props.comment.id}/edit`);
+
+  deleteComment = () =>
     this.props.actions.deleteCommentForPost(this.props.comment.id);
-  }
 
-  goToEditComment = () => {
-    this.props.history.push(`/${this.props.post.category}/${this.props.post.id}/${this.props.comment.id}/edit`)
-  }
-
-  upVoteComment = () => {
+  upVoteComment = () =>
     this.props.actions.upVoteCommentForPost(this.props.comment.id);
-  }
 
-  downVoteComment = () => {
+  downVoteComment = () =>
     this.props.actions.downVoteCommentForPost(this.props.comment.id);
-  }
 
   render = () => {
     const { comment } = this.props;
-    
+
     return(
       <div>
         <Card>
           <CardActions>
-            <IconButton
-              iconClassName="material-icons"
-              tooltip="Author"
-            >
+            <IconButton iconClassName="material-icons" tooltip="Author">
               person
             </IconButton>
             <span>{comment.author}</span>
-            <IconButton
-              iconClassName="material-icons"
-              tooltip="Time Created"
-            >
+            <IconButton iconClassName="material-icons" tooltip="Time Created">
               query_builder
             </IconButton>
             <span>{new Date(comment.timestamp).toDateString()}</span>
-            <IconButton
-              iconClassName="material-icons"
-              tooltip="Upvote post"
-              onClick={this.upVoteComment}
-            >
+            <IconButton iconClassName="material-icons" tooltip="Upvote post" onClick={this.upVoteComment}>
               thumb_up
             </IconButton>
-            <IconButton
-              iconClassName="material-icons"
-              tooltip="Downvote post"
-              onClick={this.downVoteComment}
-            >
+            <IconButton iconClassName="material-icons" tooltip="Downvote post" onClick={this.downVoteComment}>
               thumb_down
             </IconButton>
             <span>{comment.voteScore} Votes</span>
-            <IconButton
-              iconClassName="material-icons"
-              tooltip="Edit comment"
-              onClick={this.goToEditComment}
-            >
+            <IconButton iconClassName="material-icons" tooltip="Edit comment" onClick={this.goToEditComment}>
               edit
             </IconButton>
-            <IconButton
-              iconClassName="material-icons"
-              tooltip="Delete comment"
-              onClick={this.deleteComment}
-            >
+            <IconButton iconClassName="material-icons" tooltip="Delete comment" onClick={this.deleteComment}>
               delete
             </IconButton>
           </CardActions>

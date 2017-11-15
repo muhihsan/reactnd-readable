@@ -7,18 +7,16 @@ import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 
 class Categories extends Component {
-  componentDidMount = () => {
+  componentDidMount = () =>
     this.props.actions.getAllCategories();
-  }
-
-  toUpperCase = (word) => {
-    return word.charAt(0).toUpperCase() + word.substr(1);
-  }
 
   goToCategoryPosts = (event, value) => {
     this.props.history.push(`/${value}`);
     this.props.onCategoryClick();
   }
+
+  toUpperCase = (word) =>
+    word.charAt(0).toUpperCase() + word.substr(1);
 
   render = () => {
     const {
@@ -28,24 +26,24 @@ class Categories extends Component {
     } = this.props;
 
     return (
-      <div>
+      <Menu
+        onChange={this.goToCategoryPosts}
+      >
+        <MenuItem
+          primaryText="Categories"
+          disabled={true}
+        />
         {listCategories && listCategories.length > 0 && (
-          <Menu
-            onChange={this.goToCategoryPosts}>
-            <MenuItem primaryText="Categories" disabled={true} />
-            {listCategories.map(name =>
-              <MenuItem
-                value={name}
-                key={name}>
-                {this.toUpperCase(name)}
-              </MenuItem>
-            )}
-          </Menu>
-        )}
-        {(!listCategories || listCategories === 0) && (
-          <div>List of posts for category will be here</div>
-        )}
-      </div>
+          listCategories.map(name =>
+            <MenuItem
+              value={name}
+              key={name}
+            >
+              {this.toUpperCase(name)}
+            </MenuItem>
+          )
+      )}
+      </Menu>
     );
   }
 }

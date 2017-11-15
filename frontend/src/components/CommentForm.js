@@ -15,7 +15,6 @@ class CommentForm extends Component {
   }
 
   componentWillReceiveProps = (nextProps) => {
-    debugger;
     if (nextProps.parentComment) {
       this.setState({
         body: nextProps.parentComment.body,
@@ -25,16 +24,14 @@ class CommentForm extends Component {
     }
   }
 
-  submitComment = () => {
+  submitComment = () =>
     this.props.onCommentSubmit({
       body: this.state.body,
       author: this.state.author
     });
-  }
 
-  cancelPostingComment = () => {
+  cancelPostingComment = () =>
     this.props.history.goBack();
-  }
 
   handleTextFieldChange = (event, value) =>
     this.setState({ [event.target.name]: value });
@@ -64,9 +61,20 @@ class CommentForm extends Component {
               value={body}
               fullWidth={true}
             /><br /><br />
-            <div className="align-right">
-              <RaisedButton className="submit" label={submitCommentLabel} primary={true} onClick={this.submitComment}/>
-              <RaisedButton label="Cancel" secondary={true} onClick={this.cancelPostingComment}/>
+            <div
+              className="align-right"
+            >
+              <RaisedButton
+                className="submit"
+                label={submitCommentLabel}
+                primary={true}
+                onClick={this.submitComment}
+              />
+              <RaisedButton
+                label="Cancel"
+                secondary={true}
+                onClick={this.cancelPostingComment}
+              />
             </div>
           </CardText>
         </Card>

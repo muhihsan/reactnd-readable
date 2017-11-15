@@ -8,25 +8,20 @@ import Divider from 'material-ui/Divider';
 import IconButton from 'material-ui/IconButton';
 
 class Post extends Component {
-  goToPost = () => {
+  goToPost = () =>
     this.props.history.push(`/${this.props.post.category}/${this.props.post.id}`);
-  }
 
-  deletePost = () => {
+  deletePost = () =>
     this.props.actions.deletePost(this.props.post.id);
-  }
 
-  editPost = () => {
-    this.props.history.push(`/${this.props.post.category}/${this.props.post.id}/edit`)
-  }
-  
-  upVotePost = () => {
-    this.props.actions.upVotePost(this.props.post.id);
-  }
-
-  downVotePost = () => {
+  downVotePost = () =>
     this.props.actions.downVotePost(this.props.post.id);
-  }
+
+  editPost = () =>
+    this.props.history.push(`/${this.props.post.category}/${this.props.post.id}/edit`)
+
+  upVotePost = () =>
+    this.props.actions.upVotePost(this.props.post.id);
 
   render = () => {
     const { post, totalComment } = this.props;
