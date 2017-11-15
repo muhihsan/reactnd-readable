@@ -4,12 +4,12 @@ import { withRouter } from 'react-router'
 import { bindActionCreators } from 'redux';
 import * as commentActions from '../actions/commentAction';
 import * as postActions from '../actions/postAction';
-import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
-import RaisedButton from 'material-ui/RaisedButton';
+import Card, { CardActions, CardHeader, CardContent } from 'material-ui/Card';
+import { AccountCircle, Person, QueryBuilder, QuestionAnswer, ThumbUp, ThumbDown, Edit, Delete } from 'material-ui-icons';
+import Button from 'material-ui/Button';
 import Divider from 'material-ui/Divider';
 import IconButton from 'material-ui/IconButton';
 import Comments from './Comments';
-import { AccountCircle, Person, QueryBuilder, QuestionAnswer, ThumbUp, ThumbDown, Edit, Delete } from 'material-ui-icons';
 
 class PostDetails extends Component {
   componentWillMount = () => {
@@ -46,8 +46,8 @@ class PostDetails extends Component {
 
     const style = {
       margin: 0,
-      top: 'auto',
-      right: 24,
+      top: 22,
+      right: 22,
       left: 'auto',
       float: 'right',
     };
@@ -59,22 +59,21 @@ class PostDetails extends Component {
           <div>
             <div>
               <Card>
+                <Button
+                  raised
+                  color="primary"
+                  style={style}
+                  onClick={this.goToCreateComment}
+                >
+                  Create comment
+                </Button>
                 <CardHeader
                   avatar={
                     <AccountCircle />
                   }
                   title={post.title}
-                  subtitle={post.category}
-                  expandable={false}
-                  actAsExpander={false}
-                >
-                  <RaisedButton
-                    label="Create comment"
-                    primary={true}
-                    style={style}
-                    onClick={this.goToCreateComment}
-                  />
-                </CardHeader>
+                  subheader={post.category}
+                />
                 <Divider />
                 <CardActions>
                   <IconButton
@@ -122,7 +121,7 @@ class PostDetails extends Component {
                   </IconButton>
                 </CardActions>
                 <Divider />
-                <CardText>{post.body}</CardText>
+                <CardContent>{post.body}</CardContent>
               </Card>
               <br />
             </div>

@@ -3,7 +3,7 @@ import { withRouter } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as postActions from '../actions/postAction';
-import { Card, CardActions, CardHeader } from 'material-ui/Card';
+import Card, { CardActions, CardHeader } from 'material-ui/Card';
 import Divider from 'material-ui/Divider';
 import IconButton from 'material-ui/IconButton';
 import { AccountCircle, Person, QueryBuilder, QuestionAnswer, ThumbUp, ThumbDown, Edit, Delete } from 'material-ui-icons';

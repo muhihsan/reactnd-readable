@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import FlatButton from 'material-ui/FlatButton';
+import Button from 'material-ui/Button';
 import Popover from 'material-ui/Popover';
-import Menu from 'material-ui/Menu';
-import MenuItem from 'material-ui/MenuItem';
+import { MenuList, MenuItem } from 'material-ui/Menu';
 import IconButton from 'material-ui/IconButton';
 import Post from './Post';
 import { ArrowUpward, ArrowDownward } from 'material-ui-icons';
@@ -88,10 +87,11 @@ class Posts extends Component {
         <div
           className="sort"
         >
-          <FlatButton
+          <Button
             onClick={this.handleTouchTap}
-            label={this.state.selectedFilter}
-          />
+          >
+            {this.state.selectedFilter}
+          </Button>
           <Popover
             open={this.state.open}
             anchorEl={this.state.anchorEl}
@@ -99,7 +99,7 @@ class Posts extends Component {
             targetOrigin={{ horizontal: 'left', vertical: 'top' }}
             onRequestClose={this.handleRequestClose}
           >
-            <Menu
+            <MenuList
               onChange={this.changeFilter}
             >
               <MenuItem
@@ -123,7 +123,7 @@ class Posts extends Component {
                 checked={selectedFilter === 'Score'}
                 onClick={this.selectFilter}
               />
-            </Menu>
+            </MenuList>
           </Popover>
           <IconButton
             tooltip="Reverse sort direction"

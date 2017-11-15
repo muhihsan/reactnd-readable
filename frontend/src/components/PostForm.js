@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { bindActionCreators } from 'redux';
 import * as categoryActions from '../actions/categoryAction';
+import { FormControl } from 'material-ui/Form';
 import TextField from 'material-ui/TextField';
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
-import RaisedButton from 'material-ui/RaisedButton';
-import { Card, CardText } from 'material-ui/Card';
+import Input, { InputLabel } from 'material-ui/Input';
+import Select from 'material-ui/Select';
+import { MenuItem, MenuList } from 'material-ui/Menu';
+import Button from 'material-ui/Button';
+import Card, { CardContent } from 'material-ui/Card';
 
 class PostForm extends Component {
   state = {
@@ -44,11 +46,11 @@ class PostForm extends Component {
   cancelPostingForm = () =>
     this.props.history.goBack();
 
-  handleSelectFieldChange = (event, index, value) =>
-    this.setState({ category: value });
+  handleSelectFieldChange = (event) =>
+    this.setState({ category: event.target.value });
 
-  handleTextFieldChange = (event, value) =>
-    this.setState({ [event.target.name]: value });
+  handleTextFieldChange = (name) => (event) =>
+    this.setState({ [name]: event.target.value });
 
   render = () => {
     const { title, author, body, category } = this.state;
@@ -64,12 +66,11 @@ class PostForm extends Component {
       <div>
         <br />
         <Card>
-          <CardText>
+          <CardContent>
             <TextField
-              hintText="Add title"
-              floatingLabelText="Title"
-              name="title"
-              onChange={this.handleTextFieldChange}
+              placeholder="Add title"
+              label="Title"
+              onChange={this.handleTextFieldChange('title')}
               value={title}
               fullWidth={true}
             /><br />
@@ -78,10 +79,9 @@ class PostForm extends Component {
                 className="left"
               >
                 <TextField
-                  hintText="Add author"
-                  floatingLabelText="Author"
-                  name="author"
-                  onChange={this.handleTextFieldChange}
+                  placeholder="Add author"
+                  label="Author"
+                  onChange={this.handleTextFieldChange('author')}
                   value={author}
                   fullWidth={true}
                 />
@@ -89,51 +89,61 @@ class PostForm extends Component {
               <div
                 className="right"
               >
-                <SelectField
-                  hintText="Add category"
-                  floatingLabelText="Category"
-                  value={category}
-                  onChange={this.handleSelectFieldChange}
-                  fullWidth={true}
-                >
-                  {listCategory.map(key =>
-                    <MenuItem
-                      key={key}
-                      value={categories[key].path}
-                      primaryText={categories[key].name}
-                    />
-                  )}
-                </SelectField>
+                <FormControl>
+                  <InputLabel htmlFor="add-category">Category</InputLabel>
+                  <Select
+                    placeholder="Add category"
+                    value={category}
+                    onChange={this.handleSelectFieldChange}
+                    fullWidth={true}
+                    input={
+                      <Input
+                        id="add-category"
+                      />
+                    }
+                  >
+                    {listCategory.map(key =>
+                      <MenuItem
+                        key={key}
+                        value={categories[key].path}
+                      >
+                        {categories[key].name}
+                      </MenuItem>
+                    )}
+                  </Select>
+                </FormControl>
               </div>
             </div>
             <br />
             <TextField
-              hintText="Add body"
-              floatingLabelText="Body"
-              multiLine={true}
-              name="body"
-              onChange={this.handleTextFieldChange}
+              placeholder="Add body"
+              label="Body"
+              multiline
+              onChange={this.handleTextFieldChange('body')}
               value={body}
               fullWidth={true}
             /><br /><br />
             <div
               className="align-right"
             >
-              <RaisedButton
+              <Button
+                raised
                 className="submit"
                 title={submitPostLabel}
-                label={submitPostLabel}
-                primary={true}
+                color="primary"
                 onClick={this.submitPost}
-              />
-              <RaisedButton
-                label="Cancel"
+              >
+                {submitPostLabel}
+              </Button>
+              <Button
+                raised
                 title="Cancel"
-                secondary={true}
                 onClick={this.cancelPostingForm}
-              />
+              >
+                Cancel
+              </Button>
             </div>
-          </CardText>
+          </CardContent>
         </Card>
       </div>
     );

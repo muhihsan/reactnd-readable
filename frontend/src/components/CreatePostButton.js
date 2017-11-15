@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
+import Button from 'material-ui/Button';
+import { Add } from 'material-ui-icons';
 
 const style = {
   button: {
@@ -18,13 +18,16 @@ class CreatePostButton extends Component {
     const { onButtonClick } = this.props;
 
     return (
-      <FloatingActionButton
+      <Button
+        fab
         style={style.button}
         title="Create post"
         onClick={onButtonClick}
+        color="primary"
+        aria-label="Create post"
       >
-        <ContentAdd />
-      </FloatingActionButton>
+        <Add />
+      </Button>
     )
   }
 }

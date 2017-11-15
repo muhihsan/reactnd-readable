@@ -3,8 +3,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router'
 import * as categoryActions from '../actions/categoryAction';
-import {List, ListItem} from 'material-ui/List';
-import Subheader from 'material-ui/Subheader';
+import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
+import ListSubheader from 'material-ui/List/ListSubheader';
 import { Label } from 'material-ui-icons';
 
 class Categories extends Component {
@@ -31,9 +31,9 @@ class Categories extends Component {
       <List
         onChange={this.goToCategoryPosts}
       >
-        <Subheader>
+        <ListSubheader>
           Categories
-        </Subheader>
+        </ListSubheader>
         {listCategories && listCategories.length > 0 && (
           listCategories.map(name =>
             <ListItem
@@ -42,11 +42,13 @@ class Categories extends Component {
               href={`/${name}`}
               data-value={name}
               onClick={this.goToCategoryPosts}
-              leftIcon={
-                <Label />
-              }
             >
-              {this.toUpperCase(name)}
+              <ListItemIcon>
+                <Label />
+              </ListItemIcon>
+              <ListItemText
+                primary={this.toUpperCase(name)}
+              />
             </ListItem>
           )
       )}

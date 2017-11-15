@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router'
 import { bindActionCreators } from 'redux';
 import * as commentActions from '../actions/commentAction';
-import { Card, CardActions, CardText } from 'material-ui/Card';
+import Card, { CardActions, CardContent } from 'material-ui/Card';
 import Divider from 'material-ui/Divider';
 import IconButton from 'material-ui/IconButton';
 import { Person, QueryBuilder, ThumbUp, ThumbDown, Edit, Delete } from 'material-ui-icons';
@@ -67,7 +67,7 @@ class Comment extends Component {
             </IconButton>
           </CardActions>
           <Divider />
-          <CardText>{comment.body}</CardText>
+          <CardContent>{comment.body}</CardContent>
         </Card>
         <br />
       </div>
