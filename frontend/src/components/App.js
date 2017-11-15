@@ -44,7 +44,7 @@ class App extends Component {
 
   render = () => {
     const { isDrawerOpen } = this.state;
-    const { classes } = this.props;
+    const { classes, isLoading } = this.props;
 
     const appBar = (
       <AppBar
@@ -75,7 +75,9 @@ class App extends Component {
     return (
       <div>
         {appBar}
-        <LinearProgress />
+        {/* {isLoading && (
+          <LinearProgress />
+        )} */}
         <Drawer
           open={isDrawerOpen}
           onRequestClose={this.closeDrawer}
@@ -149,4 +151,6 @@ const styles = (theme) => ({
   }
 });
 
-export default withStyles(styles)(App);
+const mapStateToProps = (state) => state;
+
+export default withStyles(styles)(connect(mapStateToProps)(App));
