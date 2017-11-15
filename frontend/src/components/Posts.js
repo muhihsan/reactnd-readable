@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from 'material-ui/Button';
-import Popover from 'material-ui/Popover';
+// import Popover from 'material-ui/Popover';
 import Menu, { MenuItem } from 'material-ui/Menu';
 import IconButton from 'material-ui/IconButton';
 import Post from './Post';
@@ -13,7 +13,7 @@ class Posts extends Component {
     open: false,
     selectedFilter: 'Date',
     sortBy: 'timestamp',
-    isAscendingSort: true,
+    isAscendingSort: false,
     listPosts: this.props.posts ? this.props.posts.result : []
   }
 
@@ -23,16 +23,14 @@ class Posts extends Component {
     }
   }
 
-  changeFilter = (event, sortBy) =>
-    this.setState({ sortBy }, () =>
-      this.sortPosts(this.props.posts, this.state.sortBy, this.state.isAscendingSort)
-    );
-
   selectFilter = (event) =>
     this.setState({
       open: false,
-      selectedFilter: event.target.innerText
-    });
+      selectedFilter: event.target.innerText,
+      sortBy: event.target.dataset.value
+    }, () =>
+      this.sortPosts(this.props.posts, this.state.sortBy, this.state.isAscendingSort)
+    );
 
   reverseSortDirection = () =>
     this.setState({ isAscendingSort: !this.state.isAscendingSort }, () =>
@@ -79,7 +77,7 @@ class Posts extends Component {
       }
     } = this.props;
 
-    const { listPosts, selectedFilter, isAscendingSort } = this.state;
+    const { listPosts, isAscendingSort, sortBy } = this.state;
 
     return (
       <div>
@@ -95,48 +93,29 @@ class Posts extends Component {
           <Menu
             open={this.state.open}
             anchorEl={this.state.anchorEl}
-            anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}
             onRequestClose={this.handleRequestClose}
           >
             <MenuItem
-              value="author"
+              selected={sortBy === "author"}
+              data-value="author"
               onClick={this.selectFilter}
             >
               Author
             </MenuItem>
             <MenuItem
-              value="timestamp"
+              selected={sortBy === "timestamp"}
+              data-value="timestamp"
               onClick={this.selectFilter}
             >
               Date
             </MenuItem>
             <MenuItem
-              value="voteScore"
+              selected={sortBy === "voteScore"}
+              data-value="voteScore"
               onClick={this.selectFilter}
             >
               Score
             </MenuItem>
-            {/* <MenuItem
-              primaryText="Author"
-              value="author"
-              insetChildren={true}
-              checked={selectedFilter === 'Author'}
-              onClick={this.selectFilter}
-            />
-            <MenuItem
-              primaryText="Date"
-              value="timestamp"
-              insetChildren={true}
-              checked={selectedFilter === 'Date'}
-              onClick={this.selectFilter}
-            />
-            <MenuItem
-              primaryText="Score"
-              value="voteScore"
-              insetChildren={true}
-              checked={selectedFilter === 'Score'}
-              onClick={this.selectFilter}
-            /> */}
           </Menu>
           <IconButton
             tooltip="Reverse sort direction"
