@@ -9,6 +9,7 @@ import { AccountCircle, Person, QueryBuilder, QuestionAnswer, ThumbUp, ThumbDown
 import Button from 'material-ui/Button';
 import Divider from 'material-ui/Divider';
 import IconButton from 'material-ui/IconButton';
+import Avatar from 'material-ui/Avatar';
 import Comments from './Comments';
 
 class PostDetails extends Component {
@@ -69,7 +70,11 @@ class PostDetails extends Component {
                 </Button>
                 <CardHeader
                   avatar={
-                    <AccountCircle />
+                    <Avatar
+                      aria-label={post.author}
+                    >
+                      {post.author[0].toUpperCase()}
+                    </Avatar>
                   }
                   title={post.title}
                   subheader={post.category}
