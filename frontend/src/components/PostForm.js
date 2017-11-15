@@ -89,13 +89,15 @@ class PostForm extends Component {
               <div
                 className="right"
               >
-                <FormControl>
+                <FormControl
+                  fullWidth
+                >
                   <InputLabel htmlFor="add-category">Category</InputLabel>
                   <Select
                     placeholder="Add category"
                     value={category}
                     onChange={this.handleSelectFieldChange}
-                    fullWidth={true}
+                    fullWidth
                     input={
                       <Input
                         id="add-category"
