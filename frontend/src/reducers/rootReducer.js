@@ -3,6 +3,7 @@ import { routerReducer } from 'react-router-redux';
 import categories from './categoriesReducer';
 import comment from './commentReducer';
 import comments from './commentsReducer';
+import isLoading from './loadingReducer';
 import post from './postReducer';
 import posts from './postsReducer';
 
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   categories,
   comment,
   comments,
+  isLoading,
   post,
   posts
 });

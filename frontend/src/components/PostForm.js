@@ -3,24 +3,25 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { bindActionCreators } from 'redux';
 import * as categoryActions from '../actions/categoryAction';
+import { FormControl } from 'material-ui/Form';
 import TextField from 'material-ui/TextField';
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
-import RaisedButton from 'material-ui/RaisedButton';
-import { Card, CardText } from 'material-ui/Card';
+import Input, { InputLabel } from 'material-ui/Input';
+import Select from 'material-ui/Select';
+import { MenuItem } from 'material-ui/Menu';
+import Button from 'material-ui/Button';
+import Card, { CardContent } from 'material-ui/Card';
 
 class PostForm extends Component {
   state = {
     title: '',
     body: '',
     author: '',
-    category: '',
+    category: this.props.category ? this.props.category : '',
     timestamp: ''
   }
 
-  componentDidMount = () => {
+  componentDidMount = () =>
     this.props.actions.getAllCategories();
-  }
 
   componentWillReceiveProps = (nextProps) => {
     if (nextProps.post) {
@@ -34,86 +35,117 @@ class PostForm extends Component {
     }
   }
 
-  submitPost = () => {
+  submitPost = () =>
     this.props.onPostSubmit({
       title: this.state.title,
       body: this.state.body,
       author: this.state.author,
       category: this.state.category
     });
-  }
 
-  cancelPostingForm = () => {
+  cancelPostingForm = () =>
     this.props.history.goBack();
-  }
 
-  handleSelectFieldChange = (event, index, value) =>
-    this.setState({ category: value });
+  handleSelectFieldChange = (event) =>
+    this.setState({ category: event.target.value });
 
-  handleTextFieldChange = (event, value) =>
-    this.setState({ [event.target.name]: value });
+  handleTextFieldChange = (name) => (event) =>
+    this.setState({ [name]: event.target.value });
 
   render = () => {
     const { title, author, body, category } = this.state;
     const {
       categories: {
         entities: categories,
-        result: listCategory 
+        result: listCategory
       },
       submitPostLabel
     } = this.props;
 
     return (
-      <div className="container-post">
+      <div>
         <br />
         <Card>
-          <CardText>
+          <CardContent>
             <TextField
-              hintText="Add title"
-              floatingLabelText="Title"
-              name="title"
-              onChange={this.handleTextFieldChange}
+              placeholder="Add title"
+              label="Title"
+              onChange={this.handleTextFieldChange('title')}
               value={title}
               fullWidth={true}
             /><br />
             <div>
-              <div className="left">
+              <div
+                className="left"
+              >
                 <TextField
-                  hintText="Add author"
-                  floatingLabelText="Author"
-                  name="author"
-                  onChange={this.handleTextFieldChange}
+                  placeholder="Add author"
+                  label="Author"
+                  onChange={this.handleTextFieldChange('author')}
                   value={author}
                   fullWidth={true}
                 />
               </div>
-              <div className="right">
-                <SelectField
-                  hintText="Add category"
-                  floatingLabelText="Category"
-                  value={category}
-                  onChange={this.handleSelectFieldChange}
-                  fullWidth={true}
+              <div
+                className="right"
+              >
+                <FormControl
+                  fullWidth
                 >
-                  {listCategory.map(key => <MenuItem key={key} value={categories[key].path} primaryText={categories[key].name} />)}
-                </SelectField>
+                  <InputLabel htmlFor="add-category">Category</InputLabel>
+                  <Select
+                    placeholder="Add category"
+                    value={category}
+                    onChange={this.handleSelectFieldChange}
+                    fullWidth
+                    input={
+                      <Input
+                        id="add-category"
+                      />
+                    }
+                  >
+                    {listCategory.map(key =>
+                      <MenuItem
+                        key={key}
+                        value={categories[key].path}
+                      >
+                        {categories[key].name}
+                      </MenuItem>
+                    )}
+                  </Select>
+                </FormControl>
               </div>
             </div>
             <br />
             <TextField
-              hintText="Add body"
-              floatingLabelText="Body"
-              multiLine={true}
-              name="body"
-              onChange={this.handleTextFieldChange}
+              placeholder="Add body"
+              label="Body"
+              multiline
+              onChange={this.handleTextFieldChange('body')}
               value={body}
               fullWidth={true}
             /><br /><br />
-            <div className="align-right">
-              <RaisedButton className="submit" title={submitPostLabel} label={submitPostLabel} primary={true} onClick={this.submitPost}/>
-              <RaisedButton label="Cancel" title="Cancel" secondary={true} onClick={this.cancelPostingForm}/>
+            <div
+              className="align-right"
+            >
+              <Button
+                raised
+                className="submit"
+                title={submitPostLabel}
+                color="primary"
+                onClick={this.submitPost}
+              >
+                {submitPostLabel}
+              </Button>
+              <Button
+                raised
+                title="Cancel"
+                onClick={this.cancelPostingForm}
+              >
+                Cancel
+              </Button>
             </div>
-          </CardText>
+          </CardContent>
         </Card>
       </div>
     );

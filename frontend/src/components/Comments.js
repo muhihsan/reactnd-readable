@@ -5,27 +5,25 @@ import * as commentActions from '../actions/commentAction';
 import Comment from './Comment';
 
 class Comments extends Component {
-  componentWillMount = () => {
-    this.props.actions.emptyCommentsForPost();
-  }
-
-  componentDidMount = () => {
+  componentDidMount = () =>
     this.props.actions.getAllCommentsForPost(this.props.postId);
-  }
+
+  componentWillMount = () =>
+    this.props.actions.emptyCommentsForPost();
 
   deleteComment = (event) => {
     var id = event.target.value;
     this.props.actions.deleteCommentForPost(id);
   }
 
-  upVoteComment = (event) => {
-    const id = event.target.value;
-    this.props.actions.upVoteCommentForPost(id);
-  }
-
   downVoteComment = (event) => {
     const id = event.target.value;
     this.props.actions.downVoteCommentForPost(id);
+  }
+
+  upVoteComment = (event) => {
+    const id = event.target.value;
+    this.props.actions.upVoteCommentForPost(id);
   }
 
   render = () => {
@@ -39,7 +37,12 @@ class Comments extends Component {
       <div>
         {listComments && (
           <div>
-            {listComments.map(id => (<Comment key={id} comment={comments[id]} />))}
+            {listComments.map(id => (
+              <Comment
+                key={id}
+                comment={comments[id]}
+              />
+            ))}
           </div>
         )}
       </div>

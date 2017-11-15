@@ -3,80 +3,71 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router'
 import { bindActionCreators } from 'redux';
 import * as commentActions from '../actions/commentAction';
-import { Card, CardActions, CardText } from 'material-ui/Card';
+import Card, { CardActions, CardContent } from 'material-ui/Card';
 import Divider from 'material-ui/Divider';
 import IconButton from 'material-ui/IconButton';
+import { Person, QueryBuilder, ThumbUp, ThumbDown, Edit, Delete } from 'material-ui-icons';
 
 class Comment extends Component {
-  deleteComment = () => {
+  goToEditComment = () =>
+    this.props.history.push(`/${this.props.post.category}/${this.props.post.id}/${this.props.comment.id}/edit`);
+
+  deleteComment = () =>
     this.props.actions.deleteCommentForPost(this.props.comment.id);
-  }
 
-  goToEditComment = () => {
-    this.props.history.push(`/${this.props.post.category}/${this.props.post.id}/${this.props.comment.id}/edit`)
-  }
-
-  upVoteComment = () => {
+  upVoteComment = () =>
     this.props.actions.upVoteCommentForPost(this.props.comment.id);
-  }
 
-  downVoteComment = () => {
+  downVoteComment = () =>
     this.props.actions.downVoteCommentForPost(this.props.comment.id);
-  }
 
   render = () => {
     const { comment } = this.props;
-    
+
     return(
       <div>
         <Card>
           <CardActions>
             <IconButton
-              iconClassName="material-icons"
               tooltip="Author"
             >
-              person
+              <Person />
             </IconButton>
             <span>{comment.author}</span>
             <IconButton
-              iconClassName="material-icons"
               tooltip="Time Created"
             >
-              query_builder
+              <QueryBuilder />
             </IconButton>
             <span>{new Date(comment.timestamp).toDateString()}</span>
             <IconButton
-              iconClassName="material-icons"
               tooltip="Upvote post"
               onClick={this.upVoteComment}
             >
-              thumb_up
+              <ThumbUp />
             </IconButton>
             <IconButton
-              iconClassName="material-icons"
               tooltip="Downvote post"
               onClick={this.downVoteComment}
             >
-              thumb_down
+              <ThumbDown />
             </IconButton>
             <span>{comment.voteScore} Votes</span>
             <IconButton
-              iconClassName="material-icons"
               tooltip="Edit comment"
               onClick={this.goToEditComment}
             >
-              edit
+              <Edit />
             </IconButton>
             <IconButton
-              iconClassName="material-icons"
               tooltip="Delete comment"
               onClick={this.deleteComment}
             >
-              delete
+              <Delete />
             </IconButton>
           </CardActions>
           <Divider />
-          <CardText>{comment.body}</CardText>
+          <CardContent>{comment.body}</CardContent>
         </Card>
         <br />
       </div>

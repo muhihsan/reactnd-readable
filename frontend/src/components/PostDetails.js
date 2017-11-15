@@ -4,10 +4,12 @@ import { withRouter } from 'react-router'
 import { bindActionCreators } from 'redux';
 import * as commentActions from '../actions/commentAction';
 import * as postActions from '../actions/postAction';
-import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
-import RaisedButton from 'material-ui/RaisedButton';
+import Card, { CardActions, CardHeader, CardContent } from 'material-ui/Card';
+import { Person, QueryBuilder, QuestionAnswer, ThumbUp, ThumbDown, Edit, Delete } from 'material-ui-icons';
+import Button from 'material-ui/Button';
 import Divider from 'material-ui/Divider';
 import IconButton from 'material-ui/IconButton';
+import Avatar from 'material-ui/Avatar';
 import Comments from './Comments';
 
 class PostDetails extends Component {
@@ -21,28 +23,23 @@ class PostDetails extends Component {
     this.props.actions.getAllCommentsForPost(this.props.id);
   }
 
-  goToCreateComment = () => {
+  goToCreateComment = () =>
     this.props.history.push(`/${this.props.post.category}/${this.props.post.id}/comment/create`);
-  }
 
-  editPost = () => {
+  deletePost = () =>
+  this.props.actions.deletePost(this.props.id);
+
+  editPost = () =>
     this.props.history.push(`/${this.props.post.category}/${this.props.post.id}/edit`);
-  }
 
-  deletePost = () => {
-    this.props.actions.deletePost(this.props.id);
-  }
-
-  upVotePost = () => {
-    this.props.actions.upVotePost(this.props.id);
-  }
-
-  downVotePost = () => {
+  downVotePost = () =>
     this.props.actions.downVotePost(this.props.id);
-  }
+
+  upVotePost = () =>
+    this.props.actions.upVotePost(this.props.id);
 
   render = () => {
-    const { 
+    const {
       post,
       comments: {
         result: listComments
@@ -50,8 +47,8 @@ class PostDetails extends Component {
 
     const style = {
       margin: 0,
-      top: 'auto',
-      right: 24,
+      top: 22,
+      right: 22,
       left: 'auto',
       float: 'right',
     };
@@ -60,73 +57,76 @@ class PostDetails extends Component {
       <div>
         <br />
         {post && post.id && (
-          <div className="container-post">
+          <div>
             <div>
               <Card>
-                <CardHeader
-                  avatar={<i className="material-icons md-48">account_circle</i>}
-                  title={post.title}
-                  subtitle={post.category}
-                  expandable={false}
-                  actAsExpander={false}
+                <Button
+                  raised
+                  color="primary"
+                  style={style}
+                  onClick={this.goToCreateComment}
                 >
-                  <RaisedButton label="Create comment" primary={true} style={style} onClick={this.goToCreateComment} />
-                </CardHeader>
+                  Create comment
+                </Button>
+                <CardHeader
+                  avatar={
+                    <Avatar
+                      aria-label={post.author}
+                    >
+                      {post.author[0].toUpperCase()}
+                    </Avatar>
+                  }
+                  title={post.title}
+                  subheader={post.category}
+                />
                 <Divider />
                 <CardActions>
                   <IconButton
-                    iconClassName="material-icons"
                     tooltip="Author"
                   >
-                    person
+                    <Person />
                   </IconButton>
                   <span>{post.author}</span>
                   <IconButton
-                    iconClassName="material-icons"
                     tooltip="Time Created"
                   >
-                    query_builder
+                    <QueryBuilder />
                   </IconButton>
                   <span>{new Date(post.timestamp).toDateString()}</span>
                   <IconButton
-                    iconClassName="material-icons"
                     tooltip="Total Comments"
                   >
-                    question_answer
+                    <QuestionAnswer />
                   </IconButton>
                   <span>{listComments.length} Comments</span>
                   <IconButton
-                    iconClassName="material-icons"
                     tooltip="Upvote post"
                     onClick={this.upVotePost}
                   >
-                    thumb_up
+                    <ThumbUp />
                   </IconButton>
                   <IconButton
-                    iconClassName="material-icons"
                     tooltip="Downvote post"
                     onClick={this.downVotePost}
                   >
-                    thumb_down
+                    <ThumbDown />
                   </IconButton>
                   <span>{post.voteScore} Votes</span>
                   <IconButton
-                    iconClassName="material-icons"
                     tooltip="Edit post"
                     onClick={this.editPost}
                   >
-                    edit
+                    <Edit />
                   </IconButton>
                   <IconButton
-                    iconClassName="material-icons"
                     tooltip="Delete post"
                     onClick={this.deletePost}
                   >
-                    delete
+                    <Delete />
                   </IconButton>
                 </CardActions>
                 <Divider />
-                <CardText>{post.body}</CardText>
+                <CardContent>{post.body}</CardContent>
               </Card>
               <br />
             </div>

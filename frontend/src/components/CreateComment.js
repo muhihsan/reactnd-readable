@@ -7,18 +7,20 @@ import * as commentActions from '../actions/commentAction'
 import CommentForm from './CommentForm';
 
 class CreateComment extends Component {
-  createComment = (comment) => {
+  createComment = (comment) =>
     this.props.actions.createCommentForPost({
       id: uuidv4(),
       parentId: this.props.postId,
       timestamp: Date.now(),
       ...comment
     }, this.props.category);
-  }
 
   render = () => {
     return (
-      <CommentForm onCommentSubmit={this.createComment} submitCommentLabel='Create comment' />
+      <CommentForm
+        onCommentSubmit={this.createComment}
+        submitCommentLabel='Create comment'
+      />
     );
   }
 }

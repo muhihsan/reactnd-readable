@@ -2,37 +2,27 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as postActions from '../actions/postAction';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
 import Posts from './Posts';
+import CreatePostButton from './CreatePostButton';
 
 class Home extends Component {
-  componentDidMount = () => {
+  componentDidMount = () =>
     this.props.actions.getAllPostsThenComments();
-  }
 
-  goToCreatePost = () => {
+  goToCreatePost = () =>
     this.props.history.push('post/create');
-  }
 
   render = () => {
     const { posts } = this.props;
 
-    const style = {
-      margin: 0,
-      top: 'auto',
-      right: 24,
-      bottom: 24,
-      left: 'auto',
-      position: 'fixed',
-    };
-
     return (
       <div>
-        <Posts posts={posts} />
-        <FloatingActionButton style={style} title="Create post" onClick={this.goToCreatePost}>
-          <ContentAdd />
-        </FloatingActionButton>
+        <Posts
+          posts={posts}
+        />
+        <CreatePostButton
+          onButtonClick={this.goToCreatePost}
+        />
       </div>
     );
   }

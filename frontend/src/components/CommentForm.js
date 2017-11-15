@@ -4,8 +4,8 @@ import { withRouter } from 'react-router';
 import { bindActionCreators } from 'redux';
 import * as commentActions from '../actions/commentAction'
 import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
-import { Card, CardText } from 'material-ui/Card';
+import Button from 'material-ui/Button';
+import Card, { CardContent } from 'material-ui/Card';
 
 class CommentForm extends Component {
   state = {
@@ -15,7 +15,6 @@ class CommentForm extends Component {
   }
 
   componentWillReceiveProps = (nextProps) => {
-    debugger;
     if (nextProps.parentComment) {
       this.setState({
         body: nextProps.parentComment.body,
@@ -25,50 +24,64 @@ class CommentForm extends Component {
     }
   }
 
-  submitComment = () => {
+  submitComment = () =>
     this.props.onCommentSubmit({
       body: this.state.body,
       author: this.state.author
     });
-  }
 
-  cancelPostingComment = () => {
+  cancelPostingComment = () =>
     this.props.history.goBack();
-  }
 
-  handleTextFieldChange = (event, value) =>
-    this.setState({ [event.target.name]: value });
+  handleTextFieldChange = (name) => (event) =>
+    this.setState({ [name]: event.target.value });
 
   render = () => {
     const { author, body } = this.state;
     const { submitCommentLabel } = this.props;
 
     return (
-      <div className="container-post">
+      <div>
         <br />
         <Card>
-          <CardText>
+          <CardContent>
             <TextField
-              hintText="Add author"
-              floatingLabelText="Author"
-              name="author"
-              onChange={this.handleTextFieldChange}
+              placeholder="Add author"
+              label="Author"
+              onChange={this.handleTextFieldChange('author')}
               value={author}
               fullWidth={true}
             /><br />
             <TextField
-              hintText="Add Body"
-              floatingLabelText="Body"
-              name="body"
-              onChange={this.handleTextFieldChange}
+              placeholder="Add Body"
+              label="Body"
+              onChange={this.handleTextFieldChange('body')}
               value={body}
               fullWidth={true}
             /><br /><br />
-            <div className="align-right">
-              <RaisedButton className="submit" label={submitCommentLabel} primary={true} onClick={this.submitComment}/>
-              <RaisedButton label="Cancel" secondary={true} onClick={this.cancelPostingComment}/>
+            <div
+              className="align-right"
+            >
+              <Button
+                raised
+                className="submit"
+                title={submitCommentLabel}
+                primary={true}
+                color="primary"
+                onClick={this.submitComment}
+              >
+                {submitCommentLabel}
+              </Button>
+              <Button
+                raised
+                title=""
+                secondary={true}
+                onClick={this.cancelPostingComment}
+              >
+                Cancel
+              </Button>
             </div>
-          </CardText>
+          </CardContent>
         </Card>
       </div>
     );
