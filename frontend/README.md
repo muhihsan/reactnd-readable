@@ -19,3 +19,7 @@ npm install
 ```sh
 npm start
 ```
+
+#### Special Thanks
+
+This project uses [Material-UI](https://material-ui-next.com).
