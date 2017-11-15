@@ -1,11 +1,41 @@
-# Readable Project
+# My Readable: A Content And Comment Web App
 
-This is the final assessment project for Udacity's Redux course where you will build a content and comment web app. Users will be able to post content to predefined categories, comment on their posts and other users' posts, and vote on posts and comments. Users will also be able to edit and delete posts and comments.
+My second project in React Nanodegree Program. Users will be able to post content to predefined categories, comment on their posts and other users' posts, and vote on posts and comments. Users will also be able to edit and delete posts and comments.
 
-## API Server
+## Getting Started
 
-Information about the API server and how to use it can be found in its [README file](api-server/README.md).
+### Installation
 
-## Frontend
+#### API Server
 
-Information about the frontend code can be found [here](frontend).
+```sh
+cd api-server
+npm install
+```
+
+#### Web App
+
+```sh
+cd frontend
+npm install
+```
+
+### Starting the App
+
+#### API Server
+
+```sh
+cd api-server
+node start
+```
+
+#### Web App
+
+```sh
+cd frontend
+npm start
+```
+
+### Special Thanks
+
+This project uses [Material-UI](https://material-ui-next.com).
