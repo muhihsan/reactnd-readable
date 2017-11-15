@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import * as commentActions from '../actions/commentAction';
 import * as postActions from '../actions/postAction';
 import Card, { CardActions, CardHeader, CardContent } from 'material-ui/Card';
-import { AccountCircle, Person, QueryBuilder, QuestionAnswer, ThumbUp, ThumbDown, Edit, Delete } from 'material-ui-icons';
+import { Person, QueryBuilder, QuestionAnswer, ThumbUp, ThumbDown, Edit, Delete } from 'material-ui-icons';
 import Button from 'material-ui/Button';
 import Divider from 'material-ui/Divider';
 import IconButton from 'material-ui/IconButton';

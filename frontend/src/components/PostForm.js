@@ -7,7 +7,7 @@ import { FormControl } from 'material-ui/Form';
 import TextField from 'material-ui/TextField';
 import Input, { InputLabel } from 'material-ui/Input';
 import Select from 'material-ui/Select';
-import { MenuItem, MenuList } from 'material-ui/Menu';
+import { MenuItem } from 'material-ui/Menu';
 import Button from 'material-ui/Button';
 import Card, { CardContent } from 'material-ui/Card';
 

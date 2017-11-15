@@ -7,7 +7,7 @@ import Toolbar from 'material-ui/Toolbar';
 import IconButton from 'material-ui/IconButton';
 import Typography from 'material-ui/Typography';
 import Drawer from 'material-ui/Drawer';
-import { LinearProgress } from 'material-ui/Progress';
+// import { LinearProgress } from 'material-ui/Progress';
 import MenuIcon from 'material-ui-icons/Menu';
 import Categories from './Categories';
 import CategoryPosts from './CategoryPosts';
@@ -44,7 +44,7 @@ class App extends Component {
 
   render = () => {
     const { isDrawerOpen } = this.state;
-    const { classes, isLoading } = this.props;
+    const { classes/*, isLoading*/ } = this.props;
 
     const appBar = (
       <AppBar
@@ -151,6 +151,6 @@ const styles = (theme) => ({
   }
 });
 
-const mapStateToProps = (state) => state;
+// const mapStateToProps = (state) => state;
 
-export default withStyles(styles)(connect(mapStateToProps)(App));
+export default withStyles(styles)(/*connect(mapStateToProps)(*/App/*)*/);
