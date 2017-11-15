@@ -18,12 +18,12 @@ class CategoryPosts extends Component {
   }
 
   goToCreatePost = () => {
-    this.props.history.push('post/create');
+    this.props.history.push(`${this.props.category}/post/create`);
   }
 
   render = () => {
     const { posts } = this.props;
-    
+
     const style = {
       margin: 0,
       top: 'auto',

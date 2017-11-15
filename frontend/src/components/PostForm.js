@@ -14,7 +14,7 @@ class PostForm extends Component {
     title: '',
     body: '',
     author: '',
-    category: '',
+    category: this.props.category ? this.props.category : '',
     timestamp: ''
   }
 

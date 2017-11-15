@@ -18,17 +18,18 @@ class CreatePost extends Component {
       timestamp: Date.now()
     });
   }
-  
+
   render = () => {
     return (
-      <PostForm onPostSubmit={this.createPost} submitPostLabel='Create Post' />
+      <PostForm onPostSubmit={this.createPost} submitPostLabel='Create Post' category={this.props.category} />
     );
   }
 }
 
 const mapStateToProps = (state, ownProps) => ({
   ...state,
-  ...ownProps
+  category: ownProps.match.params.category
+
 });
 
 const mapDispatchToProps = (dispatch) => ({
