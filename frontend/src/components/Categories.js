@@ -3,15 +3,17 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router'
 import * as categoryActions from '../actions/categoryAction';
-import Menu from 'material-ui/Menu';
-import MenuItem from 'material-ui/MenuItem';
+import {List, ListItem} from 'material-ui/List';
+import Subheader from 'material-ui/Subheader';
+import ActionLabel from 'material-ui/svg-icons/action/label';
 
 class Categories extends Component {
   componentDidMount = () =>
     this.props.actions.getAllCategories();
 
-  goToCategoryPosts = (event, value) => {
-    this.props.history.push(`/${value}`);
+  goToCategoryPosts = (event) => {
+    event.preventDefault();
+    this.props.history.push(`/${event.target.parentElement.parentElement.dataset.value}`);
     this.props.onCategoryClick();
   }
 
@@ -26,24 +28,29 @@ class Categories extends Component {
     } = this.props;
 
     return (
-      <Menu
+      <List
         onChange={this.goToCategoryPosts}
       >
-        <MenuItem
-          primaryText="Categories"
-          disabled={true}
-        />
+        <Subheader>
+          Categories
+        </Subheader>
         {listCategories && listCategories.length > 0 && (
           listCategories.map(name =>
-            <MenuItem
-              value={name}
+            <ListItem
               key={name}
+              component="a"
+              href={`/${name}`}
+              data-value={name}
+              onClick={this.goToCategoryPosts}
+              leftIcon={
+                <ActionLabel />
+              }
             >
               {this.toUpperCase(name)}
-            </MenuItem>
+            </ListItem>
           )
       )}
-      </Menu>
+      </List>
     );
   }
 }
