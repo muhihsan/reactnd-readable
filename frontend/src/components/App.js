@@ -39,23 +39,23 @@ class App extends Component {
   render = () => {
     const { isDrawerOpen } = this.state;
 
+    const appBar = (
+      <AppBar
+        title={<span className="pointer" title="Readable Home">Readable</span>}
+        onTitleTouchTap={this.goToHome}
+        onLeftIconButtonTouchTap={this.toggleDrawer}
+      />
+    );
+
     return (
       <div>
-        <AppBar
-          title={<span className="pointer" title="Readable Home">Readable</span>}
-          onTitleTouchTap={this.goToHome}
-          onLeftIconButtonTouchTap={this.toggleDrawer}
-        />
+        {appBar}
         <Drawer
           docked={false}
           open={isDrawerOpen}
           onRequestChange={this.onRequestChange}
         >
-          <AppBar
-            title={<span className="pointer" title="Readable Home">Readable</span>}
-            onTitleTouchTap={this.goToHome}
-            showMenuIconButton={false}
-          />
+          {appBar}
           <Categories onCategoryClick={this.closeDrawer} />
         </Drawer>
         <div className="container">
