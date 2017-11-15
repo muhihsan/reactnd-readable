@@ -8,4 +8,4 @@ Information about the API server and how to use it can be found in its [README f
 
 ## Frontend
 
-Information about the frontend code can be found [here](frontend)
+Information about the frontend code can be found [here](frontend).
