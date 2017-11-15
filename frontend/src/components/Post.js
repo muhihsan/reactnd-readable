@@ -6,6 +6,7 @@ import * as postActions from '../actions/postAction';
 import { Card, CardActions, CardHeader } from 'material-ui/Card';
 import Divider from 'material-ui/Divider';
 import IconButton from 'material-ui/IconButton';
+import { AccountCircle, Person, QueryBuilder, QuestionAnswer, ThumbUp, ThumbDown, Edit, Delete } from 'material-ui-icons';
 
 class Post extends Component {
   goToPost = () =>
@@ -31,7 +32,13 @@ class Post extends Component {
         <Card>
           <CardHeader
             className="pointer"
-            avatar={<i className="material-icons md-48">account_circle</i>}
+            avatar={
+              <AccountCircle
+                classes={{
+                  root: "material-icons md-48"
+                }}
+              />
+            }
             title={post.title}
             subtitle={post.category}
             onClick={this.goToPost}
@@ -39,54 +46,47 @@ class Post extends Component {
           <Divider />
           <CardActions>
             <IconButton
-              iconClassName="material-icons"
               tooltip="Author"
             >
-              person
+              <Person />
             </IconButton>
             <span>{post.author}</span>
             <IconButton
-              iconClassName="material-icons"
               tooltip="Time Created"
             >
-              query_builder
+              <QueryBuilder />
             </IconButton>
             <span>{new Date(post.timestamp).toDateString()}</span>
             <IconButton
-              iconClassName="material-icons"
               tooltip="Total Comments"
             >
-              question_answer
+              <QuestionAnswer />
             </IconButton>
             <span>{totalComment} Comments</span>
             <IconButton
-              iconClassName="material-icons"
               tooltip="Upvote post"
               onClick={this.upVotePost}
             >
-              thumb_up
+              <ThumbUp />
             </IconButton>
             <IconButton
-              iconClassName="material-icons"
               tooltip="Downvote post"
               onClick={this.downVotePost}
             >
-              thumb_down
+              <ThumbDown />
             </IconButton>
             <span>{post.voteScore} Votes</span>
             <IconButton
-              iconClassName="material-icons"
               tooltip="Edit post"
               onClick={this.editPost}
             >
-              edit
+              <Edit />
             </IconButton>
             <IconButton
-              iconClassName="material-icons"
               tooltip="Delete post"
               onClick={this.deletePost}
             >
-              delete
+              <Delete />
             </IconButton>
           </CardActions>
         </Card>

@@ -5,7 +5,7 @@ import { withRouter } from 'react-router'
 import * as categoryActions from '../actions/categoryAction';
 import {List, ListItem} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
-import ActionLabel from 'material-ui/svg-icons/action/label';
+import { Label } from 'material-ui-icons';
 
 class Categories extends Component {
   componentDidMount = () =>
@@ -43,7 +43,7 @@ class Categories extends Component {
               data-value={name}
               onClick={this.goToCategoryPosts}
               leftIcon={
-                <ActionLabel />
+                <Label />
               }
             >
               {this.toUpperCase(name)}

@@ -9,6 +9,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Divider from 'material-ui/Divider';
 import IconButton from 'material-ui/IconButton';
 import Comments from './Comments';
+import { AccountCircle, Person, QueryBuilder, QuestionAnswer, ThumbUp, ThumbDown, Edit, Delete } from 'material-ui-icons';
 
 class PostDetails extends Component {
   componentWillMount = () => {
@@ -59,65 +60,65 @@ class PostDetails extends Component {
             <div>
               <Card>
                 <CardHeader
-                  avatar={<i className="material-icons md-48">account_circle</i>}
+                  avatar={
+                    <AccountCircle />
+                  }
                   title={post.title}
                   subtitle={post.category}
                   expandable={false}
                   actAsExpander={false}
                 >
-                  <RaisedButton label="Create comment" primary={true} style={style} onClick={this.goToCreateComment} />
+                  <RaisedButton
+                    label="Create comment"
+                    primary={true}
+                    style={style}
+                    onClick={this.goToCreateComment}
+                  />
                 </CardHeader>
                 <Divider />
                 <CardActions>
                   <IconButton
-                    iconClassName="material-icons"
                     tooltip="Author"
                   >
-                    person
+                    <Person />
                   </IconButton>
                   <span>{post.author}</span>
                   <IconButton
-                    iconClassName="material-icons"
                     tooltip="Time Created"
                   >
-                    query_builder
+                    <QueryBuilder />
                   </IconButton>
                   <span>{new Date(post.timestamp).toDateString()}</span>
                   <IconButton
-                    iconClassName="material-icons"
                     tooltip="Total Comments"
                   >
-                    question_answer
+                    <QuestionAnswer />
                   </IconButton>
                   <span>{listComments.length} Comments</span>
                   <IconButton
-                    iconClassName="material-icons"
                     tooltip="Upvote post"
                     onClick={this.upVotePost}
                   >
-                    thumb_up
+                    <ThumbUp />
                   </IconButton>
                   <IconButton
-                    iconClassName="material-icons"
                     tooltip="Downvote post"
                     onClick={this.downVotePost}
                   >
-                    thumb_down
+                    <ThumbDown />
                   </IconButton>
                   <span>{post.voteScore} Votes</span>
                   <IconButton
-                    iconClassName="material-icons"
                     tooltip="Edit post"
                     onClick={this.editPost}
                   >
-                    edit
+                    <Edit />
                   </IconButton>
                   <IconButton
-                    iconClassName="material-icons"
                     tooltip="Delete post"
                     onClick={this.deletePost}
                   >
-                    delete
+                    <Delete />
                   </IconButton>
                 </CardActions>
                 <Divider />

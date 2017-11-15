@@ -6,6 +6,7 @@ import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 import Post from './Post';
+import { ArrowUpward, ArrowDownward } from 'material-ui-icons';
 
 class Posts extends Component {
   state = {
@@ -125,12 +126,11 @@ class Posts extends Component {
             </Menu>
           </Popover>
           <IconButton
-            iconClassName="material-icons"
             tooltip="Reverse sort direction"
             onClick={this.reverseSortDirection}
           >
-            {isAscendingSort && 'arrow_upward'}
-            {!isAscendingSort && 'arrow_downward'}
+            {isAscendingSort && <ArrowUpward />}
+            {!isAscendingSort && <ArrowDownward />}
           </IconButton>
         </div>
         <br />

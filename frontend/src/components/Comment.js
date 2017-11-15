@@ -6,6 +6,7 @@ import * as commentActions from '../actions/commentAction';
 import { Card, CardActions, CardText } from 'material-ui/Card';
 import Divider from 'material-ui/Divider';
 import IconButton from 'material-ui/IconButton';
+import { Person, QueryBuilder, ThumbUp, ThumbDown, Edit, Delete } from 'material-ui-icons';
 
 class Comment extends Component {
   goToEditComment = () =>
@@ -27,26 +28,42 @@ class Comment extends Component {
       <div>
         <Card>
           <CardActions>
-            <IconButton iconClassName="material-icons" tooltip="Author">
-              person
+            <IconButton
+              tooltip="Author"
+            >
+              <Person />
             </IconButton>
             <span>{comment.author}</span>
-            <IconButton iconClassName="material-icons" tooltip="Time Created">
-              query_builder
+            <IconButton
+              tooltip="Time Created"
+            >
+              <QueryBuilder />
             </IconButton>
             <span>{new Date(comment.timestamp).toDateString()}</span>
-            <IconButton iconClassName="material-icons" tooltip="Upvote post" onClick={this.upVoteComment}>
-              thumb_up
+            <IconButton
+              tooltip="Upvote post"
+              onClick={this.upVoteComment}
+            >
+              <ThumbUp />
             </IconButton>
-            <IconButton iconClassName="material-icons" tooltip="Downvote post" onClick={this.downVoteComment}>
-              thumb_down
+            <IconButton
+              tooltip="Downvote post"
+              onClick={this.downVoteComment}
+            >
+              <ThumbDown />
             </IconButton>
             <span>{comment.voteScore} Votes</span>
-            <IconButton iconClassName="material-icons" tooltip="Edit comment" onClick={this.goToEditComment}>
-              edit
+            <IconButton
+              tooltip="Edit comment"
+              onClick={this.goToEditComment}
+            >
+              <Edit />
             </IconButton>
-            <IconButton iconClassName="material-icons" tooltip="Delete comment" onClick={this.deleteComment}>
-              delete
+            <IconButton
+              tooltip="Delete comment"
+              onClick={this.deleteComment}
+            >
+              <Delete />
             </IconButton>
           </CardActions>
           <Divider />
