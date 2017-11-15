@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from 'material-ui/Button';
 import Popover from 'material-ui/Popover';
-import { MenuList, MenuItem } from 'material-ui/Menu';
+import Menu, { MenuItem } from 'material-ui/Menu';
 import IconButton from 'material-ui/IconButton';
 import Post from './Post';
 import { ArrowUpward, ArrowDownward } from 'material-ui-icons';
@@ -92,39 +92,52 @@ class Posts extends Component {
           >
             {this.state.selectedFilter}
           </Button>
-          <Popover
+          <Menu
             open={this.state.open}
             anchorEl={this.state.anchorEl}
             anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}
-            targetOrigin={{ horizontal: 'left', vertical: 'top' }}
             onRequestClose={this.handleRequestClose}
           >
-            <MenuList
-              onChange={this.changeFilter}
+            <MenuItem
+              value="author"
+              onClick={this.selectFilter}
             >
-              <MenuItem
-                primaryText="Author"
-                value="author"
-                insetChildren={true}
-                checked={selectedFilter === 'Author'}
-                onClick={this.selectFilter}
-              />
-              <MenuItem
-                primaryText="Date"
-                value="timestamp"
-                insetChildren={true}
-                checked={selectedFilter === 'Date'}
-                onClick={this.selectFilter}
-              />
-              <MenuItem
-                primaryText="Score"
-                value="voteScore"
-                insetChildren={true}
-                checked={selectedFilter === 'Score'}
-                onClick={this.selectFilter}
-              />
-            </MenuList>
-          </Popover>
+              Author
+            </MenuItem>
+            <MenuItem
+              value="timestamp"
+              onClick={this.selectFilter}
+            >
+              Date
+            </MenuItem>
+            <MenuItem
+              value="voteScore"
+              onClick={this.selectFilter}
+            >
+              Score
+            </MenuItem>
+            {/* <MenuItem
+              primaryText="Author"
+              value="author"
+              insetChildren={true}
+              checked={selectedFilter === 'Author'}
+              onClick={this.selectFilter}
+            />
+            <MenuItem
+              primaryText="Date"
+              value="timestamp"
+              insetChildren={true}
+              checked={selectedFilter === 'Date'}
+              onClick={this.selectFilter}
+            />
+            <MenuItem
+              primaryText="Score"
+              value="voteScore"
+              insetChildren={true}
+              checked={selectedFilter === 'Score'}
+              onClick={this.selectFilter}
+            /> */}
+          </Menu>
           <IconButton
             tooltip="Reverse sort direction"
             onClick={this.reverseSortDirection}
